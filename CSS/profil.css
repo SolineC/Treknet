@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    background-color: #ECD808;
+}
+
+h1{
+    position: absolute;
+    top: 15%;
+    left: 5%
+}
+
+
+.info{
+    background-color: #D3C107;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    width: 40%;
+    padding: 30px;
+    height: 60vh;
+    border-radius: 5px;
+}
+
+.input{
+    
+        background-color: transparent;
+        border: 0;
+        border-bottom: 2px solid rgb(33,33,33);
+        margin-bottom: 30px;
+        outline: none;
+        
+    
+}
+
+.soumettre{
+        background-color: transparent;
+        border: 0;
+        border: 2px solid rgb(33,33,33);
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 30px;
+        margin-top: 20px;
+        outline: none;
+        width: 50%;
+        color: black;
+        cursor: pointer;
+}
+
+aside{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100vh;
+    background-color: transparent;
+}
+
+aside .remplissage{
+    height: 92vh;
+}
+aside .messagerie{
+    width: 50%;
+    height: 8vh;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.btn{
+    background-color: #D3C107;
+    position: relative;
+    display: block;
+    padding: 10px 20px;
+}
+
+.btn::before{
+    content: "";
+    position: absolute;
+    height: 14px;
+    width: 14px
+    ;
+}
+
+aside .amis {
+    background-color: #D3C107;
+    width: 75%;
+    height: 200px;
+    position: absolute;
+    right: 0;
+    top:15%;
+    border-radius: 5px;
+
+}
+a{
+    color: black;
+}
+
+aside .groupes{
+    background-color: #D3C107 ;
+    width: 75%;
+    height: 200px;
+    position: absolute;
+    top:50%;
+    right: 0;
+    border-radius: 5px;
+
+}
+
+aside .amis h2,
+aside .groupes h2{
+    margin: 20px;
+    
+}
+
+aside .messagerie h2{
+    margin-left: 3%; 
+    margin-top: 7px;   
+}
+.membre{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 10px 10px 30px;
+}
+
+/*images*/
+
+.pp{
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+
+.chevron{
+    height: 30px;
+    width: 40px;
+    margin-top: 7px;
+    margin-left: 20px;
+}

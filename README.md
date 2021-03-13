@@ -1,3 +1,3 @@
 # Treknet
 
-Site de réseau social pour fans de Star Trek la meilleur série !
+Site de réseau social pour fans de Star Trek la meilleure série !

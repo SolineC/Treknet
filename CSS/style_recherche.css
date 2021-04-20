@@ -1,0 +1,59 @@
+
+*{
+    --jaune : #EABD02;
+    --rouge : #E63627;
+    --bleu : #4399D4;
+    --main-color-bg:#393D3F;
+    --text-color:#EBFCFB; 
+}
+
+
+.boite-profil{
+    height: 70px;
+    width: 500px;
+    margin-left: 20px;
+    line-height: 40px;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );  /*glassmorphism.com*/
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+    cursor: pointer;
+
+}
+
+.pp{
+    /*display: inline-block;*/
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-top: 9px;
+}
+
+.pseudo{
+    display: inline-block;
+    margin-bottom: 15px;
+    color: black;
+    position: relative;
+    top: -18px;
+    left: 15px;
+    font-size: 18px;
+
+}
+
+
+
+/*.rond:first-child{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+}
+
+.rond:last-child{
+    width:300px;
+    height: 300px;
+    position: absolute;
+}*/

@@ -11,11 +11,11 @@ function connexion($base){
     return $connexion;
 }
 
-function deconnexion_DB() {
-    mysql_close();
+function deconnexion_DB($connex){
+    mysqli_close($connex);
 }
 
-function requete($requete, $connex) {
+function requete($requete, $connex){
     
     $resultat = mysqli_query ($connex,$requete);
             if (!$resultat) {

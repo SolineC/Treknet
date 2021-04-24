@@ -15,7 +15,7 @@ function deconnexion_DB($connex){
     mysqli_close($connex);
 }
 
-function requete($requete, $connex){
+function requete1($requete, $connex){
     
     $resultat = mysqli_query ($connex,$requete);
             if (!$resultat) {
@@ -24,6 +24,17 @@ function requete($requete, $connex){
                 }
             else {
                 return $resultat;
+            }
+}
+function requete($requete, $connex){
+    
+    $resultat = mysqli_query ($connex,$requete);
+            if (!$resultat) {
+                echo "requête  incorrecte";
+                echo  mysqli_error($connex);
+                }
+            else {
+                return mysqli_fetch_array($resultat);
             }
 }
 /*$req = 'SELECT  FROM `grade`';

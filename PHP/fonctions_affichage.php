@@ -1,6 +1,13 @@
 <?php
 
+
 function afficher_en_tete(){
+
+    switch($_SESSION["couleur"]){
+        case 1 : $color = "#EABD02"; break;
+        case 2 : $color = "#4399D4"; break;
+        case 3 : $color = "#E63627"; break;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -12,18 +19,18 @@ function afficher_en_tete(){
     <link rel="icon" type="image/png" sizes="16x16" href="logopng.png">
     <link rel="stylesheet" href="../fontawesome-free-5.15.2-web/fontawesome-free-5.15.2-web/css/all.css">
     <link rel="stylesheet" href="../CSS/style_recherche.css">
-    <link rel="stylesheet" href="../CSS/style_general.css">
+    <link rel="stylesheet" href="../CSS/style_general.css" >
     
     
 </head>
 
-<body>
+<?php echo '<body style="background-color:'.$color.';">'; ?>
     <div class="wrap">
         <div class="menu">
-            <a href="#" class="logo">treknet</a>
+            <a href="accueil.php" class="logo">treknet</a>
             <div class="recherche">
                 <form action="recherche.php" method="GET">
-                    <input class="input-recherche" name="search" type="text" placeholder="Chercher un membre">
+                    <input class="input-recherche" name="search" type="text" placeholder="Chercher un trekker">
                     <input type="hidden" name="searchtype" value="pseudo">
                     <button class="sub-search" type="submit"><i class="fas fa-search"></i></button>
                 </form>    
@@ -31,10 +38,15 @@ function afficher_en_tete(){
         
             <nav>
                 <ul>
-                    <li><a href="index.php"><i class="fas fa-home"></i></a></li>
-                    <li><a href ="main.html"><i class="fas fa-plus"></i></a></li>
-                    <li><a href ="#"><i class="fas fa-paper-plane"></i></a></li>
-                    <li><a href ="profil.php"><i class="fas fa-cog"></i></a></li>
+                    <li><a href="accueil.php" title="Accueil"><i class="fas fa-home"></i></a></li>
+                    <li><a href ="main.html" title="Nouvelle publication"><i class="fas fa-plus"></i></a></li>
+                    <li><a href ="#" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
+                    <li><a href ="profil.php" title="Modifier le profil"><i class="fas fa-cog"></i></a></li>
+                    <?php
+                        if($_SESSION["grade"]>=10){
+                            echo '<li><a href ="profil.php" title="Gérer les utilisateurs"><i class="fas fa-user-cog"></i></a></li>"';
+                        }
+                    ?>
                     <li><a href ="#"><i class="fas fa-sign-out-alt"></i></a></li>     
                 </ul>
             </nav>
@@ -93,14 +105,32 @@ function afficher_pied_de_page(){
 
 
 function afficher_profil($pseudo, $chemin){
+    switch($_SESSION["couleur"]){
+        case 1 : $color = "#EABD02"; break;
+        case 2 : $color = "#4399D4"; break;
+        case 3 : $color = "#E63627"; break;
+    }
     ?>
     <div class="boite-profil">
-        <img class="pp" src=<?php echo $chemin ?> alt="photo de profil">
+        <img class="pp" src=<?php echo $chemin ?> alt="photo de profil">  <!--petites boites lors de recherche de membres -->
         <?php echo '<p class="pseudo">', $pseudo , '</p>'; ?>
+        <?php echo '<div class="indicateur-section" style="background-color:'.$color.';"></div>' ?>
     </div>
     
 
     <?php
+}
+
+function afficher_utilisateur(){
+    if(isset($_SESSION["pseudo"])){
+        
+    ?>
+    <div class="boite-utilisateur">
+        <?php echo '<img class="pp big" src="'.$_SESSION["photo"].'" alt="photo de profil">';?>
+        <h3><?php echo $_SESSION['pseudo'] ?></h3>
+    </div>
+    <?php
+    }
 }
 
 function afficher_erreurs($message){
@@ -142,14 +172,14 @@ function afficher_connexion($message){
 
         <div class="connexion">
 
-            <form action="../PHP/action.php" method="POST">
+            <form action="../PHP/traitement_connexion.php" method="POST">
 
             <input type="text" class="input"  name="pseudo" required="required" placeholder="Pseudo">
             <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
             <input type="submit" class="bouton" value="CONNEXION" >
             <a class="mdp" href="#">Mot de passe oublié ?</a>
             <!-- <input type="submit" value="" class="input" placeholder="CONNEXION"> -->
-            <a href="inscription.html" class="bouton">Inscription</a>
+            <a href="../PHP/inscription.php" class="bouton">Inscription</a>
         </form>
 
         </div>
@@ -164,7 +194,7 @@ function afficher_connexion($message){
 
 function afficher_accueil(){
     afficher_en_tete();
-
+    afficher_utilisateur();
     afficher_pied_de_page();
 
 }

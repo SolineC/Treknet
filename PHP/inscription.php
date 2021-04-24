@@ -1,17 +1,51 @@
-<?php
-session_start();
-require_once("fonctions_bd.php");
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <title>Where no man has gone before</title>
+
+</head>
+
+<body>
+    
+        
+    <main>
+
+        <div class="blocInscription">
+            <form action="traitement_inscription.php" method="post" class="formulaire">
+                    
+                    <input type="text" name="pseudo" class="input"  placeholder="Pseudo">
+                    <input type="email" name="mail" class="input" placeholder="Adresse Mail">
+                    <input type="password" name="mot_de_passe" class="input" placeholder="Mot de Passe">
+                
+
+                    <select name="section" class="deroul" >
+                        <option value=0 >Section</option>
+                        <option value=1 class="jaune">Opérations</option>
+                        <option value=2 class="bleu">Scientifiques</option>
+                        <option value=3 class="rouge">Navigation</option>
+                    
+                    </select> 
+                
+                    <input type="submit" class="bouton" value="Inscription">  
+            </form >
 
 
-if ($_SERVER['REQUEST_METHOD']== "POST"){
-    $pseudo= $_POST['pseudo'];
-    $email= $_POST['mail'];
-    $mot_de_passe= $_POST['mot_de_passe'];
-    $num_section= $_POST['Section'];
-    $req ="insert into profil (pseudo,email,mot_de_passe,num_section) values ('$pseudo','$email','$mot_de_passe','$num_section')";
-    $con= mysqli_connect("localhost","root","","treknet");
-    requete($req, $con);
-    header("Location: connexion.php");
-    die;
-}
-?>
+
+            
+
+        </div>
+    </main>
+
+
+
+
+       
+
+   
+</body>
+
+</html>

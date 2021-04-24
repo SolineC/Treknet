@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS Profil(
     pseudo VARCHAR(30),
     photo_de_profil VARCHAR(100),
     email VARCHAR(50),
-    mot_de_passe VARCHAR(20),
+    mot_de_passe VARCHAR(100),
     num_section TINYINT,
     num_grade TINYINT,
     date_inscription DATE,
@@ -66,7 +66,11 @@ INSERT INTO  Profil (pseudo, num_section, num_grade, mot_de_passe, langue, email
 	     ('Tiberius Kirk', 1, 7, 'BeamMeUpScotty','Anglais','kirk@entreprise.com',2020-04-15, '../Images/Profil/kirkdouglas.jpg'),
 	     ('kirk_-_shatner', 1, 7, 'BeamMeUpScotty','Anglais','kirk@entreprise.com',2020-04-15, '../Images/Profil/mecimaginaire1.jpg'),
 	     ('06kirk78', 1, 7, 'BeamMeUpScotty','Anglais','kirk@entreprise.com',2020-04-15, '../Images/Profil/kirk1.jpg'),
-	     ('James-Kirk', 1, 7, 'BeamMeUpScotty','Anglais','kirk@entreprise.com',2020-04-15, '../Images/Profil/kirk1.jpg');
+	     ('James-Kirk', 1, 7, 'BeamMeUpScotty','Anglais','kirk@entreprise.com',2020-04-15, '../Images/Profil/kirk1.jpg'),
+	     ('Soline', 2, 11, 'bbb','Français','soso@free.fr',2020-04-15, '../Images/Profil/kirk1.jpg');
+
+
+
 
 INSERT INTO  Langue (langues)
      VALUES  ('Français'),

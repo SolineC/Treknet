@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
     $email= preTraiterChampSQL($_POST['mail'],$connexion);
     $mot_de_passe= password_hash(preTraiterChampSQL($_POST['mot_de_passe'],$connexion), PASSWORD_DEFAULT);
     $num_section= preTraiterChampSQL($_POST['section'],$connexion);
-    $image="../Images/Profil/pp_defaut.png";
+    $image="../Images/Profil/pp_default.png";
 
     $requete="SELECT COUNT(*) FROM profil WHERE pseudo = $pseudo OR email=$email";
     $resultat=requete1($requete,$connexion);

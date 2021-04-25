@@ -16,5 +16,10 @@ function preTraiterChampSQL($champ, $connexion) {
     return $champ;
 }
 
+function logout(){
+    $_SESSION = array();
+    session_destroy();
+}
+
 
 ?>

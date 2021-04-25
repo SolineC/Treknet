@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS Profil(
     num_section TINYINT,
     num_grade TINYINT,
     date_inscription DATE,
-    langue VARCHAR(15)
+    langue VARCHAR(15),
+    espece VARCHAR(20)
 );
 
 ALTER TABLE `profil` CHANGE `date_inscription` `date_inscription` DATE NULL DEFAULT CURRENT_TIMESTAMP; 
@@ -25,12 +26,14 @@ CREATE TABLE Abonnement(
 );
 
 CREATE TABLE Publication(
-    num_publication MEDIUMINT,
+    num_publication MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
     num_profil SMALLINT,
     date_publication DATE,
     image VARCHAR(100),                 
     texte VARCHAR(1000)
 );
+
+ALTER TABLE `publication` CHANGE `date_publication` `date_publication` DATE NULL DEFAULT CURRENT_TIMESTAMP; 
 
 CREATE TABLE Section(
     num_section TINYINT,
@@ -53,21 +56,6 @@ CREATE TABLE Message(
     num_expediteur SMALLINT,
     num_destinataire SMALLINT
 );
-
-
-INSERT INTO  Profil (pseudo, num_section, num_grade, mot_de_passe, langue, email, date_inscription, photo_de_profil)
-     VALUES  ('James T. Kirk', 1, 7, 'BeamMeUpScotty','Anglais','kirk@entreprise.com',2020-04-15, '../Images/Profil/kirk1.jpg'),
-             ('Spock', 2, 6, 'LiveLong','Anglais','spock@entreprise.com',2020-04-04, '../Images/Profil/spock1.jpg'),
-             ('Scotty', 3, 4, 'iLoveEntreprise','Anglais','scotty@entreprise.com',2020-04-10, '../Images/Profil/scotty.jpg'),
-	     ('Bones McCoy', 2, 4, 'imADoctor','Anglais','mccoy@entreprise.com',2020-04-10, '../Images/Profil/mccoy.jpg'),
-	     ('Uhura', 3, 3, 'letstalk','Anglais','uhura@entreprise.com',2020-04-12, '../Images/Profil/uhura.png'),
-	     ('kirkdu94', 3, 3, 'letstalk','Anglais','uhura@entreprise.com',2020-04-12,'../Images/Profil/chapel.jpg'),
-	     ('TheRealKirk', 3, 3, 'letstalk','Anglais','uhura@entreprise.com',2020-04-12, '../Images/Profil/kirk2.jpg'),
-	     ('Tiberius Kirk', 1, 7, 'BeamMeUpScotty','Anglais','kirk@entreprise.com',2020-04-15, '../Images/Profil/kirkdouglas.jpg'),
-	     ('kirk_-_shatner', 1, 7, 'BeamMeUpScotty','Anglais','kirk@entreprise.com',2020-04-15, '../Images/Profil/mecimaginaire1.jpg'),
-	     ('06kirk78', 1, 7, 'BeamMeUpScotty','Anglais','kirk@entreprise.com',2020-04-15, '../Images/Profil/kirk1.jpg'),
-	     ('James-Kirk', 1, 7, 'BeamMeUpScotty','Anglais','kirk@entreprise.com',2020-04-15, '../Images/Profil/kirk1.jpg'),
-	     ('Soline', 2, 11, 'bbb','Français','soso@free.fr',2020-04-15, '../Images/Profil/kirk1.jpg');
 
 
 

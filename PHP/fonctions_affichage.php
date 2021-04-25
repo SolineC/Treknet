@@ -1,5 +1,9 @@
 <?php
 
+require_once("fonctions_bd.php");
+
+
+
 
 function afficher_en_tete(){
 
@@ -39,7 +43,7 @@ function afficher_en_tete(){
             <nav>
                 <ul>
                     <li><a href="accueil.php" title="Accueil"><i class="fas fa-home"></i></a></li>
-                    <li><a href ="main.html" title="Nouvelle publication"><i class="fas fa-plus"></i></a></li>
+                    <li><a href ="publication.php" title="Nouvelle publication"><i class="fas fa-plus"></i></a></li>
                     <li><a href ="#" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
                     <li><a href ="profil.php" title="Modifier le profil"><i class="fas fa-cog"></i></a></li>
                     <?php
@@ -47,7 +51,7 @@ function afficher_en_tete(){
                             echo '<li><a href ="profil.php" title="Gérer les utilisateurs"><i class="fas fa-user-cog"></i></a></li>"';
                         }
                     ?>
-                    <li><a href ="#"><i class="fas fa-sign-out-alt"></i></a></li>     
+                    <li><a href ="../PHP/deconnexion.php"><i class="fas fa-sign-out-alt"></i></a></li>     
                 </ul>
             </nav>
         </div>
@@ -85,9 +89,9 @@ function afficher_pied_de_page(){
                     <div class= "footer-col">
                         <h3>QUI SOMMES-NOUS ?</h3>
                         <ul>
-                            <li><a href="apropo.html">À propos</a></li>
-                            <li><a href="coach.html">Le projet</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="#">À propos</a></li>
+                            <li><a href="#">Le projet</a></li>
+                            <li><a href="#">Contact</a></li>
                         </ul>
                     </div>
                     
@@ -114,7 +118,7 @@ function afficher_profil($pseudo, $chemin){
     <div class="boite-profil">
         <img class="pp" src=<?php echo $chemin ?> alt="photo de profil">  <!--petites boites lors de recherche de membres -->
         <?php echo '<p class="pseudo">', $pseudo , '</p>'; ?>
-        <?php echo '<div class="indicateur-section" style="background-color:'.$color.';"></div>' ?>
+        
     </div>
     
 
@@ -126,8 +130,14 @@ function afficher_utilisateur(){
         
     ?>
     <div class="boite-utilisateur">
-        <?php echo '<img class="pp big" src="'.$_SESSION["photo"].'" alt="photo de profil">';?>
-        <h3><?php echo $_SESSION['pseudo'] ?></h3>
+        <div class="face front">
+            <?php echo '<img class="pp big" src="'.$_SESSION["photo"].'" alt="photo de profil">';?>
+            <p class="username"><?php echo $_SESSION['pseudo'] ?></p>
+        </div>
+        <div class="face back">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere nesciunt neque commodi consequatur, sit odio ab, porro, dolor aspernatur hic voluptates omnis tenetur ullam? Iusto eum quae error inventore maiores voluptates at omnis, amet, nemo numquam quos obcaecati ut consectetur reiciendis! Similique praesentium minus nemo sit velit dicta quia mollitia?.</p>
+        </div>
+        
     </div>
     <?php
     }
@@ -155,39 +165,25 @@ function afficher_connexion($message){
 </head>
 
 <body>
-   
-
     <main>
-
-
         <div class="logo">
-
             <h1>treknet</h1> 
             <p>le réseau des trekkies par exellence</p>
-
         </div>
         <?php
             afficher_erreurs($message);
         ?>
-
         <div class="connexion">
-
             <form action="../PHP/traitement_connexion.php" method="POST">
-
-            <input type="text" class="input"  name="pseudo" required="required" placeholder="Pseudo">
-            <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
-            <input type="submit" class="bouton" value="CONNEXION" >
-            <a class="mdp" href="#">Mot de passe oublié ?</a>
-            <!-- <input type="submit" value="" class="input" placeholder="CONNEXION"> -->
-            <a href="../PHP/inscription.php" class="bouton">Inscription</a>
-        </form>
-
-        </div>
-        
-    </main>
-   
+                <input type="text" class="input"  name="pseudo" required="required" placeholder="Pseudo">
+                <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
+                <input type="submit" class="bouton" value="CONNEXION" >
+                <a class="mdp" href="#">Mot de passe oublié ?</a>
+                <a href="../PHP/inscription.php" class="bouton">Inscription</a>
+            </form>
+        </div>    
+    </main>  
 </body>
-
 </html>
 <?php
 }
@@ -195,8 +191,61 @@ function afficher_connexion($message){
 function afficher_accueil(){
     afficher_en_tete();
     afficher_utilisateur();
-    afficher_pied_de_page();
+    /*echo "<br>";
 
+    echo "<br>";
+                                            #pour le debuggage
+    echo "<br>";
+
+    echo "<br>";
+
+    echo '<a href="test.php">Test</a>';*/
+    afficher_publications();
+    afficher_pied_de_page();
+}
+
+function afficher_publication($image, $texte, $pp, $pseudo,$couleur,$date){
+    switch($couleur){
+        case 1 : $color = "#EABD02"; break;
+        case 2 : $color = "#4399D4"; break;
+        case 3 : $color = "#E63627"; break;
+    }
+    ?>
+    <div class="blank"></div>
+    <!--  -->
+    <div class="boite-publication">
+        <?php echo '<div class="publicateur" style="background-color:'.$color.';">'; ?>  
+        
+            <img src="<?php echo $pp; ?>" class="pp" alt="photo de profil">
+            <p><?php echo $pseudo; ?></p>
+            <p><?php echo $date; ?></p>
+        </div>
+        <img src="<?php echo $image; ?>" class="img-pub" alt="image publication">
+        <p><?php echo $texte;?></p>   
+    </div>
+    <?php
+}
+
+function afficher_publications(){
+    $connexion=connexion('treknet');
+    $num=$_SESSION["num_profil"];
+    $req="SELECT * FROM `Publication` LEFT JOIN `Abonnement` 
+    ON publication.num_profil = abonnement.num_profil_suivi JOIN `Profil` 
+    ON publication.num_profil = profil.num_profil WHERE abonnement.num_profil_suivant='".$num."'
+    ORDER BY publication.date_publication DESC";
+    $res = requete1($req,$connexion);
+
+    while($ligne=mysqli_fetch_array($res)){
+        $image=$ligne['image'];
+        $texte=$ligne['texte'];
+        $pp=$ligne['photo_de_profil'];
+        $pseudo=$ligne['pseudo'];
+        $couleur=$ligne['num_section'];
+        $date=$ligne['date_publication'];
+
+        afficher_publication($image,$texte,$pp,$pseudo,$couleur,$date);
+        
+    }
 }
 
 

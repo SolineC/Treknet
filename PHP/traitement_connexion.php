@@ -23,18 +23,20 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
                     
                     $_SESSION['pseudo'] = $pseudo;
 
-                    $req = "SELECT num_grade, langue, num_section, photo_de_profil FROM profil where pseudo = '".$pseudo."'";
+                    $req = "SELECT num_grade, num_profil, langue, num_section, photo_de_profil FROM profil where pseudo = '".$pseudo."'";
                     $rep = requete($req,$connexion);
                     
                     $couleur = $rep['num_section'];
                     $langue = $rep['langue'];
                     $photo = $rep['photo_de_profil'];
                     $grade = $rep['num_grade'];
+                    
 
                     $_SESSION['couleur'] = $couleur;
                     $_SESSION['langue'] = $langue;
                     $_SESSION['photo'] = $photo;
                     $_SESSION['grade'] = $grade;
+                    $_SESSION['num_profil'] = $rep['num_profil'];
                 
                     afficher_accueil();
                 }

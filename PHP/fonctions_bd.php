@@ -41,15 +41,5 @@ function requete($requete, $connex){
 connexion('treknet');
 requete($req,'treknet');
 */
-function image_bd($chemin, $connex){
-    $req = "SELECT image FROM `Profil` WHERE image=$chemin";
-    $resultat = mysqli_query ($connex,$req);
-            if (!$resultat) {
-                echo "requête  incorrecte";
-                echo  mysqli_error($connex);
-                }
-            else {
-                return $resultat;
-            }
-}
+
 ?>

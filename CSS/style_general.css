@@ -39,7 +39,7 @@ a{
     left: 0;
     width: 100%;
     line-height: 40px;
-    z-index: 10; 
+    z-index: 20; 
 }
 
 .logo{
@@ -79,6 +79,25 @@ a{
     
 }
 
+.boite-recherche{
+    position: fixed;
+    padding-top: 70px;
+    padding-bottom: 20px;
+    left: 50px;
+    width: 560px;
+    height: auto;
+    background-color: whitesmoke;
+    z-index: 10;
+    border-radius: 15px;
+}
+
+
+.ranger{
+    width: 100%;
+    text-align: center;
+}
+
+
 nav{
     
     background-color: black;
@@ -98,6 +117,7 @@ nav li{
 }
 nav a {
     color: #8eb0fa;
+    
 }
 
 footer{

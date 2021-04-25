@@ -13,7 +13,7 @@
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="connexion.html">Connexion</a></li>
+                <li><a href="../PHP/connexion.php">Connexion</a></li>
                 <li><a href="inscription.html">Inscription</a></li>
                 <li><a href="../HTML/apropos.html">À propos</a></li>
                 
@@ -26,32 +26,26 @@
         <div class="blocInscription">
 
             <div class="formulaire">
+                <form action="../PHP/inscription.php" method="POST">
 
                 <div class="inputFields">
-                
-                    <input type="text"  class="input" placeholder="Pseudo">
-                    <input type="email" class="input" placeholder="Adresse Mail">
-                    <input type="text"  class="input" placeholder="Mot de Passe">
-
-                </div>
-
-                <div class="choixDivision"> 
-
+                    <input type="text" class="input"  name="pseudo" required="required" placeholder="Pseudo">
+                    <input type="email" class="input" name="mail" required="required" placeholder="Email">
+                    <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
+                 </div>
+                <div class="choixDivision"></div>
                     <p>Choisissez votre division :</p>
-                    <div class="trois">
-                    <div class="jaune"></div>
-                    <div class="bleue"></div>
-                    <div class="rouge"></div>
-                    </div>
-                    <div class="bouton">Inscription</div>
-
+                    <input type="radio" name ="Section" value="1" checked> Faites partie de 
+                    <input type="radio" name ="Section" value="2">
+                    <input type="radio"  name ="Section" value="3">
+                    <br>                
+                     <input type="submit"  class="bouton" value="Inscription"></div>
+                     </form>
+                
                 </div>
+                </form>
+          
             </div>
-
-
-
-            
-
         </div>
     </main>
 

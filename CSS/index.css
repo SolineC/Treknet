@@ -15,153 +15,87 @@ h1,p{
     color: #f1f1f1;
     text-align: center;
 }
-/* menu */
 
-nav{
-    background-image: radial-gradient(circle at center center, rgba(33,33,33,0),rgb(33,33,33)),repeating-linear-gradient(135deg, rgb(33,33,33) 0px, rgb(33,33,33) 1px,transparent 1px, transparent 4px),repeating-linear-gradient(45deg, rgb(56,56,56) 0px, rgb(56,56,56) 5px,transparent 5px, transparent 6px),linear-gradient(90deg, rgb(33,33,33),rgb(33,33,33));
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
-nav ul{
-    list-style: none;
-    display: flex;
-    
-}
-
-nav ul li{
-    margin: 20px;
-    /*font-size: large;*/
-    width: 25%;
-}
-
-nav a{
-    text-decoration: none;
-    color: #f1f1f1;
-
-}
 
 /* formulaire d'inscription */
 
 .blocInscription{
+    
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    padding: 0 20px;
-
-}
-
-.formulaire{
-    max-width: 550px;
-    margin: 0 auto;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 300px;
+    height: 60%;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
     background-color: #DEE2E0;
-    padding: 30px;
-    border-radius: 5px;
-    display: flex;
+    border-radius: 15px;
+
 }
 
-.inputFields{
-    display: flex;
-    flex-direction: column;
-    margin-right: 4%;
-}
-
-.inputFields,
-.choixDivision{
-    width: 48%;
-}
-
-
-.inputFields .input{
-
-    margin-bottom: 20px;
+.deroul{
     background-color: transparent;
     border: 0;
-    border-bottom: 2px solid rgb(33,33,33);
-    color: rgb(33,33,33);
+    border: 2px solid rgb(33,33,33);
+    margin: 10px auto;
+    padding: 14px 10px;
     outline: none;
-
-}
-
-.choixDivision{
+    border-radius: 24px;
+    text-align: center;
+    width: 70%;
+    transition: 0.25s;
     position: relative;
-}
-
-.choixDivision .trois{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 20px;
-    margin-top: 5px;
+    left: 50%;
+    transform: translate(-50%);
+    cursor: pointer;
     
-
 }
 
-.choixDivision .trois .rouge{
+
+
+
+
+.rouge{
     background-color: #e1412f;
     height: 25px;
     width: 30%;
-    cursor: pointer;
-    border-radius: 5px;
+    cursor: pointer; 
 
 }
 
-.choixDivision .trois .jaune{
+.jaune{
     background-color:#ECD808;
     height: 25px;
     width: 30%;
     cursor: pointer;
-    border-radius: 5px;
-
-
-
-}
-.choixDivision .trois .bleue{
-    background-color: #7bb8ec;
-    height: 25px;
-    width: 30%;
-    margin-left: 5%;
-    margin-right: 5%;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.choixDivision .trois .rouge:hover{
-    background-color: #ca3a2a;
-}
-
-.choixDivision .trois .bleue:hover{
-    background-color: #6ea5d4;
-}
-
-.choixDivision .trois .jaune:hover{
-    background-color: #decc0e;
-}
-.choixDivision p{
-    margin: 0;
-    font-size: 13px;
-}
-
-.bouton{
-    font-size: 14px;
-    background-color: rgb(33,33,33);
-    color: #f1f1f1;
-    padding: 10px;
-    text-transform: uppercase;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: auto;
-    margin-bottom: 20px;
-    text-align: center;
-    border: 2px solid black;
    
 }
 
-.bouton:hover{
-    background: linear-gradient(90deg, rgba(254,211,17,1) 19%, rgba(92,126,246,1) 40%, rgba(255,30,0,1) 75%);     
-
-    color: rgb(33,33,33);
+.bleu{
+    background-color: #7bb8ec;
+    height: 25px;
+    width: 30%;
+    cursor: pointer;
+    
 }
+
+.rouge:hover{
+    background-color: #ca3a2a;
+}
+
+.bleu:focus{
+    background-color: #6ea5d4;
+}
+
+.jaune:focus{
+    background-color: #decc0e;
+}
+
+
+
 
 
 

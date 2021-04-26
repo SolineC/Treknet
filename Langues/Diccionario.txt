@@ -1,0 +1,47 @@
+$afficher_logo= ('le réseau des trekkies par exellence',
+		  'la red de los trekkis por excelencia',
+		  'the network of trekkies par excellence');
+$afficher_connexion_pseudo= ('Pseudo','Apodo','Nickname');
+$afficher_connexion_pwd= ('Mot de Passe','Contraseña','Password');
+$afficher_connexion_connexion= ('CONNEXION', 'CONECTARSE', 'LOG IN');
+$afficher_connexion_pwdf= ('Mot de passe oublié ?', 
+			   '¿Ha olvidado su contraseña?', 
+			   'Forgot your password?');
+$afficher_connexion_inscription= ('INSCRIPTION', 'REGISTRARSE', 'SING UP');
+
+$afficher_inscription_pseudo= ('Pseudo','Apodo','Nickname');
+$afficher_inscription_mail= ('Adresse Mail','Correo Electrónico','Email Adresse');
+$afficher_inscription_pwd= ('Mot de Passe','Contraseña','Password');
+$afficher_inscription_section= ('Section','Sección','Division');
+$afficher_inscription_section_op= ('Opérations','Operaciones','Oparations');
+$afficher_inscription_section_sc= ('Scientifiques','Cientificos','Sciences');
+$afficher_inscription_section_na= ('Navigation','Navegación','Command');
+$afficher_inscription_espece= ('Espece','Especie','Specie');
+$afficher_inscription_espece_h= ('Humaine','Humana','Human');
+$afficher_inscription_espece_v= ('Vulcaine','Vulcana','Vulcan');
+$afficher_inscription_espece_a= ('Andoriane','Andoriana','Andorian');
+$afficher_inscription_espece_t= ('Tellarite','Tellarita','Tellarite');
+$afficher_inscription_langue= ('Langue','Idioma','Laguage');
+//Pas besoin de traduccion pour les langues
+$afficher_inscription_inscription= ('INSCRIPTION', 'REGISTRARSE', 'SING UP');
+$afficher_inscription_connexion= ('CONNEXION', 'CONECTARSE', 'LOG IN');
+
+$traitement_connexion_erreur_pwd= ('Mot de Passe incorrect','Contraseña incorrecta','Incorrect password');
+$traitement_connexion_erreur_pseudo= ('Pseudo incorrect','Apodo incorrecto','Incorrect nickname');
+$traitement_connexion_erreur_champs= ('Champ(s) manquant(s)','Campo(s) sin completar','Missing field(s) ');
+
+$traitement_inscription_erreur_champs= ('Champ(s) manquant(s)','Campo(s) sin completar','Missing field(s) ');
+$traitement_connexion_erreur_pseudo= ('Pseudo pas valide','Apodo invalido','Unvalid Nickname');
+$traitement_connexion_erreur_mail= ('Email invalid','Correo electronico no valido','Unvalid password');
+$traitement_connexion_erreur_exist= ('Pseudo ou email déjà utilisé','Apodo o correo en uso','Nickname or email exists');
+$traitement_connexion_erreur_ok= ('T'as bien été enregistré','Cuenta correctamente creada','Account created');
+
+$publication= ('Choisir cette photo,'Escoger esta imagen', 'Choose this picture');
+
+
+
+
+
+
+
+

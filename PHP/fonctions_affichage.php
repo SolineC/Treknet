@@ -188,6 +188,70 @@ function afficher_connexion($message){
 <?php
 }
 
+
+function afficher_inscription($message){
+    ?>
+    <!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <title>Where no man has gone before</title>
+
+</head>
+
+<body>
+    <main>
+    <?php
+            afficher_erreurs($message);
+        ?>
+        <div class="blocInscription">
+        <form action="traitement_inscription.php" method="post" class="formulaire">
+                    
+                    <input type="text" name="pseudo" class="input" required="required" placeholder="Pseudo">
+                    <input type="email" name="mail" class="input" required="required" placeholder="Adresse Mail">
+                    <input type="password" name="mot_de_passe" class="input" placeholder="Mot de Passe">
+                
+
+                    <select name="section" class="deroul" >
+                        <option value=0 >Section</option>
+                        <option value=1 class="jaune">Opérations</option>
+                        <option value=2 class="bleu">Scientifiques</option>
+                        <option value=3 class="rouge">Navigation</option>
+                    
+                    </select> 
+
+                    <select name="espece" class="deroul" >
+                        <option value=0 >Espèce</option>
+                        <option value=Humain class="jaune">Humain</option>
+                        <option value=Vulcan class="bleu">Vulcan</option>
+                        <option value=Andorian class="rouge">Andorian</option>
+                        <option value=Tellarite class="rouge">Tellarite</option>
+                    
+                    </select> 
+
+                    <select name="langue" class="deroul" >
+                        <option value=0 >Langue</option>
+                        <option value=English class="jaune">English</option>
+                        <option value=Español class="bleu">Español</option>
+                        <option value=Français class="rouge">Français</option>
+                    
+                    </select> 
+                
+                    <input type="submit" class="bouton" value="Inscription">  
+            </form>
+        </div>   
+        <a href="../PHP/index.php" class="bouton">Connexion</a> 
+    </main>  
+</body>
+</html>
+<?php
+}
+
+
 function afficher_accueil(){
     afficher_en_tete();
     afficher_utilisateur();

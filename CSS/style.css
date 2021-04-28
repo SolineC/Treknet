@@ -103,7 +103,7 @@ p{
     margin-bottom: 20px;
     text-align: center;
     border: 2px solid black;
-    width: 115px;
+    width: 140px;
     position: relative;
     left: 50%;
     transform: translate(-50%);
@@ -126,5 +126,5 @@ p{
     color:red;
     position: absolute;
     top: 17%;
-    right:14.5%;
+    left: 300px;
 }

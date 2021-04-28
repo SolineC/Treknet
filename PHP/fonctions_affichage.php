@@ -26,6 +26,7 @@ function afficher_en_tete(){
     <link rel="stylesheet" href="../CSS/style_general.css" >
     
     
+    
 </head>
 
 <?php echo '<body style="background-color:'.$color.';">'; ?>
@@ -108,21 +109,37 @@ function afficher_pied_de_page(){
 }
 
 
-function afficher_profil($pseudo, $chemin){
-    switch($_SESSION["couleur"]){
+function afficher_profil($pseudo, $chemin,$oui,$num,$couleur){
+    switch($couleur){
         case 1 : $color = "#EABD02"; break;
         case 2 : $color = "#4399D4"; break;
         case 3 : $color = "#E63627"; break;
     }
     ?>
-    <div class="boite-profil">
+   <?php echo'<div style="background-color:'.$color.';" class="boite-profil">';?>
         <img class="pp" src=<?php echo $chemin ?> alt="photo de profil">  <!--petites boites lors de recherche de membres -->
-        <?php echo '<p class="pseudo">', $pseudo , '</p>'; ?>
+        <?php echo '<p class="pseudo">', $pseudo , '</p>'; 
+        afficher_abonnement($oui,$num);       
+        
+
+        ?>
+        
         
     </div>
     
 
     <?php
+}
+
+function afficher_abonnement($oui,$num){
+    if($oui==0){
+        ?>
+        <form action="traitement_abonnement.php" method="post">
+        <?php echo '<input type="hidden" name="num_suivi" value="'.$num.'">';?>
+        <input type="submit" value="+" class="abo">
+  </form>
+  <?php
+    }
 }
 
 function afficher_utilisateur(){
@@ -188,33 +205,85 @@ function afficher_connexion($message){
 <?php
 }
 
+function afficher_cote_gauche(){
+    ?>
+    <aside class="gauche">
+
+        <p>Tableau de bord</p>
+        <div>
+        <?php
+
+        echo $_SESSION["pseudo"];
+        echo $_SESSION["photo"];
+        echo $_SESSION["couleur"];  
+        ?>
+        </div>
+        <a href="profil.php">Voir mon profil</a>
+        <p>Flux des communications</p>
+
+        
+    </aside>
+
+<?php
+}
+
+function afficher_cote_droit(){
+    ?>
+    <aside class="droit">
+    </aside>
+
+<?php
+}
+
 function afficher_accueil(){
     afficher_en_tete();
-    afficher_utilisateur();
+    afficher_cote_gauche();
+
+    #afficher_utilisateur();
     /*echo "<br>";
 
     echo "<br>";
                                             #pour le debuggage
     echo "<br>";
 
-    echo "<br>";
+    echo "<br>";*/
 
-    echo '<a href="test.php">Test</a>';*/
-    afficher_publications();
+    
+    #echo '<a href="test.php">Test</a>';
+    afficher_publications(0);
+    afficher_cote_droit();
     afficher_pied_de_page();
 }
 
-function afficher_publication($image, $texte, $pp, $pseudo,$couleur,$date){
+function afficher_publication($image, $texte, $pp, $pseudo,$couleur,$date,$siprofil,$num_pub){
     switch($couleur){
         case 1 : $color = "#EABD02"; break;
         case 2 : $color = "#4399D4"; break;
         case 3 : $color = "#E63627"; break;
     }
+    if($siprofil==0){
     ?>
-    <div class="blank"></div>
-    <!--  -->
-    <div class="boite-publication">
-        <?php echo '<div class="publicateur" style="background-color:'.$color.';">'; ?>  
+        <div class="blank"></div>
+        <div class="boite-publication">
+            <?php echo '<div class="publicateur" style="background-color:'.$color.';">'; ?>  
+            
+                <img src="<?php echo $pp; ?>" class="pp" alt="photo de profil">
+                <p><?php echo $pseudo; ?></p>
+                <p><?php echo $date; ?></p>
+            </div>
+            <img src="<?php echo $image; ?>" class="img-pub" alt="image publication">
+            <p><?php echo $texte;?></p>   
+        </div>
+    <?php
+    }else{
+        ?>
+        <div class="blank"></div>
+        <div class="boite-publication prof">
+            <form action="traitement_suppression.php" method="post">
+                <input title="Supprimer la publication" class="suppr" type="submit" value="×">
+                <input type="hidden" name="num_pub" value="<?php echo $num_pub; ?>">
+            </form>
+            <?php echo '<div class="publicateur" style="background-color:'.$color.';">'; ?>  
         
             <img src="<?php echo $pp; ?>" class="pp" alt="photo de profil">
             <p><?php echo $pseudo; ?></p>
@@ -222,17 +291,18 @@ function afficher_publication($image, $texte, $pp, $pseudo,$couleur,$date){
         </div>
         <img src="<?php echo $image; ?>" class="img-pub" alt="image publication">
         <p><?php echo $texte;?></p>   
-    </div>
+        </div>
     <?php
+    }
 }
 
-function afficher_publications(){
+function afficher_publications($siprofil){
     $connexion=connexion('treknet');
     $num=$_SESSION["num_profil"];
     $req="SELECT * FROM `Publication` LEFT JOIN `Abonnement` 
     ON publication.num_profil = abonnement.num_profil_suivi JOIN `Profil` 
     ON publication.num_profil = profil.num_profil WHERE abonnement.num_profil_suivant='".$num."'
-    ORDER BY publication.date_publication DESC";
+    ORDER BY publication.num_publication DESC";
     $res = requete1($req,$connexion);
 
     while($ligne=mysqli_fetch_array($res)){
@@ -243,9 +313,49 @@ function afficher_publications(){
         $couleur=$ligne['num_section'];
         $date=$ligne['date_publication'];
 
-        afficher_publication($image,$texte,$pp,$pseudo,$couleur,$date);
-        
+        afficher_publication($image,$texte,$pp,$pseudo,$couleur,$date,$siprofil,0);
+    
     }
+}
+
+
+function afficher_nouvelle_publication($message){
+    session_start();
+
+    afficher_en_tete();
+    
+    switch($_SESSION['couleur']){
+        case 1 : $color = "#EABD02"; break;
+        case 2 : $color = "#4399D4"; break;
+        case 3 : $color = "#E63627"; break;
+    }
+?>
+
+ <div class="blank"></div>
+    <?php afficher_erreurs($message);?>
+
+ <div class="form-sub">
+ <?php echo '<div class="publicateur" style="background-color:'.$color.';">'; ?>
+    <img src="<?php echo $_SESSION['photo']; ?>" class="pp" alt="photo de profil">
+                <p><?php echo $_SESSION['pseudo']; ?></p>
+                <p><?php echo date('Y-m-d'); ?></p>
+ </div>
+  <!-- Le type d'encodage des données, enctype, DOIT être spécifié comme ce qui suit -->
+  <form enctype="multipart/form-data" action="traitement_publication.php" method="post">
+    <!-- MAX_FILE_SIZE doit précéder le champs input de type file -->
+    <input type="hidden" name="MAX_FILE_SIZE" value="500000" />
+    <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES --> 
+    <div class="img-sub">
+        <input name="img_publication" value="+"  type="file" />
+    </div> 
+    <input type="text" name="texte" maxlength="1000" class="txt-sub" placeholder="Mon message">
+    <input type="submit" value="Publier" class="bouton"/>
+  </form>
+ 
+</div>
+
+<?php
+afficher_pied_de_page();
 }
 
 

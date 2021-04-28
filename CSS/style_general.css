@@ -195,3 +195,33 @@ transition: all 0.3s ease;
     
 }
 
+.bouton{
+    font-size: 14px;
+    background-color: rgb(33,33,33);
+    color: #f1f1f1;
+    padding: 10px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    /*margin: auto;*/
+   
+    text-align: center;
+    border: 2px solid black;
+    width: 115px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    display: block;   
+}
+
+.bouton:hover{
+    background: linear-gradient(90deg, rgba(254,211,17,1) 19%, rgba(92,126,246,1) 40%, rgba(255,30,0,1) 75%);     
+
+    color: rgb(33,33,33);
+}
+
+.bouton a:hover{
+    color: rgb(33,33,33);
+}
+
+

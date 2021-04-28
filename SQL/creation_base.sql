@@ -5,7 +5,7 @@ CREATE DATABASE treknet;
 USE treknet;
 
 CREATE TABLE IF NOT EXISTS Profil(
-    num_profil SMALLINT AUTO_INCREMENT PRIMARY KEY,
+    num_profil SMALLINT PRIMARY KEY,
     pseudo VARCHAR(30),
     photo_de_profil VARCHAR(100),
     email VARCHAR(50),
@@ -26,7 +26,7 @@ CREATE TABLE Abonnement(
 );
 
 CREATE TABLE Publication(
-    num_publication MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
+    num_publication MEDIUMINT PRIMARY KEY,
     num_profil SMALLINT,
     date_publication DATE,
     image VARCHAR(100),                 
@@ -86,5 +86,11 @@ INSERT INTO  Section (num_section, nom_section, couleur)
      VALUES  (1,'Opération','Jaune'),
              (2,'Scientifique','Bleu'),
              (3,'Navigation','Rouge');
+
+INSERT INTO  Abonnement(num_profil_suivi, num_profil_suivant)
+     VALUES  (1,2),
+	     (2,1),
+	     (2,3),
+	     (1,3);
 
 

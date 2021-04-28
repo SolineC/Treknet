@@ -38,7 +38,7 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
                     $_SESSION['grade'] = $grade;
                     $_SESSION['num_profil'] = $rep['num_profil'];
                 
-                    afficher_accueil();
+                    header("Location: accueil.php");
                 }
                 else{
                     afficher_connexion('mot de passe incorrect');

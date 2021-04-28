@@ -9,22 +9,45 @@
 }
 
 
+/*Affichage des petites boites de profil lors d'une recherche*/
+
 .boite-profil{
     height: 70px;
     width: 500px;
     margin-left: 30px;
     line-height: 40px;
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );  /*glassmorphism.com*/
+    background-color: #e0e0e0;
+    /*background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );  #glassmorphism.com
     backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px) ;
+    -webkit-backdrop-filter: blur(4px) ;*/
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     cursor: pointer;
+    
+}
+.abo{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #d1d1d1;                    /*Bouton d'abonnement à un profil*/
+    text-align: center;
+    line-height: 50px;
+    margin-left: 400px;
+    margin-top: -77px;
+    font-size: 30px;
+    cursor: pointer;
+    border: none;
+    display: block;
+}
+
+.abo:hover{
+   background-color: #f0f0f0;
+    
 }
 
 .pp{
-    /*display: inline-block;*/
+
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -49,19 +72,17 @@
 
 }
 
-
-/*.indicateur-section{
-    width: 50px;
-    height: 70px;
-}*/
-
+/*Affichage des messages d'erreur*/
 .erreur{
     color: red;
     position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-20%,-50%);
+    top: 30%;
+    left: 10%;
+    transform: translate(-10%,-30%);
 }
+
+
+/*affichage de la carte de membre dans la zone profil d'un utilisateur*/
 
 .boite-utilisateur{
     position: absolute;
@@ -80,7 +101,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /*glassmorphism.com*/
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    /*glassmorphism.com
     background: rgba( 255, 255, 255, 0.20 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 4px );
@@ -113,19 +136,53 @@
     font-size: 28px;
 }
 
+/*div de blanc*/
+
 .blank{
     height: 70px;
 }
+
+
+/*Affichage des publications */
+
+
 .boite-publication{
-    margin-left: 300px;
+    margin-left: 438px;
+   
     width: 350px;
     height: auto;
     background-color: #f0f0f0;
     padding: 20px;
+    
     border-radius: 15px;
     
 }
 
+.boite-publication.prof{
+    padding-top: 0;
+    margin-left: 300px;
+}
+
+.boite-publication .suppr{
+    position: relative;
+    left: 100%;
+    top: 20px;
+    transform: translate(-90%,-50%);
+    color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+
+.boite-publication:hover .suppr{
+    color: #f1f1f1;
+    background-color:  #BA1206;
+}
 .publicateur{
     width: 100%;
     height: 70px;
@@ -153,3 +210,109 @@
     margin-top: 10px;
     text-align: justify;
 }
+
+/*Soumettre une publication*/
+
+
+.form-sub{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-20%);
+    width: 350px;
+    height: auto;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.img-sub{
+    width: 347px;
+    text-align: center;
+    height: 300px;
+    border: 2px solid #393D3F;
+    border-top: none;
+    margin-bottom: 20px;
+    display: grid;
+    place-items: center;
+}
+
+/*.img-sub input{
+    margin-top: 140px;
+}*/
+.txt-sub{
+    border: 0;
+    /*border-bottom: 2px solid #393D3F;*/
+    background-color: #f0f0f0;
+    outline: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+/*Affichage de la boite sur le coté dans la page d'accueil*/
+
+aside{
+    position: fixed;
+    top: 110px;
+    width: 270px;
+    height: 410px;
+    background-color: #525460;
+    text-align: center;
+    border-radius: 20px;
+
+}
+
+.gauche::before{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: -15px;
+    top: 70%;
+    transform: rotate(45deg);
+    background-color: #525460;
+
+}
+
+aside p{
+    font-size: 35px;
+    padding: 10px;
+}
+
+.gauche{
+    
+    left: 30px;
+}
+
+.droit{
+    right: 30px;
+    background-image: url(../Images/communicator.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: black;
+    
+}
+
+aside div{
+    width: 230px;
+    height: auto;
+    background-color: green;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+aside a{
+    background-color: red;
+    margin-left: 65px;
+    padding: 20px;
+    border-radius: 15px;
+    width: 100px;
+    height: auto;
+    display: block;
+}
+
+
+

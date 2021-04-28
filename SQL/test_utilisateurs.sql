@@ -28,7 +28,8 @@ INSERT INTO  Abonnement(num_profil_suivi, num_profil_suivant)
 	     (1,1),
 	     (2,2),
 	     (3,3),
-	     (1,3);
+	     (1,3),
+	     (4,4);
 	     
 	     
 	     

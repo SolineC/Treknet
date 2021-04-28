@@ -53,8 +53,9 @@ CREATE TABLE Langue(
 );
 
 CREATE TABLE Message(
-    num_expediteur SMALLINT,
-    num_destinataire SMALLINT
+    expediteur VARCHAR(30),
+    destinataire VARCHAR(30),
+    date_message DATETIME
 );
 
 
@@ -86,5 +87,4 @@ INSERT INTO  Section (num_section, nom_section, couleur)
      VALUES  (1,'Opération','Jaune'),
              (2,'Scientifique','Bleu'),
              (3,'Navigation','Rouge');
-
 

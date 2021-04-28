@@ -312,5 +312,43 @@ function afficher_publications(){
     }
 }
 
+function afficher_message(){
+    ?>
+    <!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <title>Where no man has gone before</title>
+
+</head>
+
+<body>
+    <main>
+        <div class="logo">
+            <h1>treknet</h1> 
+            <p>le réseau des trekkies par exellence</p>
+        </div>
+        <?php
+            afficher_erreurs($message);
+        ?>
+        <div class="connexion">
+            <form action="../PHP/traitement_connexion.php" method="POST">
+                <input type="text" class="input"  name="pseudo" required="required" placeholder="Pseudo">
+                <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
+                <input type="submit" class="bouton" value="CONNEXION" >
+                <a class="mdp" href="#">Mot de passe oublié ?</a>
+                <a href="../PHP/inscription.php" class="bouton">Inscription</a>
+            </form>
+        </div>    
+    </main>  
+</body>
+</html>
+<?php
+}
+
 
 ?>

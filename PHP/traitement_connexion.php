@@ -1,4 +1,4 @@
-<?php
+ <?php
 session_start();
 require_once("fonctions.php");
 require_once("fonctions_bd.php");
@@ -41,7 +41,7 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
                     afficher_accueil();
                 }
                 else{
-                    afficher_connexion('mot de passe incorrect');
+                    afficher_connexion('Mot de passe incorrect');
                 }
             }
             else{

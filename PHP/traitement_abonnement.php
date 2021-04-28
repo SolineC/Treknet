@@ -16,7 +16,7 @@ if(isset($_POST['num_suivi'])){
     requete1($req,$connexion);
     
     
-    header("Location: accueil.php");
+    header("Location: recherche.php");
     
 }else{
     echo "erreur";

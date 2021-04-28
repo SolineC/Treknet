@@ -118,17 +118,48 @@ function afficher_profil($pseudo, $chemin,$oui,$num,$couleur){
     ?>
    <?php echo'<div style="background-color:'.$color.';" class="boite-profil">';?>
         <img class="pp" src=<?php echo $chemin ?> alt="photo de profil">  <!--petites boites lors de recherche de membres -->
-        <?php echo '<p class="pseudo">', $pseudo , '</p>'; 
+        <form action="profil.php" method="post">
+        <?php echo '<input type="submit" class="pseudo" value='.$pseudo.'>'; ?>
+        
+        <input type="hidden" name="num_profil" value=<?php echo $num;?>>
+        </form><?php
         afficher_abonnement($oui,$num);       
         
 
         ?>
         
-        
     </div>
     
 
     <?php
+}
+
+function afficher_page_profil($num){
+    afficher_en_tete();
+    afficher_utilisateur();
+
+    $connexion=connexion('treknet');
+    
+    $req="SELECT * FROM `Publication` LEFT JOIN `Abonnement` 
+    ON publication.num_profil = abonnement.num_profil_suivi JOIN `Profil` 
+    ON publication.num_profil = profil.num_profil WHERE abonnement.num_profil_suivant='".$num."' AND abonnement.num_profil_suivi='".$num."'
+    ORDER BY publication.num_publication DESC";
+    $res = requete1($req,$connexion);
+
+    while($ligne=mysqli_fetch_array($res)){
+        $image=$ligne['image'];
+        $texte=$ligne['texte'];
+        $pp=$ligne['photo_de_profil'];
+        $pseudo=$ligne['pseudo'];
+        $couleur=$ligne['num_section'];
+        $date=$ligne['date_publication'];
+        $num_pub=$ligne['num_publication'];
+
+        afficher_publication($image,$texte,$pp,$pseudo,$couleur,$date,1,$num_pub);
+        
+    
+    }
+afficher_pied_de_page();
 }
 
 function afficher_abonnement($oui,$num){
@@ -150,9 +181,16 @@ function afficher_utilisateur(){
         <div class="face front">
             <?php echo '<img class="pp big" src="'.$_SESSION["photo"].'" alt="photo de profil">';?>
             <p class="username"><?php echo $_SESSION['pseudo'] ?></p>
+            <div class="infos">
+            <p><?php echo $_SESSION['grade'] ?></p>
+            <p><?php echo $_SESSION['espece'] ?></p>
+            <p>Membre depuis le : <?php echo $_SESSION['date'] ?></p>
+            </div>
         </div>
         <div class="face back">
+            <div>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere nesciunt neque commodi consequatur, sit odio ab, porro, dolor aspernatur hic voluptates omnis tenetur ullam? Iusto eum quae error inventore maiores voluptates at omnis, amet, nemo numquam quos obcaecati ut consectetur reiciendis! Similique praesentium minus nemo sit velit dicta quia mollitia?.</p>
+            </div>
         </div>
         
     </div>
@@ -214,7 +252,7 @@ function afficher_cote_gauche(){
             
         <?php
 
-        echo "Membre d'équipage ".$_SESSION["pseudo"];
+        echo $_SESSION['grade']." ".$_SESSION["pseudo"];
         echo "<br>";
        
         echo "<br>";

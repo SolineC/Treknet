@@ -86,15 +86,22 @@ a{
     left: 50px;
     width: 560px;
     height: auto;
+    max-height: 500px;
     background-color: whitesmoke;
     z-index: 10;
     border-radius: 15px;
+    
+}.boite-recherche-abso{
+    overflow-y: scroll;
+    max-height: 500px;
 }
+
 
 
 .ranger{
     width: 100%;
     text-align: center;
+    
 }
 
 

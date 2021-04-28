@@ -211,15 +211,19 @@ function afficher_cote_gauche(){
 
         <p>Tableau de bord</p>
         <div>
+            
         <?php
 
-        echo $_SESSION["pseudo"];
-        echo $_SESSION["photo"];
-        echo $_SESSION["couleur"];  
+        echo "Membre d'équipage ".$_SESSION["pseudo"];
+        echo "<br>";
+       
+        echo "<br>";
+        echo "> Connecté(e)"
+          
         ?>
         </div>
-        <a href="profil.php">Voir mon profil</a>
-        <p>Flux des communications</p>
+        <a href="profil.php" title="Voir le profil">Voir mon profil</a>
+        <div>> Flux des publications à jour</div>
 
         
     </aside>
@@ -230,6 +234,7 @@ function afficher_cote_gauche(){
 function afficher_cote_droit(){
     ?>
     <aside class="droit">
+        <a href="messagerie.php" title="Envoyer un message">test</a>
     </aside>
 
 <?php

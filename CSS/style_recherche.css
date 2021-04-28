@@ -276,8 +276,9 @@ aside{
 }
 
 aside p{
-    font-size: 35px;
+    font-size: 30px;
     padding: 10px;
+    color: #f0f0f0;
 }
 
 .gauche{
@@ -298,20 +299,49 @@ aside p{
 aside div{
     width: 230px;
     height: auto;
-    background-color: green;
-    padding: 20px;
-    margin-bottom: 20px;
+    background-color: #19D175;
+    opacity: 0.7;
+    padding: 10px;
+    margin-left: 10px;
+    margin-bottom: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: left;
 }
 
 
 aside a{
-    background-color: red;
-    margin-left: 65px;
-    padding: 20px;
+    background-color: #f0f0f0;
+    margin-left: 75px;
+    padding: 10px;
     border-radius: 15px;
     width: 100px;
     height: auto;
     display: block;
+    margin-bottom: 40px;
+    color: #525460;
+    border: 1px solid #f0f0f0;
+}
+
+aside a:hover{
+    background-color: #525460;
+    color: #f0f0f0;
+    
+}
+
+.droit a{
+    background-color: transparent;
+    color: transparent;
+    width: 270px;
+    margin: 0;
+    padding: 0;
+    height: 410px;
+    border: none;
+}
+
+.droit a:hover{
+    color: transparent;
+    background-color: transparent;
+    
 }
 
 

@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
 
 
     if (invalidePseudo($pseudo)){
-        afficher_inscription("Pseudo invalide");
+        afficher_inscription("Le pseudo ne doit contenir que des chiffres et des lettres.");
         exit();
     }
 
@@ -35,13 +35,10 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
 
 
     if (compteExiste($connexion,$pseudo,$email)){
-        afficher_inscription("Pseudo ou email déjà utilisé");
+        afficher_inscription("Pseudo ou email déjà utilisé(s)");
         exit();
     }
-    creerProfil($pseudo,$email,$mot_de_passe,$num_section,$langue,$espece);    
-} else {
-        afficher_connexion("T'as bien été enregistré");
-    exit();
-    
-}
+    creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece,$langue);    
+} 
+
 ?>

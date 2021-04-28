@@ -147,7 +147,6 @@ function afficher_erreurs($message){
     
         echo '<p class="erreur">',$message,'</p>';
     
-
 }
 
 function afficher_connexion($message){
@@ -205,6 +204,10 @@ function afficher_inscription($message){
 
 <body>
     <main>
+    <div class="logo">
+            <h1>treknet</h1> 
+            <p>le réseau des trekkies par exellence</p>
+        </div>
     <?php
             afficher_erreurs($message);
         ?>
@@ -226,25 +229,26 @@ function afficher_inscription($message){
 
                     <select name="espece" class="deroul" >
                         <option value=0 >Espèce</option>
-                        <option value=Humain class="jaune">Humain</option>
-                        <option value=Vulcan class="bleu">Vulcan</option>
-                        <option value=Andorian class="rouge">Andorian</option>
-                        <option value=Tellarite class="rouge">Tellarite</option>
+                        <option value=Humain>Humain</option>
+                        <option value=Vulcan >Vulcain</option>
+                        <option value=Andorian >Andorian</option>
+                        <option value=Tellarite >Tellarite</option>
                     
                     </select> 
 
                     <select name="langue" class="deroul" >
                         <option value=0 >Langue</option>
-                        <option value=English class="jaune">English</option>
-                        <option value=Español class="bleu">Español</option>
-                        <option value=Français class="rouge">Français</option>
+                        <option value=English >English</option>
+                        <option value=Español >Español</option>
+                        <option value=Français >Français</option>
                     
                     </select> 
                 
                     <input type="submit" class="bouton" value="Inscription">  
+                    <a href="../PHP/index.php" class="bouton">Connexion</a> 
             </form>
         </div>   
-        <a href="../PHP/index.php" class="bouton">Connexion</a> 
+        
     </main>  
 </body>
 </html>

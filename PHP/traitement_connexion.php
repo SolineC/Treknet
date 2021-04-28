@@ -23,13 +23,13 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
                     
                     $_SESSION['pseudo'] = $pseudo;
 
-                    $req = "SELECT num_grade, num_profil, langue, num_section, photo_de_profil FROM profil where pseudo = '".$pseudo."'";
+                    $req = "SELECT * FROM profil JOIN grade ON profil.num_grade = grade.num_grade WHERE profil.pseudo = '".$pseudo."'";
                     $rep = requete($req,$connexion);
                     
                     $couleur = $rep['num_section'];
                     $langue = $rep['langue'];
                     $photo = $rep['photo_de_profil'];
-                    $grade = $rep['num_grade'];
+                    $grade = $rep['nom_grade'];
                     
 
                     $_SESSION['couleur'] = $couleur;
@@ -37,11 +37,13 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
                     $_SESSION['photo'] = $photo;
                     $_SESSION['grade'] = $grade;
                     $_SESSION['num_profil'] = $rep['num_profil'];
+                    $_SESSION['espece']=$rep['espece'];
+                    $_SESSION['date']=$rep['date_inscription'];+
                 
-                    afficher_accueil();
+                    header("Location: accueil.php");
                 }
                 else{
-                    afficher_connexion('mot de passe incorrect');
+                    afficher_connexion('Mot de passe incorrect');
                 }
             }
             else{

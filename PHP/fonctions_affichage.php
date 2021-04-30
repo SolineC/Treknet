@@ -44,7 +44,7 @@ function afficher_en_tete(){
                 <ul>
                     <li><a href="accueil.php" title="Accueil"><i class="fas fa-home"></i></a></li>
                     <li><a href ="publication.php" title="Nouvelle publication"><i class="fas fa-plus"></i></a></li>
-                    <li><a href ="traitement_messagerie.php" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
+                    <li><a href ="liste_conver.php" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
                     <li><a href ="profil.php" title="Modifier le profil"><i class="fas fa-cog"></i></a></li>
                     <?php
                         if($_SESSION["grade"]>=10){

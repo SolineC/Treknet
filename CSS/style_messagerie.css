@@ -141,6 +141,77 @@ img{
 
 }
 
+
+.recherche{
+    width: 200px;
+    height: 30px;
+    background-color: #d1dffd;
+    display: inline-block;
+    border-radius: 15px;
+    line-height: 30px;
+    text-align: left;
+    padding-right: 1px;
+    margin-left: 60px;
+    
+    
+}
+
+.input-recherche{
+    background-color: #d1dffd;
+    border: 0;
+    outline: none;
+    margin-left: 12px;
+    margin-right: 35px;
+}
+
+.sub-search{
+    background-color: #d1dffd;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.list{
+    position: fixed;
+    padding-top: 70px;
+    padding-bottom: 20px;
+    left: 50px;
+    width: 560px;
+    height: auto;
+    background-color: whitesmoke;
+    z-index: 10;
+    border-radius: 15px;
+}
+
+
+.ranger{
+    width: 100%;
+    text-align: center;
+}
+
+
+nav{
+    
+    background-color: black;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 50px;
+    width: auto;
+    
+}
+nav li{
+    display: inline-block;
+    width: 60px;
+    line-height: 50px;
+    text-align: center;
+    
+}
+nav a {
+    color: #8eb0fa;
+    
+}
+
     
     
 

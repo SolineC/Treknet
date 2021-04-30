@@ -27,8 +27,6 @@ while ($ligne=mysqli_fetch_assoc($res)){
 afficher_profil($ligne['pseudo'], $ligne['photo_de_profil']);
 echo "<br>";
 }
-echo '<div class="ranger"><a href="accueil.php"><i class="fas fa-chevron-up"></i></a></div>';
-echo "</div>";
 
 
 afficher_publications();

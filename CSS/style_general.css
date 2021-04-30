@@ -39,7 +39,7 @@ a{
     left: 0;
     width: 100%;
     line-height: 40px;
-    z-index: 10; 
+    z-index: 20; 
 }
 
 .logo{
@@ -79,6 +79,32 @@ a{
     
 }
 
+.boite-recherche{
+    position: fixed;
+    padding-top: 70px;
+    padding-bottom: 20px;
+    left: 50px;
+    width: 560px;
+    height: auto;
+    max-height: 500px;
+    background-color: whitesmoke;
+    z-index: 10;
+    border-radius: 15px;
+    
+}.boite-recherche-abso{
+    overflow-y: scroll;
+    max-height: 500px;
+}
+
+
+
+.ranger{
+    width: 100%;
+    text-align: center;
+    
+}
+
+
 nav{
     
     background-color: black;
@@ -98,6 +124,7 @@ nav li{
 }
 nav a {
     color: #8eb0fa;
+    
 }
 
 footer{
@@ -174,4 +201,34 @@ transition: all 0.3s ease;
     padding-left: 10px;
     
 }
+
+.bouton{
+    font-size: 14px;
+    background-color: rgb(33,33,33);
+    color: #f1f1f1;
+    padding: 10px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    /*margin: auto;*/
+   
+    text-align: center;
+    border: 2px solid black;
+    width: 115px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    display: block;   
+}
+
+.bouton:hover{
+    background: linear-gradient(90deg, rgba(254,211,17,1) 19%, rgba(92,126,246,1) 40%, rgba(255,30,0,1) 75%);     
+
+    color: rgb(33,33,33);
+}
+
+.bouton a:hover{
+    color: rgb(33,33,33);
+}
+
 

@@ -55,7 +55,8 @@ CREATE TABLE Langue(
 CREATE TABLE Message(
     expediteur VARCHAR(30),
     destinataire VARCHAR(30),
-    date_message DATETIME
+    date_message DATETIME,
+    mess VARCHAR(1000)
 );
 
 
@@ -65,7 +66,7 @@ INSERT INTO  Langue (langues)
      VALUES  ('Français'),
              ('Espagnol'),
              ('Anglais'),
-	     ('Klingon');
+	       ('Klingon');
 
 
 INSERT INTO  Grade (num_grade, nom_grade, administrateur_publications, administrateur_comptes)

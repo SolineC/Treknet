@@ -317,7 +317,10 @@ function afficher_publication($image, $texte, $pp, $pseudo,$couleur,$date,$sipro
         case 2 : $color = "#4399D4"; break;
         case 3 : $color = "#E63627"; break;
     }
-    if($_SESSION["grade"]>7) $siprofil=1;
+    if($_SESSION["num_grade"]>7){
+        $siprofil=1;
+    }
+    
     if($siprofil==0){
     ?>
         <div class="blank"></div>
@@ -327,6 +330,8 @@ function afficher_publication($image, $texte, $pp, $pseudo,$couleur,$date,$sipro
                 <img src="<?php echo $pp; ?>" class="pp" alt="photo de profil">
                 <p><?php echo $pseudo; ?></p>
                 <p><?php echo $date; ?></p>
+                
+                
             </div>
             <img src="<?php echo $image; ?>" class="img-pub" alt="image publication">
             <p><?php echo $texte;?></p>   

@@ -7,8 +7,6 @@ session_start();
 
 bloquer_sans_session();
 
-/*commentaire inutile*/
-
 afficher_accueil();
 
 ?>

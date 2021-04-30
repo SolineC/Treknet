@@ -3,6 +3,7 @@ session_start();
 require_once("fonctions_bd.php");
 require_once("fonctions_affichage.php");
 require_once("fonctions.php");
+
 bloquer_sans_session();
 
 $connexion = connexion('treknet');
@@ -15,9 +16,6 @@ $res = requete1($req, $connexion);
 
 
 afficher_en_tete();
-
-afficher_cote_gauche();
-
 
 
 echo '<div class="boite-recherche">';
@@ -32,13 +30,11 @@ while ($ligne=mysqli_fetch_assoc($res)){
     echo "<br>";
 }
 echo "</div>";
-echo '<div class="ranger"><a href="accueil.php"><i class="fas fa-chevron-up"></i></a></div>';
+echo '<div class="ranger"><a href="'.$_GET["page"].'"><i class="fas fa-chevron-up"></i></a></div>';
 echo "</div>";
 
-
-
-afficher_publications(0);
-afficher_cote_droit();
 afficher_pied_de_page();
+
+
 
 ?>

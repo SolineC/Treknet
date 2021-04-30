@@ -21,5 +21,12 @@ function logout(){
     session_destroy();
 }
 
+function getAdresse(){
+
+    $url= pathinfo($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])["basename"];
+
+    return $url;
+}
+
 
 ?>

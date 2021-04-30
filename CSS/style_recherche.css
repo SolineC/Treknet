@@ -88,7 +88,7 @@
     position: absolute;
     
     top: 70px;
-    right: 60px;
+    right: 20px;
     height: 250px;
     width: 400px;
     transform-style: preserve-3d;
@@ -167,7 +167,7 @@
 
 .boite-publication.prof{
     padding-top: 0;
-    margin-left: 300px;
+    
 }
 
 .boite-publication .suppr{

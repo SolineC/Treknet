@@ -7,10 +7,15 @@ bloquer_sans_session();
 
 if(isset($_POST["num_pub"])){
     $num_pub=$_POST["num_pub"];
+
+   
     $connexion=connexion('treknet');
     $req="DELETE FROM publication WHERE num_publication='".$num_pub."'";
+
+
     requete1($req,$connexion);
-    header("Location: profil.php");
+    $loc="Location: ".$_POST["page"];
+    header($loc);
 }
 
 

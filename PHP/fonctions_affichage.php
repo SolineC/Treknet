@@ -1,6 +1,7 @@
 <?php
 
 require_once("fonctions_bd.php");
+require_once("fonctions.php");
 
 
 
@@ -36,7 +37,8 @@ function afficher_en_tete(){
             <div class="recherche">
                 <form action="recherche.php" method="GET">
                     <input class="input-recherche" name="search" type="text" placeholder="Chercher un trekker">
-                    <input type="hidden" name="searchtype" value="pseudo">
+                    <!-- <input type="hidden" name="searchtype" value="pseudo"> -->
+                    <input type="hidden" name="page" value="<?php echo getAdresse();?> ">
                     <button class="sub-search" type="submit"><i class="fas fa-search"></i></button>
                 </form>    
             </div>
@@ -47,11 +49,11 @@ function afficher_en_tete(){
                     <li><a href ="publication.php" title="Nouvelle publication"><i class="fas fa-plus"></i></a></li>
                     <li><a href ="#" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
                     <li><a href ="profil.php" title="Modifier le profil"><i class="fas fa-cog"></i></a></li>
-                    <?php
-                        if($_SESSION["grade"]>=10){
-                            echo '<li><a href ="profil.php" title="Gérer les utilisateurs"><i class="fas fa-user-cog"></i></a></li>"';
-                        }
-                    ?>
+                     <?php
+                        //if($_SESSION["grade"]>=10){
+                           // echo '<li><a href ="profil.php" title="Gérer les utilisateurs"><i class="fas fa-user-cog"></i></a></li>"';
+                        //}
+                    ?> 
                     <li><a href ="../PHP/deconnexion.php"><i class="fas fa-sign-out-alt"></i></a></li>     
                 </ul>
             </nav>
@@ -134,9 +136,9 @@ function afficher_profil($pseudo, $chemin,$oui,$num,$couleur){
     <?php
 }
 
-function afficher_page_profil($num){
+function afficher_page_profil($num,$tab_user){
     afficher_en_tete();
-    afficher_utilisateur();
+    afficher_utilisateur($tab_user);
 
     $connexion=connexion('treknet');
     
@@ -145,6 +147,12 @@ function afficher_page_profil($num){
     ON publication.num_profil = profil.num_profil WHERE abonnement.num_profil_suivant='".$num."' AND abonnement.num_profil_suivi='".$num."'
     ORDER BY publication.num_publication DESC";
     $res = requete1($req,$connexion);
+    $req2="SELECT COUNT(*) FROM profil WHERE num_profil IN 
+    (SELECT num_profil_suivi FROM abonnement WHERE num_profil_suivant='".$num."') AND num_profil != '".$num."'";
+    $res2=requete($req2,$connexion);
+    $req3="SELECT COUNT(*) FROM profil WHERE num_profil IN 
+    (SELECT num_profil_suivant FROM abonnement WHERE num_profil_suivi='".$num."') AND num_profil != '".$num."'";
+    $res3=requete($req3,$connexion);
 
     while($ligne=mysqli_fetch_array($res)){
         $image=$ligne['image'];
@@ -159,32 +167,37 @@ function afficher_page_profil($num){
         
     
     }
+
+    echo "Mon equipage : ".$res2["COUNT(*)"]." | ".$res3["COUNT(*)"];
+    
 afficher_pied_de_page();
 }
+
+
 
 function afficher_abonnement($oui,$num){
     if($oui==0){
         ?>
         <form action="traitement_abonnement.php" method="post">
         <?php echo '<input type="hidden" name="num_suivi" value="'.$num.'">';?>
+        <?php echo '<input type="hidden" name="page" value="'.getAdresse().'">';?>
         <input type="submit" value="+" class="abo">
   </form>
   <?php
     }
 }
 
-function afficher_utilisateur(){
-    if(isset($_SESSION["pseudo"])){
-        
+function afficher_utilisateur($tab_user){
+   
     ?>
     <div class="boite-utilisateur">
         <div class="face front">
-            <?php echo '<img class="pp big" src="'.$_SESSION["photo"].'" alt="photo de profil">';?>
-            <p class="username"><?php echo $_SESSION['pseudo'] ?></p>
+            <?php echo '<img class="pp big" src="'.$tab_user["photo_de_profil"].'" alt="photo de profil">';?>
+            <p class="username"><?php echo $tab_user['pseudo'] ?></p>
             <div class="infos">
-            <p><?php echo $_SESSION['grade'] ?></p>
-            <p><?php echo $_SESSION['espece'] ?></p>
-            <p>Membre depuis le : <?php echo $_SESSION['date'] ?></p>
+            <p><?php echo $tab_user['nom_grade'] ?></p>
+            <p><?php echo $tab_user['espece'] ?></p>
+            <p>Membre depuis le : <?php echo $tab_user['date_inscription'] ?></p>
             </div>
         </div>
         <div class="face back">
@@ -195,7 +208,7 @@ function afficher_utilisateur(){
         
     </div>
     <?php
-    }
+    
 }
 
 function afficher_erreurs($message){
@@ -233,7 +246,7 @@ function afficher_connexion($message){
                 <input type="text" class="input"  name="pseudo" required="required" placeholder="Pseudo">
                 <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
                 <input type="submit" class="bouton" value="CONNEXION" >
-                <a class="mdp" href="#">Mot de passe oublié ?</a>
+                <a class="mdp" href="forgot_password.php">Mot de passe oublié ?</a>
                 <a href="../PHP/inscription.php" class="bouton">Inscription</a>
             </form>
         </div>    
@@ -304,6 +317,7 @@ function afficher_publication($image, $texte, $pp, $pseudo,$couleur,$date,$sipro
         case 2 : $color = "#4399D4"; break;
         case 3 : $color = "#E63627"; break;
     }
+    if($_SESSION["grade"]>7) $siprofil=1;
     if($siprofil==0){
     ?>
         <div class="blank"></div>
@@ -325,6 +339,7 @@ function afficher_publication($image, $texte, $pp, $pseudo,$couleur,$date,$sipro
             <form action="traitement_suppression.php" method="post">
                 <input title="Supprimer la publication" class="suppr" type="submit" value="×">
                 <input type="hidden" name="num_pub" value="<?php echo $num_pub; ?>">
+                <input type="hidden" name="page" value="<?php echo getAdresse(); ?>">
             </form>
             <?php echo '<div class="publicateur" style="background-color:'.$color.';">'; ?>  
         
@@ -356,7 +371,7 @@ function afficher_publications($siprofil){
         $couleur=$ligne['num_section'];
         $date=$ligne['date_publication'];
 
-        afficher_publication($image,$texte,$pp,$pseudo,$couleur,$date,$siprofil,0);
+        afficher_publication($image,$texte,$pp,$pseudo,$couleur,$date,$siprofil,$ligne['num_publication']);
     
     }
 }

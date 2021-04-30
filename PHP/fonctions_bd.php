@@ -37,9 +37,6 @@ function requete($requete, $connex){
                 return mysqli_fetch_array($resultat);
             }
 }
-/*$req = 'SELECT  FROM `grade`';
-connexion('treknet');
-requete($req,'treknet');
-*/
+
 
 ?>

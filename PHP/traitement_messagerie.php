@@ -13,5 +13,6 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
     creer_message($_SESSION['pseudo'], "Ana", $mess);
 }
 
-afficher_conversation($_SESSION['pseudo'],"Soline")
+//afficher_conversation($_SESSION['pseudo'],"Soline");
+afficher_message_droite("boujour");
 ?>

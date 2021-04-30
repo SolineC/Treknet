@@ -44,7 +44,7 @@ function afficher_en_tete(){
                 <ul>
                     <li><a href="accueil.php" title="Accueil"><i class="fas fa-home"></i></a></li>
                     <li><a href ="publication.php" title="Nouvelle publication"><i class="fas fa-plus"></i></a></li>
-                    <li><a href ="#" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
+                    <li><a href ="traitement_messagerie.php" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
                     <li><a href ="profil.php" title="Modifier le profil"><i class="fas fa-cog"></i></a></li>
                     <?php
                         if($_SESSION["grade"]>=10){
@@ -147,6 +147,24 @@ function afficher_erreurs($message){
     
         echo '<p class="erreur">',$message,'</p>';
     
+}
+
+function afficher_message_droite($message){
+    ?>
+    <div class="conversation">
+    <div class="talk r">
+        <p><?php echo $message ?></p>
+    </div>
+    <?php
+}
+
+function afficher_message_gauche($message){
+    ?>
+    <div class="conversation">
+    <div class="talk l">
+        <p><?php echo $message ?></p>
+    </div>
+    <?php
 }
 
 function afficher_connexion($message){
@@ -256,6 +274,7 @@ function afficher_inscription($message){
 }
 
 
+
 function afficher_accueil(){
     afficher_en_tete();
     afficher_utilisateur();
@@ -354,5 +373,51 @@ function afficher_message(){
 <?php
 }
 
+function afficher_conversation($pseudo,$des){
+    ?>
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+    content="width=device-width,initial-sale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="../CSS/style_messagerie.css">
+
+</head>
+<body>
+<div class= "chat-global">
+
+     <div class="nav-top">
+
+        <div class="location">
+            <img src="../Images/Messagerie/Chevron_left.svg.png" > 
+            <a href="accueil.php" title="Accueil"class="p">Black</a>
+        </div>
+
+        <div class="nom_inter">
+            <p>Ana</p> <!-- Nom interlocuteur -->
+        </div>
+    </div>
+    <?php    montrer_message($pseudo, $des);?>
+
+    </div>
+    <div class="chat-form">
+
+            <form class="barra">
+                    <div class="group-inp">
+                        <form action="traitement_messagerie.php" method="post">
+                        <input type="text" placeholder="Ecris un message" class= "text" name="mess" minlength="1" maxlength="1000">
+                        <input type="submit" class="submit-msg-btn" alt="../PHP/traitement_messagerie.php">
+                        </button>
+                        </form>
+                    </div>
+            </form>
+
+    </div>
+</div>
+</body>
+<?php
+}
 
 ?>

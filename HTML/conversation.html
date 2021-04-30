@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+    content="width=device-width,initial-sale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="../CSS/style_messagerie.css">
+
+</head>
+<body>
+<div class= "chat-global">
+
+     <div class="nav-top">
+
+        <div class="location">
+            <img src="../Images/Messagerie/Chevron_left.svg.png" alt="../PHP/connexion.php"> 
+            <p>Back</p>
+        </div>
+
+        <div class="nom_inter">
+            <p>Ana</p> <!-- Nom interlocuteur -->
+        </div>
+    </div>
+    
+    <div class="conversation">
+        <div class="talk r">
+            <p>Lorem</p><!-- message -->
+        </div>
+        <div class="talk l">
+            <p>Lorem</p><!-- message -->
+        </div>
+    </div>
+    <div class="chat-form">
+
+            <form class="barra">
+                    <div class="group-inp">
+                        <form action="traitement_messagerie.php" method="post">
+                        <input type="text" placeholder="Ecris un message" class= "text" minlength="1" maxlength="1000">
+                        <input type="submit" class="submit-msg-btn">
+                                <img src="../Images/Messagerie/avion.svg" alt="">
+                        </button>
+                        </form>
+                    </div>
+            </form>
+
+    </div>
+</div>
+</body>

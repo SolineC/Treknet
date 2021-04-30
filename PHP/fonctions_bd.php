@@ -105,4 +105,25 @@ function creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece,$langue){
     header("Location: index.php");
 }
 
+
+function creer_message($pseudo, $destinataire,$mess){
+    $req= "INSERT INTO message (expediteur,destinataire,date_message)    
+    VALUES ('$pseudo',$destinataire,$mess);";
+    requete1($req,connexion('treknet'));
+    header("Location: traitement_messagerie.php");
+}
+
+function montrer_message($pseudo, $destinataire){
+    $req=" SELECT * FROM message WHERE expediteur='$pseudo' OR 
+    destinataire='$destinataire' OR expediteur='$destinataire' OR destinataire = '$pseudo' ORDER BY date_message ASC;";
+    $res = requete1($req, connexion('treknet'));
+    while ($row=msqli_fetch_assoc($res));
+        if (strcmp($row['expediteur'],$pseudo) && strcmp($row['destinataire'],$destinataire)){
+            afficher_mess_droite($row['message']);
+        } else if (strcmp($row['destinataire'],$pseudo) && strcmp($row['expediteur'],$destinataire)){
+            afficher_mess_gauche($row['message']);
+        }
+
+}
+
 ?>

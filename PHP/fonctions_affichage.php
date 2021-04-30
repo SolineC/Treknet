@@ -1,3 +1,5 @@
+
+
 <?php
 
 require_once("fonctions_bd.php");
@@ -421,73 +423,72 @@ function afficher_nouvelle_publication($message){
 afficher_pied_de_page();
 }
 
-function afficher_inscription($message){
+
+
+function afficher_message_droite($message){
     ?>
-    <!DOCTYPE html>
-
-<html>
-<head>
-    <meta charset="utf-8">
-    
-    <link rel="stylesheet" href="../CSS/index.css">
-    <link rel="stylesheet" href="../CSS/style.css">
-    <title>Where no man has gone before</title>
-
-</head>
-
-<body>
-    <main>
-    <div class="logo">
-            <h1>treknet</h1> 
-            <p>le réseau des trekkies par exellence</p>
-        </div>
+    <div class="conversation">
+    <div class="talk r">
+        <p><?php echo $message ?></p>
+    </div>
     <?php
-            afficher_erreurs($message);
-        ?>
-        <div class="blocInscription">
-        <form action="traitement_inscription.php" method="post" class="formulaire">
-                    
-                    <input type="text" name="pseudo" class="input" required="required" placeholder="Pseudo">
-                    <input type="email" name="mail" class="input" required="required" placeholder="Adresse Mail">
-                    <input type="password" name="mot_de_passe" class="input" placeholder="Mot de Passe">
-                
-
-                    <select name="section" class="deroul" >
-                        <option value=0 >Section</option>
-                        <option value=1 class="jaune">Opérations</option>
-                        <option value=2 class="bleu">Scientifiques</option>
-                        <option value=3 class="rouge">Navigation</option>
-                    
-                    </select> 
-
-                    <select name="espece" class="deroul" >
-                        <option value=0 >Espèce</option>
-                        <option value=Humain>Humain</option>
-                        <option value=Vulcan >Vulcain</option>
-                        <option value=Andorian >Andorian</option>
-                        <option value=Tellarite >Tellarite</option>
-                    
-                    </select> 
-
-                    <select name="langue" class="deroul" >
-                        <option value=0 >Langue</option>
-                        <option value=English >English</option>
-                        <option value=Español >Español</option>
-                        <option value=Français >Français</option>
-                    
-                    </select> 
-                
-                    <input type="submit" class="bouton" value="Inscription">  
-                    <a href="../PHP/index.php" class="bouton">Connexion</a> 
-            </form>
-        </div>   
-        
-    </main>  
-</body>
-</html>
-<?php
 }
 
+function afficher_message_gauche($message){
+    ?>
+    <div class="conversation">
+    <div class="talk l">
+        <p><?php echo $message ?></p>
+    </div>
+    <?php
+}
+
+function afficher_conversation($pseudo,$des){
+    ?>
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+    content="width=device-width,initial-sale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="../CSS/style_messagerie.css">
+
+</head>
+<body>
+<div class= "chat-global">
+
+     <div class="nav-top">
+
+        <div class="location">
+            <img src="../Images/Messagerie/Chevron_left.svg.png" > 
+            <a href="accueil.php" title="Accueil"class="p">Black</a>
+        </div>
+
+        <div class="nom_inter">
+            <p>Ana</p> <!-- Nom interlocuteur -->
+        </div>
+    </div>
+    <?php    montrer_message($pseudo, $des);?>
+
+    </div>
+    <div class="chat-form">
+
+            <form class="barra">
+                    <div class="group-inp">
+                        <form action="traitement_messagerie.php" method="post">
+                        <input type="text" placeholder="Ecris un message" class= "text" name="mess" minlength="1" maxlength="1000">
+                        <input type="submit" class="submit-msg-btn" alt="../PHP/traitement_messagerie.php">
+                        </button>
+                        </form>
+                    </div>
+            </form>
+
+    </div>
+</div>
+</body>
+<?php
+}
 
 
 ?>

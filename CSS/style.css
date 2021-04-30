@@ -37,7 +37,8 @@ p{
     flex-direction: column;
     padding: 30px 30px 10px 30px;
     border-radius: 5px;
-    width: 25%;
+    width: 20%;
+    height:50%
 }
 
 .bouton a{
@@ -53,13 +54,16 @@ p{
     outline: none;
     border-radius: 24px;
     text-align: center;
-    width: 60%;
+    width: 70%;
     transition: 0.25s;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
     
 }
 
 .input:focus{
-    width: 70%;
+    width: 80%;
     border-color: rgba(92,126,246,1);
 }
 
@@ -71,15 +75,23 @@ p{
     color: rgb(33,33,33);
     font-size: small;
     text-align: center;
-    /*border-bottom: 2px solid rgb(33,33,33);*/
+    border-bottom: 2px solid rgb(33,33,33);
     padding-bottom: 20px;
+    display: block;
 }
 
 .mdp:hover{
     text-decoration: underline;
 }
 
-input[type = "submit"]{
+
+
+.bouton a:hover{
+    color: rgb(33,33,33);
+
+}
+
+.bouton{
     font-size: 14px;
     background-color: rgb(33,33,33);
     color: #f1f1f1;
@@ -87,26 +99,32 @@ input[type = "submit"]{
     text-transform: uppercase;
     border-radius: 5px;
     cursor: pointer;
-    margin: auto;
+    /*margin: auto;*/
     margin-bottom: 20px;
     text-align: center;
-   
-}
-
-.bouton{
     border: 2px solid black;
+    width: 115px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    display: block;   
 }
 
-
-
-input[type="submit"]:hover{
-    background: linear-gradient(90deg, rgba(254,211,17,1) 19%, rgba(92,126,246,1) 40%, rgba(255,30,0,1) 75%);
-    cursor: pointer;
+.bouton:last-child{
+    width: 115px;
+    margin-top: 20px;
 }
+
 .bouton:hover{
-    background: linear-gradient(90deg, rgba(254,211,17,1) 19%, rgba(92,126,246,1) 40%, rgba(255,30,0,1) 75%);
-}
-.bouton a:hover{
-    color: rgb(33,33,33);
+    background: linear-gradient(90deg, rgba(254,211,17,1) 19%, rgba(92,126,246,1) 40%, rgba(255,30,0,1) 75%);     
 
+    color: rgb(33,33,33);
+}
+
+
+.erreur{
+    color:red;
+    position: absolute;
+    top: 17%;
+    right:14.5%;
 }

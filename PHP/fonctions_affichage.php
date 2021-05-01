@@ -228,8 +228,8 @@ function afficher_connexion($message){
 <head>
     <meta charset="utf-8">
     
-    <link rel="stylesheet" href="CSS/index.css">
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/style.css">
     <title>Where no man has gone before</title>
 
 </head>

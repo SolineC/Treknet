@@ -244,12 +244,12 @@ function afficher_connexion($message){
             afficher_erreurs($message);
         ?>
         <div class="connexion">
-            <form action="../PHP/traitement_connexion.php" method="POST">
+            <form action="PHP/traitement_connexion.php" method="POST">
                 <input type="text" class="input"  name="pseudo" required="required" placeholder="Pseudo">
                 <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
                 <input type="submit" class="bouton" value="CONNEXION" >
                 <a class="mdp" href="PHP/forgot_password.php">Mot de passe oublié ?</a>
-                <a href="../Treknet/PHP/inscription.php" class="bouton">Inscription</a>
+                <a href="PHP/inscription.php" class="bouton">Inscription</a>
             </form>
         </div>    
     </main>  

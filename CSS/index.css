@@ -94,6 +94,14 @@ h1,p{
     background-color: #decc0e;
 }
 
+.erreur{
+    color: red;
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    transform: translate(-10%,-30%);
+}
+
 
 
 

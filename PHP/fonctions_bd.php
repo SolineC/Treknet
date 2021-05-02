@@ -71,7 +71,7 @@ function invalideEmail($email){
 }
 
 function compteExiste($connexion,$pseudo,$email){
-    $req = "SELECT count(*) FROM profil where pseudo = '$pseudo' OR email = '$email' ";
+    $req = "SELECT count(*) FROM Profil where pseudo = '$pseudo' OR email = '$email' ";
     $resultat=requete( $req,connexion('treknet'));
     $count = $resultat['count(*)'];
     return ($count != 0 );
@@ -84,11 +84,11 @@ function creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece,$langue){
     $requete2="SELECT MAX(num_profil) FROM profil";
     $resultat2=requete($requete2,$connexion);
     $num = $resultat2['MAX(num_profil)']+1;
-    $req= "INSERT INTO profil (pseudo,email,mot_de_passe,num_section,num_grade,photo_de_profil,langue,espece,num_profil)    
+    $req= "INSERT INTO Profil (pseudo,email,mot_de_passe,num_section,num_grade,photo_de_profil,langue,espece,num_profil)    
     VALUES ('$pseudo','$email','$mot_de_passe','$num_section','0','../Images/Profil/pp_defaut.png','$langue','$espece','$num');";
     requete1($req,$connexion);
 
-    $req3 = "INSERT INTO abonnement (num_profil_suivi, num_profil_suivant) VALUES ($num,$num)";
+    $req3 = "INSERT INTO Abonnement (num_profil_suivi, num_profil_suivant) VALUES ($num,$num)";
     requete1($req3,$connexion);
     
     header("Location: index.php");

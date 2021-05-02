@@ -85,7 +85,7 @@
 /*affichage de la carte de membre dans la zone profil d'un utilisateur*/
 
 .boite-utilisateur{
-    position: absolute;
+    position: fixed;
     
     top: 70px;
     right: 20px;
@@ -350,6 +350,25 @@ aside a:hover{
     background-color: transparent;
     
 }
+
+/*Boite équipage*/
+
+.equipage{
+    position: fixed;
+    top: 360px;
+    right: 20px;
+    height: 100px;
+    width: 400px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 15px;
+}
+.equipage p{
+padding: 10px;
+}
+.equipage p:first-child{
+    padding: 15px;
+    }
 
 
 

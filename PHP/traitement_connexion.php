@@ -15,7 +15,7 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
 
     if($pseudo !== "" && $mdp !== ""){
             
-            $requete = "SELECT count(*),mot_de_passe FROM profil where pseudo = '$pseudo'";
+            $requete = "SELECT count(*),mot_de_passe FROM Profil where pseudo = '$pseudo'";
             $resultat = requete($requete,$connexion);   
             $count = $resultat['count(*)'];
             if($count != 0 ){
@@ -23,7 +23,7 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
                     
                     $_SESSION['pseudo'] = $pseudo;
 
-                    $req = "SELECT * FROM profil JOIN grade ON profil.num_grade = grade.num_grade WHERE profil.pseudo = '".$pseudo."'";
+                    $req = "SELECT * FROM Profil JOIN grade ON profil.num_grade = grade.num_grade WHERE profil.pseudo = '".$pseudo."'";
                     $rep = requete($req,$connexion);
                     
                     $couleur = $rep['num_section'];

@@ -170,9 +170,19 @@ function afficher_page_profil($num,$tab_user){
     
     }
 
-    echo "Mon equipage : ".$res2["COUNT(*)"]." | ".$res3["COUNT(*)"];
+    afficher_equipage($res2["COUNT(*)"],$res3["COUNT(*)"]);
     
-afficher_pied_de_page();
+    afficher_pied_de_page();
+}
+
+function afficher_equipage($jesuis,$ilsmesuivent){
+    ?>
+    <div class="equipage">
+        <p>Il y a <?php echo $jesuis;?> membre(s) dans mon équipage</p>
+        <p>Je suis dans l'équipage de <?php echo $ilsmesuivent;?> membre(s)</p>
+    </div>
+    <?php
+
 }
 
 

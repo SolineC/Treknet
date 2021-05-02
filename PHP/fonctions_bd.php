@@ -91,7 +91,7 @@ function creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece,$langue){
     $req3 = "INSERT INTO abonnement (num_profil_suivi, num_profil_suivant) VALUES ($num,$num)";
     requete1($req3,$connexion);
     
-    header("Location: index.php");
+    header("Location: ../index.php");
 }
 
 

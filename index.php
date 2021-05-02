@@ -1,6 +1,6 @@
 <?php
 
-require_once("fonctions_affichage.php");
+require_once("PHP/fonctions_affichage.php");
 
 afficher_connexion("");
 

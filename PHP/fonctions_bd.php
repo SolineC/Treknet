@@ -1,7 +1,7 @@
 <?php
 
 function connexion($base){
-    $connexion = mysqli_connect ('localhost','root','',$base);
+    $connexion = mysqli_connect ('localhost','trekuser','5dBh3t*57nNhHDJv',$base);
     if (!$connexion) {
         echo'Pas de  connexion  au  serveur'; 
         exit;

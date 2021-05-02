@@ -125,6 +125,27 @@ function afficher_profil($pseudo, $chemin){
     <?php
 }
 
+
+function afficher_list_conver($pseudo, $chemin,$num,$couleur){
+    switch($couleur){
+        case 1 : $color = "#EABD02"; break;
+        case 2 : $color = "#4399D4"; break;
+        case 3 : $color = "#E63627"; break;
+    }
+    ?>
+   <?php echo'<div style="background-color:'.$color.';" class="boite-profil">';?>
+        <img class="pp" src=<?php echo $chemin ?> alt="photo de profil">  <!--petites boites lors de recherche de membres -->
+        <form action="traitement_messagerie.php" method="post">
+        <?php echo '<input type="submit" class="pseudo" value='.$pseudo.'>'; ?>
+        
+
+        </form>
+        
+    </div>
+    
+
+    <?php
+}
 function afficher_utilisateur(){
     if(isset($_SESSION["pseudo"])){
         

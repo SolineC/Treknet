@@ -96,7 +96,7 @@ function creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece,$langue){
     $resultat2=requete($requete2,$connexion);
     $num = $resultat2['MAX(num_profil)']+1;
     $req= "INSERT INTO profil (pseudo,email,mot_de_passe,num_section,num_grade,photo_de_profil,langue,espece,num_profil)    
-    VALUES ('$pseudo','$email','$mot_de_passe','$num_section','0','../Images/Profil/pp_defaut.png','$langue','$espece','$num');";
+    VALUES ('$pseudo','$email','$mot_de_passe','$num_section','0','../Images/Profil/pp_default.png','$langue','$espece','$num');";
     requete1($req,$connexion);
 
     $req3 = "INSERT INTO abonnement (num_profil_suivi, num_profil_suivant) VALUES ($num,$num)";

@@ -30,8 +30,9 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
                     $langue = $rep['langue'];
                     $photo = $rep['photo_de_profil'];
                     $grade = $rep['nom_grade'];
+                    $email= $rep['email'];
                     
-
+                    $_SESSION['email']= $email;
                     $_SESSION['couleur'] = $couleur;
                     $_SESSION['langue'] = $langue;
                     $_SESSION['photo'] = $photo;

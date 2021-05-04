@@ -24,7 +24,7 @@ function afficher_en_tete(){
     <link rel="stylesheet" href="../fontawesome-free-5.15.2-web/fontawesome-free-5.15.2-web/css/all.css">
     <link rel="stylesheet" href="../CSS/style_recherche.css">
     <link rel="stylesheet" href="../CSS/style_general.css" >
-    
+
     
 </head>
 
@@ -45,7 +45,7 @@ function afficher_en_tete(){
                     <li><a href="accueil.php" title="Accueil"><i class="fas fa-home"></i></a></li>
                     <li><a href ="publication.php" title="Nouvelle publication"><i class="fas fa-plus"></i></a></li>
                     <li><a href ="liste_conver.php" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
-                    <li><a href ="profil.php" title="Modifier le profil"><i class="fas fa-cog"></i></a></li>
+                    <li><a href ="modifier_profil.php" title="Modifier le profil"><i class="fas fa-cog"></i></a></li>
                     <?php
                         if($_SESSION["grade"]>=10){
                             echo '<li><a href ="profil.php" title="Gérer les utilisateurs"><i class="fas fa-user-cog"></i></a></li>"';
@@ -126,26 +126,7 @@ function afficher_profil($pseudo, $chemin){
 }
 
 
-function afficher_list_conver($pseudo, $chemin,$num,$couleur){
-    switch($couleur){
-        case 1 : $color = "#EABD02"; break;
-        case 2 : $color = "#4399D4"; break;
-        case 3 : $color = "#E63627"; break;
-    }
-    ?>
-   <?php echo'<div style="background-color:'.$color.';" class="boite-profil">';?>
-        <img class="pp" src=<?php echo $chemin ?> alt="photo de profil">  <!--petites boites lors de recherche de membres -->
-        <form action="traitement_messagerie.php" method="post">
-        <?php echo '<input type="submit" class="pseudo" value='.$pseudo.'>'; ?>
-        
 
-        </form>
-        
-    </div>
-    
-
-    <?php
-}
 function afficher_utilisateur(){
     if(isset($_SESSION["pseudo"])){
         
@@ -169,6 +150,8 @@ function afficher_erreurs($message){
         echo '<p class="erreur">',$message,'</p>';
     
 }
+
+
 
 function afficher_message_droite($message){
     ?>
@@ -356,6 +339,31 @@ function afficher_publications(){
     }
 }
 
+function afficher_list_conver($pseudo, $chemin,$num,$couleur){
+    switch($couleur){
+        case 1 : $color = "#EABD02"; break;
+        case 2 : $color = "#4399D4"; break;
+        case 3 : $color = "#E63627"; break;
+    }
+    
+    ?>
+    <link rel="stylesheet" href="../CSS/style_recherche.css">
+   <?php echo'<div style="background-color:'.$color.';" class="boite-profil">';?>
+   <div class="list_conver">
+        <img class="pp" src=<?php echo $chemin ?> alt="photo de profil">  <!--petites boites lors de recherche de membres -->
+        <form action="traitement_messagerie.php" class="pseudo" method="post">
+        <?php echo '<input type="submit" class="pseudo" name= "pseudo" value='.$pseudo.'>'; ?>
+        
+
+        </form>
+        
+    </div>
+    </div>
+    <?php
+}
+
+
+
 function afficher_message(){
     ?>
     <!DOCTYPE html>
@@ -402,8 +410,9 @@ function afficher_conversation($pseudo,$des){
     <meta charset="utf-8">
     <meta name="viewport"
     content="width=device-width,initial-sale=1.0">
-    <title>Chat</title>
     <link rel="stylesheet" href="../CSS/style_messagerie.css">
+
+    <title>Chat</title>
 
 </head>
 <body>
@@ -413,14 +422,14 @@ function afficher_conversation($pseudo,$des){
 
         <div class="location">
             <img src="../Images/Messagerie/Chevron_left.svg.png" > 
-            <a href="accueil.php" title="Accueil"class="p">Black</a>
+            <a href="liste_conver.php" title="Accueil"class="p">Black</a>
         </div>
 
         <div class="nom_inter">
-            <p>Ana</p> <!-- Nom interlocuteur -->
+            <p> <?php echo $des?></p> <!-- Nom interlocuteur -->
         </div>
     </div>
-    <?php    montrer_message($pseudo, $des);?>
+    <?php   // montrer_message($pseudo, $des);?>
 
     </div>
     <div class="chat-form">
@@ -440,5 +449,65 @@ function afficher_conversation($pseudo,$des){
 </body>
 <?php
 }
+function afficher_modifier($message){
+    $pseudo=$_SESSION['pseudo'];
+    $email=$_SESSION['email']
+    ?>
+    <!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <title>Where no man has gone before</title>
+
+</head>
+
+<body>
+    <main>
+    <div class="logo">
+            <h1>treknet</h1> 
+            <p>le réseau des trekkies par exellence</p>
+        </div>
+    <?php
+            afficher_erreurs($message);
+        ?>
+        <div class="blocInscription">
+        <form action="traitement_modifier_profil.php" method="post" class="formulaire">
+                    
+                    <input type="text" name="pseudo" class="input"  placeholder="<?php echo $pseudo ?>">
+                    <input type="email" name="email" class="input" placeholder="<?php echo $email?>">
+                    <input type="password" name="mot_de_passe" class="input" placeholder="Nouveau mot de passe">
+                
+
+                    <select name="espece" class="deroul" >
+                        <option value=0 >Espèce</option>
+                        <option value=Humain>Humain</option>
+                        <option value=Vulcan >Vulcain</option>
+                        <option value=Andorian >Andorian</option>
+                        <option value=Tellarite >Tellarite</option>
+                    
+                    </select> 
+
+                    <select name="langue" class="deroul" >
+                        <option value=0 >Langue</option>
+                        <option value=English >English</option>
+                        <option value=Español >Español</option>
+                        <option value=Français >Français</option>
+                    
+                    </select> 
+                
+                    <input type="submit" class="bouton" value="Modifier">  
+            </form>
+        </div>   
+        
+    </main>  
+</body>
+</html>
+<?php
+}
+
 
 ?>

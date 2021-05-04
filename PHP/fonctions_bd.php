@@ -107,10 +107,9 @@ function creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece,$langue){
 
 
 function creer_message($pseudo, $destinataire,$mess){
-    $req= "INSERT INTO message (expediteur,destinataire,date_message)    
-    VALUES ('$pseudo',$destinataire,$mess);";
+    $req= "INSERT INTO message (expediteur,destinataire,mess,date_message)    
+    VALUES ('$pseudo','$destinataire','$mess', );";
     requete1($req,connexion('treknet'));
-    header("Location: traitement_messagerie.php");
 }
 
 function montrer_message($pseudo, $destinataire){
@@ -124,6 +123,26 @@ function montrer_message($pseudo, $destinataire){
             afficher_mess_gauche($row['message']);
         }
 
+}
+
+function modifierProfilpwd($pseudo,$email,$mot_de_passe,$espece,$langue){   
+
+    $connexion=connexion('treknet');
+    $num_profil=$_SESSION['num_profil'];
+    $req= "UPDATE profil SET pseudo='$pseudo', email='$email', mot_de_passe= '$mot_de_passe', langue='$langue', espece ='$espece' WHERE num_profil='$num_profil';";
+    requete1($req,$connexion);
+
+    
+    header("Location: index.php");
+}
+
+
+function modifierProfil($pseudo,$email,$espece,$langue){
+$connexion=connexion('treknet');
+    $num_profil=$_SESSION['num_profil'];
+    $req= "UPDATE profil SET pseudo='$pseudo', email ='$email', langue ='$langue', espece='$espece' WHERE num_profil='$num_profil';";
+    requete1($req,$connexion);
+    header("Location: index.php");
 }
 
 ?>

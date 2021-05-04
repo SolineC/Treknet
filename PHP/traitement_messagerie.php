@@ -7,10 +7,11 @@ bloquer_sans_session();
 
 
 $connexion = connexion("treknet");
-    $mess=preTraiterChampSQL($_POST['mess'],$connexion);
+  //  $mess=preTraiterChampSQL($_POST['mess'],$connexion);
     $desti= $_POST['pseudo'];
-   // creer_message($_SESSION['pseudo'], $desti, $mess);
 
 
 afficher_conversation($_SESSION['pseudo'],$desti);
+    creer_message($_SESSION['pseudo'], $desti, $_POST['mess']);
+
 ?>

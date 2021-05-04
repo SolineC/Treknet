@@ -28,7 +28,7 @@ require_once("fonctions.php");
         <div class="connexion">
 
             <h3>Mot de passe oublié</h3>
-            <form action="send_password.php" method="POST">
+            <form action="traitement_password.php" method="POST">
                 <input type="text" class="input"  name="mail" required="required" placeholder="Adresse mail">
                 <input type="submit" class="bouton" value="Envoyer" >
                 

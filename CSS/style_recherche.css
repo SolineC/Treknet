@@ -370,5 +370,42 @@ padding: 10px;
     padding: 15px;
     }
 
+/**boite des abonnements*/
+
+.cote{
+    position: fixed;
+    
+    background-color: white;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-radius: 15px;
+    width: 350px;
+    border:2px solid white;
+    text-align: center;
+    
+
+    
+}
+
+
+.cote.suivi{
+    top: 70px;
+    left:20px;
+    height: 200px;
+}
+
+.cote.suivant{
+    top: 310px;
+    left:20px;
+    height: 200px;
+
+}
+.cote .boite-profil{
+    margin: 0;
+    width: 350px;
+    border-radius: 0;
+    text-align: left;
+}
+
 
 

@@ -49,7 +49,7 @@ function afficher_en_tete(){
                 <ul>
                     <li><a href="accueil.php" title="Accueil"><i class="fas fa-home"></i></a></li>
                     <li><a href ="publication.php" title="Nouvelle publication"><i class="fas fa-plus"></i></a></li>
-                    <li><a href ="#" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
+                    <li><a href ="traitement_messagerie.php" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
                     <li><a href ="profil.php" title="Modifier le profil"><i class="fas fa-cog"></i></a></li>
                      <?php
                         //if($_SESSION["grade"]>=10){
@@ -156,6 +156,13 @@ function afficher_page_profil($num,$tab_user){
     (SELECT num_profil_suivant FROM abonnement WHERE num_profil_suivi='".$num."') AND num_profil != '".$num."'";
     $res3=requete($req3,$connexion);
 
+    $req4="SELECT * FROM profil WHERE num_profil IN 
+    (SELECT num_profil_suivi FROM abonnement WHERE num_profil_suivant='".$num."') AND num_profil != '".$num."'";
+    $res4=requete1($req4,$connexion);
+    $req5="SELECT * FROM profil WHERE num_profil IN 
+    (SELECT num_profil_suivant FROM abonnement WHERE num_profil_suivi='".$num."') AND num_profil != '".$num."'";
+    $res5=requete1($req5,$connexion);
+
     while($ligne=mysqli_fetch_array($res)){
         $image=$ligne['image'];
         $texte=$ligne['texte'];
@@ -171,6 +178,38 @@ function afficher_page_profil($num,$tab_user){
     }
 
     afficher_equipage($res2["COUNT(*)"],$res3["COUNT(*)"]);
+    
+    echo '<div class="cote suivi">';
+    echo "<p>Membres de mon équipage : </p>";
+
+    while($ligne=mysqli_fetch_array($res4)){
+        
+        $pp=$ligne['photo_de_profil'];
+        $pseudo=$ligne['pseudo'];
+        $couleur=$ligne['num_section'];
+
+      
+        afficher_profil($pseudo,$pp,1,-1,$couleur);
+        
+    
+    }
+    echo "</div>";
+    echo '<div class="cote suivant">';
+    echo "<p>Je suis dans l'équipage de : </p>";
+    while($ligne=mysqli_fetch_array($res5)){
+        
+        $pp=$ligne['photo_de_profil'];
+        $pseudo=$ligne['pseudo'];
+        $couleur=$ligne['num_section'];
+
+      
+        afficher_profil($pseudo,$pp,1,-1,$couleur);
+        
+    
+    }
+
+    echo "</div>";
+    
     
     afficher_pied_de_page();
 }

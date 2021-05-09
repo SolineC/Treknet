@@ -32,7 +32,7 @@ require_once("fonctions.php");
                 <input type="text" class="input"  name="mail" required="required" placeholder="Adresse mail">
                 <input type="submit" class="bouton" value="Envoyer" >
                 
-                <a href="../PHP/index.php" class="bouton">Connexion</a>
+                <a href="../index.php" class="bouton">Connexion</a>
             </form>
         </div>    
     </main>  

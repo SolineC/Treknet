@@ -142,6 +142,10 @@ function afficher_page_profil($num,$tab_user){
     afficher_en_tete();
     afficher_utilisateur($tab_user);
 
+    echo '<div class="test">';
+    afficher_abonnement(0,$num);
+    echo '</div>';
+
     $connexion=connexion('treknet');
     
     $req="SELECT * FROM `Publication` LEFT JOIN `Abonnement` 
@@ -162,6 +166,8 @@ function afficher_page_profil($num,$tab_user){
     $req5="SELECT * FROM profil WHERE num_profil IN 
     (SELECT num_profil_suivant FROM abonnement WHERE num_profil_suivi='".$num."') AND num_profil != '".$num."'";
     $res5=requete1($req5,$connexion);
+    echo '<div class="blank"></div>';
+
 
     while($ligne=mysqli_fetch_array($res)){
         $image=$ligne['image'];
@@ -177,10 +183,10 @@ function afficher_page_profil($num,$tab_user){
     
     }
 
-    afficher_equipage($res2["COUNT(*)"],$res3["COUNT(*)"]);
+ 
     
     echo '<div class="cote suivi">';
-    echo "<p>Membres de mon équipage : </p>";
+    echo "<p>Il y a ".$res2["COUNT(*)"]." membres dans l'équipage de ".$tab_user["pseudo"]." </p>";
 
     while($ligne=mysqli_fetch_array($res4)){
         
@@ -189,13 +195,13 @@ function afficher_page_profil($num,$tab_user){
         $couleur=$ligne['num_section'];
 
       
-        afficher_profil($pseudo,$pp,1,-1,$couleur);
+        afficher_profil($pseudo,$pp,1,$ligne['num_profil'],$couleur);
         
     
     }
     echo "</div>";
     echo '<div class="cote suivant">';
-    echo "<p>Je suis dans l'équipage de : </p>";
+    echo "<p>".$tab_user["pseudo"]." est dans l'équipage de ".$res3["COUNT(*)"]." membres </p>";
     while($ligne=mysqli_fetch_array($res5)){
         
         $pp=$ligne['photo_de_profil'];
@@ -214,15 +220,7 @@ function afficher_page_profil($num,$tab_user){
     afficher_pied_de_page();
 }
 
-function afficher_equipage($jesuis,$ilsmesuivent){
-    ?>
-    <div class="equipage">
-        <p>Il y a <?php echo $jesuis;?> membre(s) dans mon équipage</p>
-        <p>Je suis dans l'équipage de <?php echo $ilsmesuivent;?> membre(s)</p>
-    </div>
-    <?php
 
-}
 
 
 
@@ -270,15 +268,29 @@ function afficher_erreurs($message){
 }
 
 function afficher_connexion($message){
+    
     ?>
     <!DOCTYPE html>
 
 <html>
 <head>
     <meta charset="utf-8">
+    <?php
+    if(getAdresse()=="Treknet"){
+        ?>
     
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/style.css">
+    <?php
+    }else{
+    ?>
+
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <?php
+    }
+    ?>
+
     <title>Where no man has gone before</title>
 
 </head>
@@ -297,7 +309,7 @@ function afficher_connexion($message){
                 <input type="text" class="input"  name="pseudo" required="required" placeholder="Pseudo">
                 <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
                 <input type="submit" class="bouton" value="CONNEXION" >
-                <a class="mdp" href="PHP/forgot_password.php">Mot de passe oublié ?</a>
+                <!-- <a class="mdp" href="PHP/forgot_password.php">Mot de passe oublié ?</a> -->
                 <a href="PHP/inscription.php" class="bouton">Inscription</a>
             </form>
         </div>    
@@ -414,16 +426,16 @@ function afficher_accueil(){
     afficher_cote_gauche();
 
     #afficher_utilisateur();
-    /*echo "<br>";
+   /* echo "<br>";
 
     echo "<br>";
                                             #pour le debuggage
     echo "<br>";
 
-    echo "<br>";*/
+    echo "<br>";
 
     
-    #echo '<a href="test.php">Test</a>';
+    echo '<a href="test.php">Test</a>';*/
     afficher_publications(0);
     afficher_cote_droit();
     afficher_pied_de_page();
@@ -441,7 +453,7 @@ function afficher_publication($image, $texte, $pp, $pseudo,$couleur,$date,$sipro
     
     if($siprofil==0){
     ?>
-        <div class="blank"></div>
+        
         <div class="boite-publication">
             <?php echo '<div class="publicateur" style="background-color:'.$color.';">'; ?>  
             
@@ -457,7 +469,6 @@ function afficher_publication($image, $texte, $pp, $pseudo,$couleur,$date,$sipro
     <?php
     }else{
         ?>
-        <div class="blank"></div>
         <div class="boite-publication prof">
             <form action="traitement_suppression.php" method="post">
                 <input title="Supprimer la publication" class="suppr" type="submit" value="×">
@@ -485,6 +496,8 @@ function afficher_publications($siprofil){
     ON publication.num_profil = profil.num_profil WHERE abonnement.num_profil_suivant='".$num."'
     ORDER BY publication.num_publication DESC";
     $res = requete1($req,$connexion);
+    echo '<div class="blank"></div>';
+
 
     while($ligne=mysqli_fetch_array($res)){
         $image=$ligne['image'];

@@ -1,21 +1,11 @@
 <?php
-/*if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
-{
-    $url = "https";
-}
-else
-{
-    $url = "http"; 
-}  
-$url .= "://"; 
-$url .= $_SERVER['HTTP_HOST']; 
-$url .= $_SERVER['REQUEST_URI']; 
-echo $url; */
+require_once("fonctions_affichage.php");
+require_once("fonctions.php");
 
-
-echo pathinfo($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])["basename"];
-
+session_start();
+bloquer_sans_session();
+afficher_en_tete();
+afficher_test("");
+afficher_pied_de_page();
 
 ?>
-   
-   

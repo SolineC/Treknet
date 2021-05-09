@@ -34,14 +34,13 @@ img{
     display: flex;
     align-items: center;
 }
+.location a{
+    color: white;
+    font-size: 20px; 
+    margin-left: 20px;
+    cursor: pointer;
+}
 
-.location p{
-    font: size 20px; 
-    margin-left: 5px;
-}
-.location img{
-    margin-left: 10px;
-}
 
 
 .nom_inter{
@@ -133,11 +132,12 @@ img{
     background: white;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    width: 0px;
+    width: 10x;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
+
 
 }
 
@@ -164,53 +164,16 @@ img{
     margin-right: 35px;
 }
 
-.sub-search{
-    background-color: #d1dffd;
-    border: none;
-    cursor: pointer;
-    
-}
-
-.list{
-    position: fixed;
-    padding-top: 70px;
-    padding-bottom: 20px;
-    left: 50px;
-    width: 560px;
-    height: auto;
-    background-color: whitesmoke;
-    z-index: 10;
-    border-radius: 15px;
-}
 
 
-.ranger{
-    width: 100%;
-    text-align: center;
+.list_conver{
+    margin-top: 70px;
+    position: relative;
+    top: -63px;
+    left: 130px;
+    font-size: 28px;
 }
 
-
-nav{
-    
-    background-color: black;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 50px;
-    width: auto;
-    
-}
-nav li{
-    display: inline-block;
-    width: 60px;
-    line-height: 50px;
-    text-align: center;
-    
-}
-nav a {
-    color: #8eb0fa;
-    
-}
 
     
     

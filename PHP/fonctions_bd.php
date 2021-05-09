@@ -71,7 +71,7 @@ function invalideEmail($email){
 }
 
 function compteExiste($connexion,$pseudo,$email){
-    $req = "SELECT count(*) FROM Profil where pseudo = '$pseudo' OR email = '$email' ";
+    $req = "SELECT count(*) FROM profil where pseudo = '$pseudo' OR email = '$email' ";
     $resultat=requete( $req,connexion('treknet'));
     $count = $resultat['count(*)'];
     return ($count != 0 );
@@ -84,22 +84,90 @@ function creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece,$langue){
     $requete2="SELECT MAX(num_profil) FROM profil";
     $resultat2=requete($requete2,$connexion);
     $num = $resultat2['MAX(num_profil)']+1;
-    $req= "INSERT INTO Profil (pseudo,email,mot_de_passe,num_section,num_grade,photo_de_profil,langue,espece,num_profil)    
-    VALUES ('$pseudo','$email','$mot_de_passe','$num_section','0','../Images/Profil/pp_defaut.png','$langue','$espece','$num');";
+    $req= "INSERT INTO profil (pseudo,email,mot_de_passe,num_section,num_grade,photo_de_profil,langue,espece,num_profil)    
+    VALUES ('$pseudo','$email','$mot_de_passe','$num_section','0','../Images/Profil/pp_default.png','$langue','$espece','$num');";
     requete1($req,$connexion);
 
-    $req3 = "INSERT INTO Abonnement (num_profil_suivi, num_profil_suivant) VALUES ($num,$num)";
+    $req3 = "INSERT INTO abonnement (num_profil_suivi, num_profil_suivant) VALUES ($num,$num)";
     requete1($req3,$connexion);
     
-    header("Location: ../index.php");
+    header("Location: acceuil.php");
 }
 
 
+
+
+function modifierProfilpwd($pseudo,$email,$mot_de_passe,$espece,$langue){   
+
+    $connexion=connexion('treknet');
+    $num_profil=$_SESSION['num_profil'];
+    $req= "UPDATE profil SET pseudo='$pseudo', email='$email', mot_de_passe= '$mot_de_passe', langue='$langue', espece ='$espece' WHERE num_profil='$num_profil';";
+    requete1($req,$connexion);
+    $_SESSION['pseudo']=$pseudo;
+    $_SESSION['email']= $email;
+    $_SESSION['couleur'] = $couleur;
+    $_SESSION['langue'] = $langue;
+    $_SESSION['espece']=$espece;
+    
+    header("Location: modifier_profil.php");
+}
+
+
+function modifierProfil($pseudo,$email,$espece,$langue){
+$connexion=connexion('treknet');
+    $num_profil=$_SESSION['num_profil'];
+    $req= "UPDATE profil SET pseudo='$pseudo', email ='$email', langue ='$langue', espece='$espece' WHERE num_profil='$num_profil';";
+    requete1($req,$connexion);
+    $_SESSION['pseudo']=$pseudo;
+    $_SESSION['email']= $email;
+    $_SESSION['couleur'] = $couleur;
+    $_SESSION['langue'] = $langue;
+    $_SESSION['espece']=$espece;
+    header("Location: modifier_profil.php");
+}
+
+function modifierPhoto($photo){
+    $connexion=connexion('treknet');
+        $num_profil=$_SESSION['num_profil'];
+        $req= "UPDATE profil SET photo_de_profil ='$photo' WHERE num_profil='$num_profil';";
+        requete1($req,$connexion);
+        header("Location: modifier_profil.php");
+}
+
+function modifierSection($num_section){
+        $connexion=connexion('treknet');
+    $num_profil=$_SESSION['num_profil'];
+    $req= "UPDATE profil SET num_section='$num_section' WHERE num_profil='$num_profil';";
+    $_SESSION['couleur']= $num_section;    
+    requete1($req,$connexion);
+    header("Location: accueil.php");
+}
+function grade(){
+    $pseudo = $_SESSION['pseudo'];
+    $i=0;
+    $grade=0;
+    $fecha= date("Y-m-d");
+    $condi= array(1,7,15,30,60,80,120,240,300,365);
+    $diff=date_diff(date_create($_SESSION['date']),date_create($fecha));
+    $days = $diff->format("%a");
+    while($i<count($condi)){
+        if ($days>$condi[$i]){
+            $grade=$i+1;
+        }
+            $i=$i+1;
+     }
+     $req= "UPDATE profil SET num_grade='$grade' WHERE pseudo='$pseudo';";
+    requete1($req,connexion('Treknet'));    
+     header("Location: accueil.php");
+     
+}
+
 function creer_message($pseudo, $destinataire,$mess){
-    $req= "INSERT INTO message (expediteur,destinataire,date_message)    
-    VALUES ('$pseudo',$destinataire,$mess);";
+    $mess=preTraiterChampSQL($_POST['mess'],$connexion);
+    $req= "INSERT INTO message (expediteur,destinataire,mess)    
+    VALUES ('$pseudo','$destinataire','$mess' );";
     requete1($req,connexion('treknet'));
-    header("Location: traitement_messagerie.php");
+    
 }
 
 function montrer_message($pseudo, $destinataire){
@@ -108,11 +176,12 @@ function montrer_message($pseudo, $destinataire){
     $res = requete1($req, connexion('treknet'));
     while ($row=msqli_fetch_assoc($res));
         if (strcmp($row['expediteur'],$pseudo) && strcmp($row['destinataire'],$destinataire)){
-            afficher_mess_droite($row['message']);
+            afficher_mess_droite($row['mess']);
         } else if (strcmp($row['destinataire'],$pseudo) && strcmp($row['expediteur'],$destinataire)){
-            afficher_mess_gauche($row['message']);
+            afficher_mess_gauche($row['mess']);
         }
 
 }
+
 
 ?>

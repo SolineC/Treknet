@@ -27,6 +27,9 @@ function afficher_en_tete(){
     <link rel="stylesheet" href="../fontawesome-free-5.15.2-web/fontawesome-free-5.15.2-web/css/all.css">
     <link rel="stylesheet" href="../CSS/style_recherche.css">
     <link rel="stylesheet" href="../CSS/style_general.css" >
+    <link rel="stylesheet" href="../CSS/style_messagerie.css" >
+
+
     
     
     
@@ -49,8 +52,8 @@ function afficher_en_tete(){
                 <ul>
                     <li><a href="accueil.php" title="Accueil"><i class="fas fa-home"></i></a></li>
                     <li><a href ="publication.php" title="Nouvelle publication"><i class="fas fa-plus"></i></a></li>
-                    <li><a href ="traitement_messagerie.php" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
-                    <li><a href ="profil.php" title="Modifier le profil"><i class="fas fa-cog"></i></a></li>
+                    <li><a href ="liste_conver.php" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
+                    <li><a href ="modifier_profil.php" title="Modifier le profil"><i class="fas fa-cog"></i></a></li>
                      <?php
                         //if($_SESSION["grade"]>=10){
                            // echo '<li><a href ="profil.php" title="Gérer les utilisateurs"><i class="fas fa-user-cog"></i></a></li>"';
@@ -276,7 +279,7 @@ function afficher_connexion($message){
 <head>
     <meta charset="utf-8">
     <?php
-    if(getAdresse()=="Treknet"){
+    if(getAdresse()=="Treknet" || getAdresse()=="index.php"){
         ?>
     
     <link rel="stylesheet" href="CSS/index.css">
@@ -305,12 +308,12 @@ function afficher_connexion($message){
             afficher_erreurs($message);
         ?>
         <div class="connexion">
-            <form action="PHP/traitement_connexion.php" method="POST">
+            <form action="traitement_connexion.php" method="POST">
                 <input type="text" class="input"  name="pseudo" required="required" placeholder="Pseudo">
                 <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
                 <input type="submit" class="bouton" value="CONNEXION" >
                 <!-- <a class="mdp" href="PHP/forgot_password.php">Mot de passe oublié ?</a> -->
-                <a href="PHP/inscription.php" class="bouton">Inscription</a>
+                <a href="inscription.php" class="bouton">Inscription</a>
             </form>
         </div>    
     </main>  
@@ -415,7 +418,7 @@ function afficher_cote_gauche(){
 function afficher_cote_droit(){
     ?>
     <aside class="droit">
-        <a href="messagerie.php" title="Envoyer un message">test</a>
+        <a href="liste_conver.php" title="Envoyer un message">test</a>
     </aside>
 
 <?php
@@ -514,7 +517,7 @@ function afficher_publications($siprofil){
 
 
 function afficher_nouvelle_publication($message){
-    session_start();
+
 
     afficher_en_tete();
     
@@ -554,6 +557,183 @@ afficher_pied_de_page();
 
 
 
+function afficher_test($message){
+    ?>
+    <div class="test_section">
+    <div class="test_erreur"> 
+       <?php
+    afficher_erreurs($message);
+
+?>
+    </div>
+        <form action="traitement_test.php" method="post" class="formulaire">
+            
+    <p>Si l'un des moteur du vaisseau tombe en panne, mais vous ne savez pas comment le réparer. Que faites vous ?</p>
+    <div class="test_question">
+            <input type="radio" name="q1" value="5"> 
+            <label for="q1">Vous demandez de l'aide à quelqu'un d'autre</label> <br>
+             <input type="radio" name="q1" value="1"> 
+             <label for="q1">Vous lisez le manuel d'instructions de l'appareil</label> <br>
+             <input type="radio" name="q1" value="10">
+             <label for="q1">Vous essayez de le réparer avec vos connaissances, pas de chance si ça explose</label> <br>
+ </div> 
+
+    <p>Qu'offrez-vous à l'équipage ?</p>
+    <div class="test_question">
+             <input type="radio" name="q2" value="10">
+             <label for="q2">Vos habilités techniques</label><br>   
+             <input type="radio" name="q2" value="5"> 
+             <label for="q2">Votre stratégie </label><br>   
+             <input type="radio" name="q2" value="1">  
+             <label for="q2">Votre intelligence</label><br>   
+     </div> 
+
+
+     <p>Quel est votre plus grand défaut ?</p>
+     <div class="test_question">
+             <input type="radio" name="q3" value="1">
+             <label for="q3"> Vous oubliez souvent de tenir compte des sentiments des autres </label> <br>
+             <input type="radio" name="q3" value="10">  
+             <label for="q3">Vous avez tendance à avoir des accidents</label> <br>
+             <input type="radio" name="q3" value="5">  
+             <label for="">Vous êtes litteralment parfait</label> <br>
+     </div> 
+    <p>À l'Academie Spacial vous aviez une certaine reputation... Vous étiez : </p>
+    <div class="test_question">
+
+             <input type="radio" name="q4" value="1"> 
+             <label for="q4"> L'élève le plus intelligent</label> <br>
+             <input type="radio" name="q4" value="5">
+             <label for="q4"> Le délégué</label> <br>
+             <input type="radio" name="q4" value="10">
+             <label for="q4"> Le bricoleur</label> <br>
+     </div> 
+
+    <p>Que faissiez lorsque vous aviez des mauvaises notes ?</p>
+    <div class="test_question">
+             <input type="radio" name="q5" value="10">
+             <label for="q5">Vous étudiez plus</label> <br>
+             <input type="radio" name="q5" value="5"> 
+             <label for="q5">Vous parliez avec le prof </label> <br>
+             <input type="radio" name="q5" value="1">  
+             <label for="q5">Vous n'aviez pas des mauvaises notes</label> <br>
+    </div> 
+
+   <p>Vous atterrissez sur une planète où les habitants ne peuvent dire que la verité ou bien que des mensonges. <br>
+   Vous arriviez à un refuge où habitent deux hommes. Le premier dit qu'aucun des deux ne dit la verité. <br>
+    Puis le deuxieme dit qu'ils ne veulent pas vous faire du mal.
+
+   </p>
+   <div class="test_question">
+             <input type="radio" name="q6" value="5"> 
+             <label for="q6">Le premier dit vrai, alors le deuxième dit faux donc ils veulent vous faire du mal </label> <br>
+             <input type="radio" name="q6" value="1"> 
+             <label for="q6">Le premier dit faux, alors le deuxième dit vrai donc ils ne veulent pas vous faire du mal </label> <br>
+             <input type="radio" name="q6" value="10"> 
+             <label for="q6"> Vous tirez sur les deux, au le cas où</label> <br>
+    </div> 
+
+<br>
+<br>
+        
+            <input type="submit" class="bouton" value="Soumettre">  
+    </form>
+</div> 
+<?php
+}
+
+
+
+function afficher_list_conver($pseudo, $chemin,$num,$couleur){
+    switch($couleur){
+        case 1 : $color = "#EABD02"; break;
+        case 2 : $color = "#4399D4"; break;
+        case 3 : $color = "#E63627"; break;
+    }
+    
+    ?>
+    <link rel="stylesheet" href="../CSS/style_recherche.css">
+   <?php echo'<div style="background-color:'.$color.';" class="boite-profil">';?>
+   <div class="list_conver">
+        <img class="pp" src=<?php echo $chemin ?> alt="photo de profil">  <!--petites boites lors de recherche de membres -->
+        <form action="conver.php" class="pseudo" method="post">
+        <?php echo '<input type="submit" class="pseudo" name= "pseudo" value='.$pseudo.'>'; ?>
+        
+
+        </form>
+        
+    </div>
+    </div>
+    <?php
+}
+
+
+
+function afficher_message(){
+    ?>
+    
+        <div class="logo">
+            <h1>treknet</h1> 
+            <p>le réseau des trekkies par exellence</p>
+        </div>
+        <?php
+            afficher_erreurs($message);
+        ?>
+        <div class="connexion">
+            <form action="../PHP/traitement_connexion.php" method="POST">
+                <input type="text" class="input"  name="pseudo" required="required" placeholder="Pseudo">
+                <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
+                <input type="submit" class="bouton" value="CONNEXION" >
+                <a class="mdp" href="#">Mot de passe oublié ?</a>
+                <a href="../PHP/inscription.php" class="bouton">Inscription</a>
+            </form>
+        </div>    
+   
+<?php
+}
+
+function afficher_conversation($pseudo,$des){
+    ?>
+
+
+    
+<div class= "chat-global">
+
+     <div class="nav-top">
+
+        <div class="location">
+            <!-- <img src="../Images/Messagerie/Chevron_left.svg.png" >  -->
+            <a href="liste_conver.php" ><i class="fas fa-chevron-left"></i></a>
+            
+
+
+        </div>
+
+        <div class="nom_inter">
+            <p> <?php echo $des?></p> <!-- Nom interlocuteur -->
+        </div>
+    </div>
+    <?php   // montrer_message($pseudo, $des);?>
+
+    <div class="chat-form">
+
+            <form class="barra">
+                    <div class="group-inp">
+                        <form action="../PHP/traitement_conver.php" method="POST">
+                        <input type="text" placeholder="Ecris un message" class= "text" name="mess" minlength="1" maxlength="1000">
+                        <input type="submit" class="submit-msg-btn">
+                        </button>
+                        </form>
+                    </div>
+            </form>
+
+    </div>
+</div>
+</div>
+
+
+<?php
+}
 function afficher_message_droite($message){
     ?>
     <div class="conversation">
@@ -571,51 +751,46 @@ function afficher_message_gauche($message){
     </div>
     <?php
 }
+function afficher_modifier($message){ 
+            afficher_erreurs($message);
+        ?>
+        <div class="modifier">
 
-function afficher_conversation($pseudo,$des){
-    ?>
-<!DOCTYPE html>
+        <form enctype="multipart/form-data" action="traitement_modifier_profil.php" method="post" class="formulaire">
+             <input name="photo" type="file" />
+                    
+                    <input type="text" name="pseudo" class="input"  placeholder="<?php echo $_SESSION['pseudo'] ?>"> 
+                    <input type="email" name="email" class="input" placeholder="<?php echo $_SESSION['email'] ?>">
+                    <input type="password" name="mot_de_passe" class="input" placeholder="Nouveau mot de passe">
+                
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-    content="width=device-width,initial-sale=1.0">
-    <title>Chat</title>
-    <link rel="stylesheet" href="../CSS/style_messagerie.css">
+                    <select name="espece" class="deroul" >
+                        <option value=0 >Espèce</option>
+                        <option value=Humain>Humain</option>
+                        <option value=Vulcan >Vulcain</option>
+                        <option value=Andorian >Andorian</option>
+                        <option value=Tellarite >Tellarite</option>
+                    
+                    </select> 
 
-</head>
-<body>
-<div class= "chat-global">
-
-     <div class="nav-top">
-
-        <div class="location">
-            <img src="../Images/Messagerie/Chevron_left.svg.png" > 
-            <a href="accueil.php" title="Accueil"class="p">Black</a>
-        </div>
-
-        <div class="nom_inter">
-            <p>Ana</p> <!-- Nom interlocuteur -->
-        </div>
-    </div>
-    <?php    montrer_message($pseudo, $des);?>
-
-    </div>
-    <div class="chat-form">
-
-            <form class="barra">
-                    <div class="group-inp">
-                        <form action="traitement_messagerie.php" method="post">
-                        <input type="text" placeholder="Ecris un message" class= "text" name="mess" minlength="1" maxlength="1000">
-                        <input type="submit" class="submit-msg-btn" alt="../PHP/traitement_messagerie.php">
-                        </button>
-                        </form>
-                    </div>
+                    <select name="langue" class="deroul" >
+                        <option value=0 >Langue</option>
+                        <option value=English >English</option>
+                        <option value=Español >Español</option>
+                        <option value=Français >Français</option>
+                    
+                    </select> 
+                
+                    <input type="submit" class="bouton" value="Modifier"> 
+                    <a href="../PHP/test.php" class="bouton">Test Section</a> 
             </form>
 
-    </div>
-</div>
+            
+        </div>   
+        
+    </main>  
 </body>
 <?php
 }
+?>
 

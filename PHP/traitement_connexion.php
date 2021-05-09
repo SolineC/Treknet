@@ -22,6 +22,8 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
                 if( password_verify($mdp,$resultat['mot_de_passe'])){ /*a suivre*/
                     
                     $_SESSION['pseudo'] = $pseudo;
+                    grade();
+
 
                     $req = "SELECT * FROM Profil JOIN grade ON profil.num_grade = grade.num_grade WHERE profil.pseudo = '".$pseudo."'";
                     $rep = requete($req,$connexion);
@@ -40,6 +42,11 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
                     $_SESSION['espece']=$rep['espece'];
                     $_SESSION['date']=$rep['date_inscription'];
                     $_SESSION['num_grade']=$rep['num_grade'];
+                    $_SESSION['email']=$rep['email'];
+                    $_SESSION['photo']=$rep['photo_de_profil'];
+
+
+
 
                 
                     header("Location: accueil.php");

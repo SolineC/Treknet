@@ -231,4 +231,75 @@ transition: all 0.3s ease;
     color: rgb(33,33,33);
 }
 
+.test_section{
+    margin-top: 60px;
+    margin-left: 5%;
+}
+.test_section p{
+    margin: 10px;
+    font-size: 17px;
+    align-items: center;
+    width: 50%;
+    padding: 10px;
+    line-height: 20px;
+    border-radius: 20px;
+    background-color: rgb(33,33,33);
+    color: seashell;
+}
+.test_question{
+    margin: 10px;
+    font-size: 14px;
+    align-items: center;
+    width: 50%;
+    padding-left: 40px;
+    line-height: 20px;
+    color: rgb(0, 0, 0);
+}
 
+.test_erreur p{
+    color: white;
+    border-radius: 10px;
+    margin-left: 750px;
+    background-color:transparent;
+    border: white;
+    margin-top: -200px;
+}
+
+.modifier{
+    margin-top: 80px;
+    margin-left: 200px;
+    width: 200px;
+}
+.modifier select{
+    background-color: rgb(221, 221, 221);
+    border: 0;
+    border: 2px solid rgb(33,33,33);
+    margin: 10px auto;
+    padding: 14px 10px;
+    outline: none;
+    border-radius: 24px;
+    text-align: center;
+    width: 70%;
+    transition: 0.25s;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    cursor: pointer;
+}
+
+.modifier .input{
+    background-color: transparent;
+    border: 0;
+    border: 2px solid rgb(33,33,33);
+    margin: 10px auto;
+    padding: 14px 10px;
+    outline: none;
+    border-radius: 24px;
+    text-align: center;
+    width: 70%;
+    transition: 0.25s;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    
+}

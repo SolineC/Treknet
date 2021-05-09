@@ -34,14 +34,13 @@ img{
     display: flex;
     align-items: center;
 }
+.location a{
+    color: white;
+    font-size: 20px; 
+    margin-left: 20px;
+    cursor: pointer;
+}
 
-.location p{
-    font: size 20px; 
-    margin-left: 5px;
-}
-.location img{
-    margin-left: 10px;
-}
 
 
 .nom_inter{
@@ -129,6 +128,18 @@ img{
     font-family: calibria;
 }
 
+.submit-msg-btn{
+    background: white;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    width: 10x;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
 
 
 .recherche{
@@ -157,6 +168,10 @@ img{
 
 .list_conver{
     margin-top: 70px;
+    position: relative;
+    top: -63px;
+    left: 130px;
+    font-size: 28px;
 }
 
 

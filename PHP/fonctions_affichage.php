@@ -4,7 +4,6 @@ require_once("fonctions_bd.php");
 
 
 
-
 function afficher_en_tete(){
 
     switch($_SESSION["couleur"]){
@@ -24,6 +23,7 @@ function afficher_en_tete(){
     <link rel="stylesheet" href="../fontawesome-free-5.15.2-web/fontawesome-free-5.15.2-web/css/all.css">
     <link rel="stylesheet" href="../CSS/style_recherche.css">
     <link rel="stylesheet" href="../CSS/style_general.css" >
+    <link rel="stylesheet" href="../CSS/style_messagerie.css">
 
     
 </head>
@@ -278,6 +278,76 @@ function afficher_inscription($message){
 }
 
 
+function afficher_test($message){
+    afficher_erreurs($message);
+
+?>
+
+    <div class="blocInscription">
+        <form action="traitement_test.php" method="post" class="formulaire">
+            
+    <p>Si l'un des moteur du vaisseau tombe en panne, mais vous ne savez pas comment le reparer. Que faites vous?</p>
+    
+            <input type="radio" name="q1" value="5"> 
+            <label for="q1">Vous demandez de l'aide à quelqu'un d'autre</label> <br>
+             <input type="radio" name="q1" value="1"> 
+             <label for="q1">Vous lisez le manuel d'instructions de l'appareil</label> <br>
+             <input type="radio" name="q1" value="10">
+             <label for="q1">Vous essayez de le réparer avec vos connaissances, pas de chance si ça explose</label> <br>
+    <p>Qu'est ce que vous offrez à l'équipage?</p>
+             <input type="radio" name="q2" value="10">
+             <label for="q2">Vos habilités techniques</label><br>   
+             <input type="radio" name="q2" value="5"> 
+             <label for="q2">Votre stratégie </label><br>   
+             <input type="radio" name="q2" value="1">  
+             <label for="q2">Votre intelligence</label><br>   
+
+
+     <p>Quel est votre plus grand défaut?</p>
+
+             <input type="radio" name="q3" value="1">
+             <label for="q3"> Vous oubliez souvent de tenir compte des sentiments des autres </label> <br>
+             <input type="radio" name="q3" value="10">  
+             <label for="q3">Vous avez tendance à avoir des accidents</label> <br>
+             <input type="radio" name="q3" value="5">  
+             <label for="">Vous êtes litteralment parfait</label> <br>
+
+    <p>À l'Academie Spacial vous aviez une certaine reputation... Vous étiez </p>
+
+             <input type="radio" name="q4" value="1"> 
+             <label for="q4"> L'élève le plus intelligent</label> <br>
+             <input type="radio" name="q4" value="5">
+             <label for="q4"> Le délégué</label> <br>
+             <input type="radio" name="q4" value="10">
+             <label for="q4"> Le bricoleur</label> <br>
+
+    <p>Que faissiez lorsque vous aviez des mauvaises notes?</p>
+             <input type="radio" name="q5" value="10">
+             <label for="q5">Vous étudiez plus</label> <br>
+             <input type="radio" name="q5" value="5"> 
+             <label for="q5">Vous parliez avec le prof </label> <br>
+             <input type="radio" name="q5" value="1">  
+             <label for="q5">Vous aviez pas des mauvaises notes</label> <br>
+
+   <p>Vous aterrisez sur une planete où les habitants peuvent dire que la verité ou bien que des mensonges. <br>
+   Vous arriviez à un refuge où ils habitent deux hommes. Le premier dit que aucun des deux peut dire la verité. <br>
+    Puis le deuxieme dit qu'ils ne veulent pas vous faire du mal.
+
+   </p>
+             <input type="radio" name="q6" value="5"> 
+             <label for="q6">Le premier dit vrai, alors le deuxieme dit faux donc ils veulent vous faire du mal </label> <br>
+             <input type="radio" name="q6" value="1"> 
+             <label for="q6">Le premier dit faux, alors le deuxime dit vrai donc ils ne veulent pas vous faire du mal </label> <br>
+             <input type="radio" name="q6" value="10"> 
+             <label for="q6"> Vous tirez sur les deux, dans le cas où</label> <br>
+<br>
+<br>
+        
+            <input type="submit" class="bouton" value="Enregistrer">  
+    </form>
+</div> 
+<?php
+}
 
 function afficher_accueil(){
     afficher_en_tete();
@@ -351,7 +421,7 @@ function afficher_list_conver($pseudo, $chemin,$num,$couleur){
    <?php echo'<div style="background-color:'.$color.';" class="boite-profil">';?>
    <div class="list_conver">
         <img class="pp" src=<?php echo $chemin ?> alt="photo de profil">  <!--petites boites lors de recherche de membres -->
-        <form action="traitement_messagerie.php" class="pseudo" method="post">
+        <form action="conver.php" class="pseudo" method="post">
         <?php echo '<input type="submit" class="pseudo" name= "pseudo" value='.$pseudo.'>'; ?>
         
 
@@ -366,20 +436,7 @@ function afficher_list_conver($pseudo, $chemin,$num,$couleur){
 
 function afficher_message(){
     ?>
-    <!DOCTYPE html>
-
-<html>
-<head>
-    <meta charset="utf-8">
     
-    <link rel="stylesheet" href="../CSS/index.css">
-    <link rel="stylesheet" href="../CSS/style.css">
-    <title>Where no man has gone before</title>
-
-</head>
-
-<body>
-    <main>
         <div class="logo">
             <h1>treknet</h1> 
             <p>le réseau des trekkies par exellence</p>
@@ -396,33 +453,25 @@ function afficher_message(){
                 <a href="../PHP/inscription.php" class="bouton">Inscription</a>
             </form>
         </div>    
-    </main>  
-</body>
-</html>
+   
 <?php
 }
 
 function afficher_conversation($pseudo,$des){
     ?>
-<!DOCTYPE html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-    content="width=device-width,initial-sale=1.0">
-    <link rel="stylesheet" href="../CSS/style_messagerie.css">
 
-    <title>Chat</title>
-
-</head>
-<body>
+    
 <div class= "chat-global">
 
      <div class="nav-top">
 
         <div class="location">
-            <img src="../Images/Messagerie/Chevron_left.svg.png" > 
-            <a href="liste_conver.php" title="Accueil"class="p">Black</a>
+            <!-- <img src="../Images/Messagerie/Chevron_left.svg.png" >  -->
+            <a href="liste_conver.php" ><i class="fas fa-chevron-left"></i></a>
+            
+
+
         </div>
 
         <div class="nom_inter">
@@ -431,14 +480,13 @@ function afficher_conversation($pseudo,$des){
     </div>
     <?php   // montrer_message($pseudo, $des);?>
 
-    </div>
     <div class="chat-form">
 
             <form class="barra">
                     <div class="group-inp">
-                        <form action="traitement_messagerie.php" method="post">
+                        <form action="../PHP/traitement_conver.php" method="POST">
                         <input type="text" placeholder="Ecris un message" class= "text" name="mess" minlength="1" maxlength="1000">
-                        <input type="submit" class="submit-msg-btn" alt="../PHP/traitement_messagerie.php">
+                        <input type="submit" class="submit-msg-btn">
                         </button>
                         </form>
                     </div>
@@ -446,12 +494,13 @@ function afficher_conversation($pseudo,$des){
 
     </div>
 </div>
-</body>
+</div>
+
+
 <?php
 }
 function afficher_modifier($message){
-    $pseudo=$_SESSION['pseudo'];
-    $email=$_SESSION['email']
+  
     ?>
     <!DOCTYPE html>
 
@@ -475,10 +524,12 @@ function afficher_modifier($message){
             afficher_erreurs($message);
         ?>
         <div class="blocInscription">
-        <form action="traitement_modifier_profil.php" method="post" class="formulaire">
+
+        <form enctype="multipart/form-data" action="traitement_modifier_profil.php" method="post" class="formulaire">
+             <input name="photo" type="file" />
                     
-                    <input type="text" name="pseudo" class="input"  placeholder="<?php echo $pseudo ?>">
-                    <input type="email" name="email" class="input" placeholder="<?php echo $email?>">
+                    <input type="text" name="pseudo" class="input"  placeholder="<?php echo $_SESSION['pseudo'] ?>">
+                    <input type="email" name="email" class="input" placeholder="<?php echo $_SESSION['email'] ?>">
                     <input type="password" name="mot_de_passe" class="input" placeholder="Nouveau mot de passe">
                 
 
@@ -499,8 +550,11 @@ function afficher_modifier($message){
                     
                     </select> 
                 
-                    <input type="submit" class="bouton" value="Modifier">  
+                    <input type="submit" class="bouton" value="Modifier"> 
+                    <a href="../PHP/test.php" class="bouton">Test Section</a> 
             </form>
+
+            
         </div>   
         
     </main>  

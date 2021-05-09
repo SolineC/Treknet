@@ -39,8 +39,8 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
                     $_SESSION['grade'] = $grade;
                     $_SESSION['num_profil'] = $rep['num_profil'];
                     $_SESSION['espece']=$rep['espece'];
-                    $_SESSION['date']=$rep['date_inscription'];+
-                
+                    $_SESSION['date']=$rep['date_inscription'];
+                    grade();
                     header("Location: accueil.php");
                 }
                 else{

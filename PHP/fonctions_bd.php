@@ -106,24 +106,7 @@ function creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece,$langue){
 }
 
 
-function creer_message($pseudo, $destinataire,$mess){
-    $req= "INSERT INTO message (expediteur,destinataire,mess,date_message)    
-    VALUES ('$pseudo','$destinataire','$mess', );";
-    requete1($req,connexion('treknet'));
-}
 
-function montrer_message($pseudo, $destinataire){
-    $req=" SELECT * FROM message WHERE expediteur='$pseudo' OR 
-    destinataire='$destinataire' OR expediteur='$destinataire' OR destinataire = '$pseudo' ORDER BY date_message ASC;";
-    $res = requete1($req, connexion('treknet'));
-    while ($row=msqli_fetch_assoc($res));
-        if (strcmp($row['expediteur'],$pseudo) && strcmp($row['destinataire'],$destinataire)){
-            afficher_mess_droite($row['message']);
-        } else if (strcmp($row['destinataire'],$pseudo) && strcmp($row['expediteur'],$destinataire)){
-            afficher_mess_gauche($row['message']);
-        }
-
-}
 
 function modifierProfilpwd($pseudo,$email,$mot_de_passe,$espece,$langue){   
 
@@ -131,7 +114,11 @@ function modifierProfilpwd($pseudo,$email,$mot_de_passe,$espece,$langue){
     $num_profil=$_SESSION['num_profil'];
     $req= "UPDATE profil SET pseudo='$pseudo', email='$email', mot_de_passe= '$mot_de_passe', langue='$langue', espece ='$espece' WHERE num_profil='$num_profil';";
     requete1($req,$connexion);
-
+    $_SESSION['pseudo']=$pseudo;
+    $_SESSION['email']= $email;
+    $_SESSION['couleur'] = $couleur;
+    $_SESSION['langue'] = $langue;
+    $_SESSION['espece']=$espece;
     
     header("Location: index.php");
 }
@@ -142,7 +129,70 @@ $connexion=connexion('treknet');
     $num_profil=$_SESSION['num_profil'];
     $req= "UPDATE profil SET pseudo='$pseudo', email ='$email', langue ='$langue', espece='$espece' WHERE num_profil='$num_profil';";
     requete1($req,$connexion);
-    header("Location: index.php");
+    $_SESSION['pseudo']=$pseudo;
+    $_SESSION['email']= $email;
+    $_SESSION['couleur'] = $couleur;
+    $_SESSION['langue'] = $langue;
+    $_SESSION['espece']=$espece;
+    header("Location: modifier_profil.php");
 }
+
+function modifierPhoto($photo){
+    $connexion=connexion('treknet');
+        $num_profil=$_SESSION['num_profil'];
+        $req= "UPDATE profil SET photo_de_profil ='$photo' WHERE num_profil='$num_profil';";
+        requete1($req,$connexion);
+        header("Location: modifier_profil.php");
+}
+
+function modifierSection($num_section){
+        $connexion=connexion('treknet');
+    $num_profil=$_SESSION['num_profil'];
+    $req= "UPDATE profil SET num_section='$num_section' WHERE num_profil='$num_profil';";
+    $_SESSION['couleur']= $num_section;    
+    requete1($req,$connexion);
+    header("Location: accueil.php");
+}
+function grade(){
+    $pseudo = $_SESSION['pseudo'];
+    $i=0;
+    $grade=0;
+    $fecha= date("Y-m-d");
+    $condi= array(1,7,15,30,60,80,120,240,300,365);
+    $diff=date_diff(date_create($_SESSION['date']),date_create($fecha));
+    $days = $diff->format("%a");
+    while($i<count($condi)){
+        if ($days>$condi[$i]){
+            $grade=$i+1;
+        }
+            $i=$i+1;
+     }
+     $req= "UPDATE profil SET num_grade='$grade' WHERE pseudo='$pseudo';";
+    requete1($req,connexion('Treknet'));    
+     header("Location: accueil.php");
+     
+}
+
+function creer_message($pseudo, $destinataire,$mess){
+    $mess=preTraiterChampSQL($_POST['mess'],$connexion);
+    $req= "INSERT INTO message (expediteur,destinataire,mess)    
+    VALUES ('$pseudo','$destinataire','$mess' );";
+    requete1($req,connexion('treknet'));
+    
+}
+
+function montrer_message($pseudo, $destinataire){
+    $req=" SELECT * FROM message WHERE expediteur='$pseudo' OR 
+    destinataire='$destinataire' OR expediteur='$destinataire' OR destinataire = '$pseudo' ORDER BY date_message ASC;";
+    $res = requete1($req, connexion('treknet'));
+    while ($row=msqli_fetch_assoc($res));
+        if (strcmp($row['expediteur'],$pseudo) && strcmp($row['destinataire'],$destinataire)){
+            afficher_mess_droite($row['mess']);
+        } else if (strcmp($row['destinataire'],$pseudo) && strcmp($row['expediteur'],$destinataire)){
+            afficher_mess_gauche($row['mess']);
+        }
+
+}
+
 
 ?>

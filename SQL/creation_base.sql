@@ -91,17 +91,17 @@ INSERT INTO  Section (num_section, nom_section, couleur)
              (2,'Scientifique','Bleu'),
              (3,'Navigation','Rouge');
 
-INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (2,1)
-INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (3,1)
-INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (4,1)
-INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (1,2)
-INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (3,2)
-INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (4,2)
-INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (1,3)
-INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (2,3)
-INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (4,3)
-INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (1,4)
-INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (2,4)
-INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (3,4)
+INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (2,1);
+INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (3,1);
+INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (4,1);
+INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (1,2);
+INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (3,2);
+INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (4,2);
+INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (1,3);
+INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (2,3);
+INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (4,3);
+INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (1,4);
+INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (2,4);
+INSERT INTO `abonnement`(`num_profil_suivi`, `num_profil_suivant`) VALUES (3,4);
 
 

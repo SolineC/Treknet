@@ -38,6 +38,19 @@ $traitement_connexion_erreur_ok= ('T'as bien été enregistré','Cuenta correcta
 
 $publication= ('Choisir cette photo,'Escoger esta imagen', 'Choose this picture');
 
+$afficher_modifier_pseudo= ('Pseudo','Apodo','Nickname');
+$afficher_modifier_mail= ('Adresse Mail','Correo Electrónico','Email Adresse');
+$afficher_modifier_pwd= ('Nouveau mot de passe','Contraseña nueva','New password');
+$afficher_modifier_section= ('Section','Sección','Division');
+$afficher_modifier_section_op= ('Opérations','Operaciones','Oparations');
+$afficher_modifier_section_sc= ('Scientifiques','Cientificos','Sciences');
+$afficher_modifier_section_na= ('Navigation','Navegación','Command');
+$afficher_modifier_espece= ('Espece','Especie','Specie');
+$afficher_modifier_espece_h= ('Humaine','Humana','Human');
+$afficher_modifier_espece_v= ('Vulcaine','Vulcana','Vulcan');
+$afficher_modifier_espece_a= ('Andoriane','Andoriana','Andorian');
+$afficher_modifier_espece_t= ('Tellarite','Tellarita','Tellarite');
+$afficher_modifier_langue= ('Langue','Idioma','Laguage');
 
 
 

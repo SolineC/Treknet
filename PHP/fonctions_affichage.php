@@ -141,13 +141,46 @@ function afficher_profil($pseudo, $chemin,$oui,$num,$couleur){
     <?php
 }
 
+
+function afficher_conver($pseudo, $chemin,$num,$couleur){
+    switch($couleur){
+        case 1 : $color = "#EABD02"; break;
+        case 2 : $color = "#4399D4"; break;
+        case 3 : $color = "#E63627"; break;
+    }
+    ?>
+   <?php echo'<div style="background-color:'.$color.';" class="boite-profil">';?>
+        <img class="pp" src=<?php echo $chemin ?> alt="photo de profil">  <!--petites boites lors de recherche de membres -->
+        <form action="conver.php" method="post">
+        <?php echo '<input type="submit" class="pseudo" name="pseudo" value='.$pseudo.'>'; ?>
+        
+        <input type="hidden" name="num_profil" value=<?php echo $num;?>>
+        </form><?php
+          
+        
+
+        ?>
+        
+    </div>
+    
+
+    <?php
+}
+
 function afficher_page_profil($num,$tab_user){
     afficher_en_tete();
+    echo '<div class="test">';
+    ?>
+     <form action="traitement_abonnement.php" method="post">
+        <?php echo '<input type="hidden" name="num_suivi" value="'.$num.'">';?>
+        <?php echo '<input type="hidden" name="page" value="'.getAdresse().'">';?>
+        <input type="submit" value="+" class="abo2">
+  </form>
+  <?php
+    echo '</div>';
     afficher_utilisateur($tab_user);
 
-    echo '<div class="test">';
-    afficher_abonnement(0,$num);
-    echo '</div>';
+    
 
     $connexion=connexion('treknet');
     
@@ -181,7 +214,7 @@ function afficher_page_profil($num,$tab_user){
         $date=$ligne['date_publication'];
         $num_pub=$ligne['num_publication'];
 
-        afficher_publication($image,$texte,$pp,$pseudo,$couleur,$date,1,$num_pub);
+        afficher_publication($image,$texte,$pp,$pseudo,$couleur,$date,0,1,$num_pub);
         
     
     }
@@ -212,7 +245,7 @@ function afficher_page_profil($num,$tab_user){
         $couleur=$ligne['num_section'];
 
       
-        afficher_profil($pseudo,$pp,1,-1,$couleur);
+        afficher_profil($pseudo,$pp,1,$ligne["num_profil"],$couleur);
         
     
     }
@@ -429,7 +462,7 @@ function afficher_accueil(){
     afficher_cote_gauche();
 
     #afficher_utilisateur();
-   /* echo "<br>";
+    echo "<br>";
 
     echo "<br>";
                                             #pour le debuggage
@@ -438,7 +471,7 @@ function afficher_accueil(){
     echo "<br>";
 
     
-    echo '<a href="test.php">Test</a>';*/
+    echo '<a href="essai.php">Test</a>';
     afficher_publications(0);
     afficher_cote_droit();
     afficher_pied_de_page();
@@ -450,7 +483,7 @@ function afficher_publication($image, $texte, $pp, $pseudo,$couleur,$date,$sipro
         case 2 : $color = "#4399D4"; break;
         case 3 : $color = "#E63627"; break;
     }
-    if($_SESSION["num_grade"]>7){
+    if($_SESSION["num_grade"]>10){
         $siprofil=1;
     }
     
@@ -656,15 +689,18 @@ function afficher_list_conver($pseudo, $chemin,$num,$couleur){
    <?php echo'<div style="background-color:'.$color.';" class="boite-profil">';?>
    <div class="list_conver">
         <img class="pp" src=<?php echo $chemin ?> alt="photo de profil">  <!--petites boites lors de recherche de membres -->
+
+
         <form action="conver.php" class="pseudo" method="post">
         <?php echo '<input type="submit" class="pseudo" name= "pseudo" value='.$pseudo.'>'; ?>
-        
-
         </form>
         
     </div>
     </div>
     <?php
+
+
+
 }
 
 
@@ -696,56 +732,50 @@ function afficher_conversation($pseudo,$des){
     ?>
 
 
-    
+
 <div class= "chat-global">
 
      <div class="nav-top">
 
         <div class="location">
-            <!-- <img src="../Images/Messagerie/Chevron_left.svg.png" >  -->
             <a href="liste_conver.php" ><i class="fas fa-chevron-left"></i></a>
-            
-
-
         </div>
-
         <div class="nom_inter">
             <p> <?php echo $des?></p> <!-- Nom interlocuteur -->
         </div>
     </div>
-    <?php   // montrer_message($pseudo, $des);?>
-
+    <div class="pop">
+    <?php
+    montrer_message($pseudo, $des);
+    ?>
+    </div>
     <div class="chat-form">
-
-            <form class="barra">
-                    <div class="group-inp">
-                        <form action="../PHP/traitement_conver.php" method="POST">
-                        <input type="text" placeholder="Ecris un message" class= "text" name="mess" minlength="1" maxlength="1000">
-                        <input type="submit" class="submit-msg-btn">
-                        </button>
-                        </form>
-                    </div>
-            </form>
+        <div class="barra">
+                <div class="group-inp">
+                    <form action="traitement_conver.php" method="POST">
+                    <input type="text" placeholder="Ecris un message" class= "text" name="mess" >
+                    <input type="submit" class="submit-msg-btn" name="valider">
+                    </form>
+                </div>
+        </div>
 
     </div>
 </div>
-</div>
+
 
 
 <?php
 }
-function afficher_message_droite($message){
+function afficher_mess_droite($message){
     ?>
-    <div class="conversation">
     <div class="talk r">
         <p><?php echo $message ?></p>
     </div>
     <?php
 }
 
-function afficher_message_gauche($message){
+function afficher_mess_gauche($message){
     ?>
-    <div class="conversation">
     <div class="talk l">
         <p><?php echo $message ?></p>
     </div>

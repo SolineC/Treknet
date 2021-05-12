@@ -14,9 +14,11 @@ $req = "SELECT pseudo, photo_de_profil,num_profil,num_section FROM `Profil` WHER
 $res = requete1($req, $connexion);
 
 afficher_en_tete();
+echo '<div class="blank"></div>';
 while ($ligne=mysqli_fetch_assoc($res)){
-afficher_list_conver($ligne['pseudo'], $ligne['photo_de_profil'],$ligne['num_profil'],$ligne['num_section']);
-echo "<br>";
+afficher_conver($ligne['pseudo'], $ligne['photo_de_profil'],$ligne['num_profil'],$ligne['num_section']);
+echo '<br>';
+
 }
 
 

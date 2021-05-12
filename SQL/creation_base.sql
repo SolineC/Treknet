@@ -2,9 +2,6 @@
 DROP DATABASE IF EXISTS treknet;
 CREATE DATABASE treknet;
 
-create user 'trekuser'@'localhost' identified by '5dBh3t*57nNhHDJv';
-grant all privileges on treknet.* to 'trekuser'@'localhost';
-
 USE treknet;
 
 CREATE TABLE IF NOT EXISTS Profil(
@@ -59,6 +56,8 @@ CREATE TABLE Message(
     num_expediteur SMALLINT,
     num_destinataire SMALLINT
 );
+
+ALTER TABLE `message` ADD `mess` VARCHAR(1000) NOT NULL AFTER `num_destinataire`; 
 
 
 

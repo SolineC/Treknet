@@ -163,25 +163,22 @@ function grade(){
 }
 
 function creer_message($pseudo, $destinataire,$mess){
-    $mess=preTraiterChampSQL($_POST['mess'],$connexion);
-    $req= "INSERT INTO message (expediteur,destinataire,mess)    
-    VALUES ('$pseudo','$destinataire','$mess' );";
+    $req= "INSERT INTO message (expediteur,destinataire,mess) VALUES ('$pseudo','$destinataire','$mess' );";
     requete1($req,connexion('treknet'));
-    
+    header("Location: conver.php");
 }
 
 function montrer_message($pseudo, $destinataire){
-    $req=" SELECT * FROM message WHERE expediteur='$pseudo' OR 
-    destinataire='$destinataire' OR expediteur='$destinataire' OR destinataire = '$pseudo' ORDER BY date_message ASC;";
-    $res = requete1($req, connexion('treknet'));
-    while ($row=msqli_fetch_assoc($res));
-        if (strcmp($row['expediteur'],$pseudo) && strcmp($row['destinataire'],$destinataire)){
+    $req1=" SELECT * FROM message WHERE (expediteur='$pseudo' AND  destinataire='$destinataire') OR (expediteur='$destinataire' AND  destinataire='$pseudo') ORDER BY date_message DESC;";
+
+    $res = requete1($req1, connexion('treknet'));
+
+    while($row=mysqli_fetch_array($res)){
+    if (strcmp($row['expediteur'],$pseudo) && strcmp($row['destinataire'],$destinataire)){
             afficher_mess_droite($row['mess']);
         } else if (strcmp($row['destinataire'],$pseudo) && strcmp($row['expediteur'],$destinataire)){
             afficher_mess_gauche($row['mess']);
         }
-
+    }
 }
-
-
 ?>

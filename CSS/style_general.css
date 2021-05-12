@@ -267,8 +267,9 @@ transition: all 0.3s ease;
 
 .modifier{
     margin-top: 80px;
-    margin-left: 200px;
+    margin-left: 500px;
     width: 200px;
+
 }
 .modifier select{
     background-color: rgb(221, 221, 221);

@@ -341,7 +341,7 @@ function afficher_connexion($message){
             afficher_erreurs($message);
         ?>
         <div class="connexion">
-            <form action="traitement_connexion.php" method="POST">
+            <form action="PHP/traitement_connexion.php" method="POST">
                 <input type="text" class="input"  name="pseudo" required="required" placeholder="Pseudo">
                 <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
                 <input type="submit" class="bouton" value="CONNEXION" >
@@ -782,9 +782,13 @@ function afficher_mess_gauche($message){
     <?php
 }
 function afficher_modifier($message){ 
-            afficher_erreurs($message);
+   
+?>        <div class="modifier">
+
+            <?php
+                        afficher_erreurs($message);
+
         ?>
-        <div class="modifier">
 
         <form enctype="multipart/form-data" action="traitement_modifier_profil.php" method="post" class="formulaire">
              <input name="photo" type="file" />
@@ -818,8 +822,7 @@ function afficher_modifier($message){
             
         </div>   
         
-    </main>  
-</body>
+ 
 <?php
 }
 ?>

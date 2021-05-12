@@ -91,7 +91,7 @@ function creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece,$langue){
     $req3 = "INSERT INTO abonnement (num_profil_suivi, num_profil_suivant) VALUES ($num,$num)";
     requete1($req3,$connexion);
     
-    header("Location: acceuil.php");
+    header("Location: ../index.php");
 }
 
 
@@ -105,7 +105,6 @@ function modifierProfilpwd($pseudo,$email,$mot_de_passe,$espece,$langue){
     requete1($req,$connexion);
     $_SESSION['pseudo']=$pseudo;
     $_SESSION['email']= $email;
-    $_SESSION['couleur'] = $couleur;
     $_SESSION['langue'] = $langue;
     $_SESSION['espece']=$espece;
     
@@ -120,7 +119,6 @@ $connexion=connexion('treknet');
     requete1($req,$connexion);
     $_SESSION['pseudo']=$pseudo;
     $_SESSION['email']= $email;
-    $_SESSION['couleur'] = $couleur;
     $_SESSION['langue'] = $langue;
     $_SESSION['espece']=$espece;
     header("Location: modifier_profil.php");

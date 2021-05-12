@@ -304,3 +304,12 @@ transition: all 0.3s ease;
     transform: translate(-50%);
     
 }
+
+.modifier .test_erreur p{
+    color: white;
+    border-radius: 10px;
+    margin-left: 750px;
+    background-color:transparent;
+    border: white;
+    margin-top: -200px;
+}

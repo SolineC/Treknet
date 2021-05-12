@@ -782,13 +782,17 @@ function afficher_mess_gauche($message){
     <?php
 }
 function afficher_modifier($message){ 
-   
-?>        <div class="modifier">
+?>    
 
-            <?php
-                        afficher_erreurs($message);
+        <div class="modifier">
+        <div class="test_erreur">
 
-        ?>
+<?php 
+    
+        afficher_erreurs($message);
+ 
+ ?>
+        </div>
 
         <form enctype="multipart/form-data" action="traitement_modifier_profil.php" method="post" class="formulaire">
              <input name="photo" type="file" />

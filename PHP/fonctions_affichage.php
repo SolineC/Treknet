@@ -129,9 +129,7 @@ function afficher_profil($pseudo, $chemin,$oui,$num,$couleur){
         <?php echo '<input type="submit" class="pseudo" value='.$pseudo.'>'; ?>
         
         <input type="hidden" name="num_profil" value=<?php echo $num;?>>
-        <audio autoplay>
-                <source src="..\Musique\AUD-20210513-WA0108.mp3" type="audio/mpeg" >
-        </audio>
+        
         </form><?php
         afficher_abonnement($oui,$num);       
         
@@ -290,7 +288,7 @@ function afficher_utilisateur($tab_user){
         </div>
         <div class="face back">
             <div>
-            <p>  <?php echo $_SESSION['description'] ?> </p>
+            <p>  <?php echo $tab_user['description'] ?> </p>
             </div>
         </div>
         
@@ -464,6 +462,12 @@ function afficher_cote_droit(){
 }
 
 function afficher_accueil(){
+    ?>
+    <audio autoplay loop>
+        <source src="..\Musique\AUD-20210514-WA0113.mp3" type="audio/mpeg" >
+    </audio>
+        <?php    
+
     afficher_en_tete();
     afficher_cote_gauche();
 

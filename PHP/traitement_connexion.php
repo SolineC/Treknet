@@ -33,7 +33,11 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
                     $photo = $rep['photo_de_profil'];
                     $grade = $rep['nom_grade'];
                     
-
+                    if ($rep['description']==null){
+                        $_SESSION['description']="Modifier votre profil pour ajouter une description...";
+                    } else {
+                        $_SESSION['description']= $rep['description'];
+                    }
                     $_SESSION['couleur'] = $couleur;
                     $_SESSION['langue'] = $langue;
                     $_SESSION['photo'] = $photo;

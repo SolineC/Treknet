@@ -4,7 +4,7 @@ CREATE DATABASE treknet;
 
 USE treknet;
 
-CREATE TABLE IF NOT EXISTS Profil(
+CREATE TABLE Profil(
     num_profil SMALLINT PRIMARY KEY,
     pseudo VARCHAR(30),
     photo_de_profil VARCHAR(100),
@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS Profil(
     num_grade TINYINT,
     date_inscription DATE,
     langue VARCHAR(15),
-    espece VARCHAR(20)
+    espece VARCHAR(20),
+    description VARCHAR(1000)
 );
 
 ALTER TABLE `profil` CHANGE `date_inscription` `date_inscription` DATE NULL DEFAULT CURRENT_TIMESTAMP; 
@@ -53,11 +54,12 @@ CREATE TABLE Langue(
 );
 
 CREATE TABLE Message(
-    num_expediteur SMALLINT,
-    num_destinataire SMALLINT
+    expediteur VARCHAR(30),
+    destinataire VARCHAR(30),
+    mess VARCHAR(25),
+    date_mess TIMESTAMP
 );
 
-ALTER TABLE `message` ADD `mess` VARCHAR(1000) NOT NULL AFTER `num_destinataire`; 
 
 
 

@@ -10,13 +10,14 @@ $connexion = connexion("treknet");
 if ($_SERVER['REQUEST_METHOD']== "POST"){
     $pseudo= preTraiterChampSQL($_POST['pseudo'],$connexion);
     $email= preTraiterChampSQL($_POST['email'],$connexion);
+    $description=preTraiterChampSQL($_POST['description'],$connexion);
     $espece= $_POST['espece']; //pas besoin de preTraiter
     $langue= $_POST['langue'];
     
     
 
     if (compteExiste($connexion,$pseudo,$email)){
-        afficher_modifier( "Utilisateur avec le même pseudo ou email");
+        afficher_modifier("Utilisateur avec le même pseudo ou email");
         exit();
     }
 
@@ -27,6 +28,10 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
         $email=$_SESSION['email'];
     }
     
+    if (empty($description)){
+        $description=$_SESSION['description'];
+    }
+
     if (($espece ==0)){
         $espece=$_SESSION['espece'];
     }
@@ -46,11 +51,11 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
 
     
     if (empty($_POST['mot_de_passe'])){
-        modifierProfil($pseudo,$email,$espece,$langue);    
+        modifierProfil($pseudo,$email,$description,$espece,$langue);    
         exit();
     } else {
         $mot_de_passe= preTraiterChampSQL(password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT),$connexion);
-        modifierProfilpwd($pseudo,$email,$mot_de_passe,$espece,$langue);    
+        modifierProfilpwd($pseudo,$email,$mot_de_passe,$description,$espece,$langue);    
         exit();
     }
 

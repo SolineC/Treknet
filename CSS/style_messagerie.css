@@ -74,7 +74,10 @@ img{
     padding: 10px;
     line-height: 20px;
     border-radius: 20px;
-    text-align: center;    }
+    text-align: center;
+    place-items: center;
+
+}
 
 .l {
     margin-left: auto;

@@ -71,11 +71,13 @@ img{
     font-size: 17px;
     align-items: center;
     width: 50%;
+    height:auto;
     padding: 10px;
     line-height: 20px;
     border-radius: 20px;
     text-align: center;
     place-items: center;
+    font-family: calibria;
 
 }
 
@@ -83,14 +85,12 @@ img{
     margin-left: auto;
     color: rgb(255, 255, 255);
     background-color: rgb(61, 152, 236); /*variable couleur section*/
-    font-family: calibria;
 
 }
 .r {
     margin-right: auto;
     color: rgb(0, 0, 0);
     background: rgb(190, 190, 190);
-    font-family: calibria;
 
 }
 
@@ -123,7 +123,7 @@ height:74%;
     height: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: auto;
+    align-items: center;
 }
 
 .group-inp .text{

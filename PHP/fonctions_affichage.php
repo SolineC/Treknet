@@ -51,6 +51,7 @@ function afficher_en_tete(){
             <nav>
                 <ul>
                     <li><a href="accueil.php" title="Accueil"><i class="fas fa-home"></i></a></li>
+                    <li><a href="profil.php" title="Voir le profil"> <i class="fas fa-user"></i> </a></li>
                     <li><a href ="publication.php" title="Nouvelle publication"><i class="fas fa-plus"></i></a></li>
                     <li><a href ="liste_conver.php" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
                     <li><a href ="modifier_profil.php" title="Modifier le profil"><i class="fas fa-cog"></i></a></li>
@@ -430,22 +431,13 @@ function afficher_cote_gauche(){
     ?>
     <aside class="gauche">
 
-        <p>Tableau de bord</p>
-        <div>
-            
-        <?php
+        <h1>Tableau de bord</p>
 
-        echo $_SESSION['grade']." ".$_SESSION["pseudo"];
-        echo "<br>";
-       
-        echo "<br>";
-        echo "> Connecté(e)"
-          
-        ?>
-        </div>
-        <a href="profil.php" title="Voir le profil">Voir mon profil</a>
-        <div>> Flux des publications à jour</div>
-
+<p> Voila les souvenirs des membres de ton equipage;<br>
+ Après avoir explorer des nouveaux mondes...<br>
+ De decouvrir des nouvelles vies; <br>
+ Des nouvelles civilisations;<br>
+ Tu peux voir ce que personne n'a vu avant</p>
         
     </aside>
 
@@ -455,7 +447,7 @@ function afficher_cote_gauche(){
 function afficher_cote_droit(){
     ?>
     <aside class="droit">
-        <a href="liste_conver.php" title="Envoyer un message">test</a>
+        <a href="liste_conver.php" title="Envoyer un message"></a>
     </aside>
 
 <?php
@@ -483,7 +475,7 @@ function afficher_accueil(){
     
     echo '<a href="essai.php">Test</a>';
     afficher_publications(0);
-    afficher_cote_droit();
+    //afficher_cote_droit();
     afficher_pied_de_page();
 }
 

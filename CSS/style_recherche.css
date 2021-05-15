@@ -261,12 +261,12 @@
 /*Affichage de la boite sur le coté dans la page d'accueil*/
 
 aside{
+    z-index: -10;
     position: fixed;
     top: 110px;
-    width: 270px;
-    height: 410px;
-    background-color: #525460;
-    text-align: center;
+    width: 1000px;
+    height: 500px;
+    background-color: #000000;
     border-radius: 20px;
 
 }
@@ -284,11 +284,18 @@ aside{
 }
 
 aside p{
-    font-size: 30px;
+    font-size: 15px;
     padding: 10px;
     color: #f0f0f0;
+    font-family: Cambria;
 }
 
+
+aside h1{
+    padding: 20px;
+    color: #f0f0f0;
+    font-family: Cambria;
+}
 .gauche{
     
     left: 30px;
@@ -304,7 +311,7 @@ aside p{
     
 }
 
-aside div{
+/*aside div{
     width: 230px;
     height: auto;
     background-color: #19D175;
@@ -314,7 +321,7 @@ aside div{
     margin-bottom: 40px;
     font-family: 'Courier New', Courier, monospace;
     text-align: left;
-}
+}*/
 
 
 aside a{
@@ -326,12 +333,12 @@ aside a{
     height: auto;
     display: block;
     margin-bottom: 40px;
-    color: #525460;
+    color: #000000;
     border: 1px solid #f0f0f0;
 }
 
 aside a:hover{
-    background-color: #525460;
+    background-color: #000000;
     color: #f0f0f0;
     
 }

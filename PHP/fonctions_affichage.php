@@ -129,6 +129,7 @@ function afficher_profil($pseudo, $chemin,$oui,$num,$couleur){
         <?php echo '<input type="submit" class="pseudo" value='.$pseudo.'>'; ?>
         
         <input type="hidden" name="num_profil" value=<?php echo $num;?>>
+        
         </form><?php
         afficher_abonnement($oui,$num);       
         
@@ -287,7 +288,7 @@ function afficher_utilisateur($tab_user){
         </div>
         <div class="face back">
             <div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere nesciunt neque commodi consequatur, sit odio ab, porro, dolor aspernatur hic voluptates omnis tenetur ullam? Iusto eum quae error inventore maiores voluptates at omnis, amet, nemo numquam quos obcaecati ut consectetur reiciendis! Similique praesentium minus nemo sit velit dicta quia mollitia?.</p>
+            <p>  <?php echo $tab_user['description'] ?> </p>
             </div>
         </div>
         
@@ -346,7 +347,10 @@ function afficher_connexion($message){
                 <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
                 <input type="submit" class="bouton" value="CONNEXION" >
                 <!-- <a class="mdp" href="PHP/forgot_password.php">Mot de passe oublié ?</a> -->
-                <a href="inscription.php" class="bouton">Inscription</a>
+                <a href="PHP/inscription.php" class="bouton">Inscription</a>
+                <audio autoplay>
+                <source src="Musique\AUD-20210513-WA0108.mp3" type="audio/mpeg" >
+                </audio>
             </form>
         </div>    
     </main>  
@@ -458,6 +462,12 @@ function afficher_cote_droit(){
 }
 
 function afficher_accueil(){
+    ?>
+    <audio autoplay loop>
+        <source src="..\Musique\AUD-20210514-WA0113.mp3" type="audio/mpeg" >
+    </audio>
+        <?php    
+
     afficher_en_tete();
     afficher_cote_gauche();
 
@@ -768,6 +778,9 @@ function afficher_conversation($pseudo,$des){
 }
 function afficher_mess_droite($message){
     ?>
+            <audio autoplay>
+                <source src="..\Musique\PTT-20210514-WA0088.mp3" type="audio/mpeg" >
+        </audio>
     <div class="talk r">
         <p><?php echo $message ?></p>
     </div>
@@ -776,6 +789,9 @@ function afficher_mess_droite($message){
 
 function afficher_mess_gauche($message){
     ?>
+            <audio autoplay>
+                <source src="..\Musique\PTT-20210514-WA0088.mp3" type="audio/mpeg" >
+        </audio>
     <div class="talk l">
         <p><?php echo $message ?></p>
     </div>
@@ -800,6 +816,7 @@ function afficher_modifier($message){
                     <input type="text" name="pseudo" class="input"  placeholder="<?php echo $_SESSION['pseudo'] ?>"> 
                     <input type="email" name="email" class="input" placeholder="<?php echo $_SESSION['email'] ?>">
                     <input type="password" name="mot_de_passe" class="input" placeholder="Nouveau mot de passe">
+                    <input type="text" name="description" class="input" placeholder="<?php echo $_SESSION['description'] ?>"> 
                 
 
                     <select name="espece" class="deroul" >

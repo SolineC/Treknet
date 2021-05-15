@@ -97,11 +97,11 @@ function creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece,$langue){
 
 
 
-function modifierProfilpwd($pseudo,$email,$mot_de_passe,$espece,$langue){   
+function modifierProfilpwd($pseudo,$email,$mot_de_passe,$description,$espece,$langue){   
 
     $connexion=connexion('treknet');
     $num_profil=$_SESSION['num_profil'];
-    $req= "UPDATE profil SET pseudo='$pseudo', email='$email', mot_de_passe= '$mot_de_passe', langue='$langue', espece ='$espece' WHERE num_profil='$num_profil';";
+    $req= "UPDATE profil SET pseudo='$pseudo', email='$email', mot_de_passe= '$mot_de_passe', description= '$description' , langue='$langue', espece ='$espece' WHERE num_profil='$num_profil';";
     requete1($req,$connexion);
     $_SESSION['pseudo']=$pseudo;
     $_SESSION['email']= $email;
@@ -112,13 +112,14 @@ function modifierProfilpwd($pseudo,$email,$mot_de_passe,$espece,$langue){
 }
 
 
-function modifierProfil($pseudo,$email,$espece,$langue){
+function modifierProfil($pseudo,$email,$description,$espece,$langue){
 $connexion=connexion('treknet');
     $num_profil=$_SESSION['num_profil'];
-    $req= "UPDATE profil SET pseudo='$pseudo', email ='$email', langue ='$langue', espece='$espece' WHERE num_profil='$num_profil';";
+    $req= "UPDATE profil SET pseudo='$pseudo', email ='$email', description= '$description' , langue ='$langue', espece='$espece' WHERE num_profil='$num_profil';";
     requete1($req,$connexion);
     $_SESSION['pseudo']=$pseudo;
     $_SESSION['email']= $email;
+    $_SESSION['description']=$description;
     $_SESSION['langue'] = $langue;
     $_SESSION['espece']=$espece;
     header("Location: modifier_profil.php");
@@ -167,7 +168,7 @@ function creer_message($pseudo, $destinataire,$mess){
 }
 
 function montrer_message($pseudo, $destinataire){
-    $req1=" SELECT * FROM message WHERE (expediteur='$pseudo' AND  destinataire='$destinataire') OR (expediteur='$destinataire' AND  destinataire='$pseudo') ORDER BY date_message DESC;";
+    $req1=" SELECT * FROM message WHERE (expediteur='$pseudo' AND  destinataire='$destinataire') OR (expediteur='$destinataire' AND  destinataire='$pseudo') ORDER BY date_mess DESC;";
 
     $res = requete1($req1, connexion('treknet'));
 

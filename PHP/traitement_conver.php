@@ -17,6 +17,9 @@ if (isset($_POST['valider'])){
 
     creer_message($_SESSION['pseudo'],$_SESSION['desti'],$mess);
 
+    } else {
+        header("Location: conver.php");
+  
     }
 }
 ?>

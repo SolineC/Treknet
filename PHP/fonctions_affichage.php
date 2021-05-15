@@ -705,7 +705,7 @@ function afficher_list_conver($pseudo, $chemin,$num,$couleur){
 
 
 
-function afficher_message(){
+/*function afficher_message(){
     ?>
     
         <div class="logo">
@@ -726,7 +726,7 @@ function afficher_message(){
         </div>    
    
 <?php
-}
+}*/
 
 function afficher_conversation($pseudo,$des){
     ?>

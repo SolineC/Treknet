@@ -3,7 +3,7 @@ img{
 }
 .chat-global{
     width: 500px;
-    height: 600px;
+    height: 500px;
     margin: 0 auto;
     border-radius: 25px;
     box-shadow: 0 30px 70 px 0px rgba(0,0, 0, 0.2);
@@ -102,9 +102,10 @@ img{
     justify-content: center;
 }
 .pop{
-overflow-y: scroll;
-width: 100%;
-height:74%;
+    overflow-y: scroll;
+    width: 100%;
+    height:68%;
+    background-color: #f0f0f0;
 }
 
 .barra{
@@ -121,6 +122,7 @@ height:74%;
     display: flex;
     justify-content: space-between;
     align-items: auto;
+    
 }
 
 .group-inp .text{
@@ -133,17 +135,19 @@ height:74%;
     height: 30px;
     padding-top: 12px;
     font-family: calibria;
+    background-color: transparent;
 }
 
 .submit-msg-btn{
-    background: white;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    width: 10x;
+    background: slategray;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    margin-left: 380px;
+    margin-top: -18px;
+    cursor: pointer;
 
 
 }

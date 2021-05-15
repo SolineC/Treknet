@@ -16,6 +16,8 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
     
 
     if (compteExiste($connexion,$pseudo,$email)){
+        $pseudo=$_SESSION['pseudo'];
+        $email=$_SESSION['email'];
         afficher_modifier( "Utilisateur avec le même pseudo ou email");
         exit();
     }
@@ -70,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
                 afficher_modifier("Image trop grosse. Taille maximale : 500ko");
             }else {
                 
-                $fichier=$dossier. basename($_FILES['photo']['name']).".".$ext;
+                $fichier=$fichier.".".$ext;
             
                 if(move_uploaded_file($_FILES['photo']['tmp_name'], $fichier)) {
         

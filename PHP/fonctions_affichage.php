@@ -51,7 +51,7 @@ function afficher_en_tete(){
             <nav>
                 <ul>
                     <li><a href="accueil.php" title="Accueil"><i class="fas fa-home"></i></a></li>
-                    <li><a href="profil.php" title="Voir le profil"> <i class="fas fa-user"></i> </a></li>
+                    <li><a href="profil.php" title="Profil"> <i class="fas fa-user"></i> </a></li>
                     <li><a href ="publication.php" title="Nouvelle publication"><i class="fas fa-plus"></i></a></li>
                     <li><a href ="liste_conver.php" title="Envoyer un message"><i class="fas fa-paper-plane"></i></a></li>
                     <li><a href ="modifier_profil.php" title="Modifier le profil"><i class="fas fa-cog"></i></a></li>
@@ -301,8 +301,14 @@ function afficher_utilisateur($tab_user){
 function afficher_erreurs($message){
     
         echo '<p class="erreur">',$message,'</p>';
-    
-
+        if (!empty($message)){
+        
+        ?>
+        <audio autoplay>
+                <source src="..\Musique\error.mp3" type="audio/mpeg" >
+        </audio>
+        <?php
+        }
 }
 
 function afficher_connexion($message){
@@ -334,6 +340,7 @@ function afficher_connexion($message){
 </head>
 
 <body>
+
     <main>
         <div class="logo">
             <h1>treknet</h1> 
@@ -350,7 +357,7 @@ function afficher_connexion($message){
                 <!-- <a class="mdp" href="PHP/forgot_password.php">Mot de passe oublié ?</a> -->
                 <a href="PHP/inscription.php" class="bouton">Inscription</a>
                 <audio autoplay>
-                <source src="Musique\AUD-20210513-WA0108.mp3" type="audio/mpeg" >
+                <source src="Musique\Classic voice over.mp3" type="audio/mpeg" >
                 </audio>
             </form>
         </div>    
@@ -431,13 +438,15 @@ function afficher_cote_gauche(){
     ?>
     <aside class="gauche">
 
-        <h1>Tableau de bord</p>
+        <h1>TABLEAU DE BORD </h1>
 
-<p> Voila les souvenirs des membres de ton equipage;<br>
- Après avoir explorer des nouveaux mondes...<br>
+<h3> Voila les souvenirs... </h3>
+<div class=alinea><h3>   ...des membres de ton equipage</h3>
+</div>
+ <p>Après avoir explorer des nouveaux mondes...<br>
  De decouvrir des nouvelles vies; <br>
  Des nouvelles civilisations;<br>
- Tu peux voir ce que personne n'a vu avant</p>
+ Tu peux voir ce que personne n'a vu auparavant...</p>
         
     </aside>
 
@@ -447,7 +456,6 @@ function afficher_cote_gauche(){
 function afficher_cote_droit(){
     ?>
     <aside class="droit">
-        <a href="liste_conver.php" title="Envoyer un message"></a>
     </aside>
 
 <?php
@@ -455,12 +463,14 @@ function afficher_cote_droit(){
 
 function afficher_accueil(){
     ?>
-    <audio autoplay loop>
-        <source src="..\Musique\AUD-20210514-WA0113.mp3" type="audio/mpeg" >
-    </audio>
+    <audio autoplay>
+                <source src="..\Musique\Beeping and clicking.mp3" type="audio/mpeg" >
+        </audio>
+    
         <?php    
 
     afficher_en_tete();
+
     afficher_cote_gauche();
 
     #afficher_utilisateur();
@@ -687,8 +697,10 @@ function afficher_list_conver($pseudo, $chemin,$num,$couleur){
     }
     
     ?>
+    
     <link rel="stylesheet" href="../CSS/style_recherche.css">
    <?php echo'<div style="background-color:'.$color.';" class="boite-profil">';?>
+   
    <div class="list_conver">
         <img class="pp" src=<?php echo $chemin ?> alt="photo de profil">  <!--petites boites lors de recherche de membres -->
 
@@ -699,6 +711,7 @@ function afficher_list_conver($pseudo, $chemin,$num,$couleur){
         
     </div>
     </div>
+    
     <?php
 
 
@@ -751,6 +764,9 @@ function afficher_conversation($pseudo,$des){
     montrer_message($pseudo, $des);
     ?>
     </div>
+    <audio autoplay>
+                <source src="..\Musique\message sent.mp3" type="audio/mpeg" >
+        </audio>
     <div class="chat-form">
         <div class="barra">
                 <div class="group-inp">
@@ -770,9 +786,6 @@ function afficher_conversation($pseudo,$des){
 }
 function afficher_mess_droite($message){
     ?>
-            <audio autoplay>
-                <source src="..\Musique\PTT-20210514-WA0088.mp3" type="audio/mpeg" >
-        </audio>
     <div class="talk r">
         <p><?php echo $message ?></p>
     </div>
@@ -781,9 +794,7 @@ function afficher_mess_droite($message){
 
 function afficher_mess_gauche($message){
     ?>
-            <audio autoplay>
-                <source src="..\Musique\PTT-20210514-WA0088.mp3" type="audio/mpeg" >
-        </audio>
+           
     <div class="talk l">
         <p><?php echo $message ?></p>
     </div>
@@ -793,6 +804,8 @@ function afficher_modifier($message){
 ?>    
 
         <div class="modifier">
+            
+        
         <div class="test_erreur">
 
 <?php 
@@ -828,7 +841,7 @@ function afficher_modifier($message){
                     
                     </select> 
                 
-                    <input type="submit" class="bouton" value="Modifier"> 
+                    <input type="submit" class="bouton" value="Modifier"> <br>
                     <a href="../PHP/test.php" class="bouton">Test Section</a> 
             </form>
 

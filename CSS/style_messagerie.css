@@ -124,12 +124,7 @@ img{
     height: 100%;
     display: flex;
     justify-content: space-between;
-<<<<<<< HEAD
     align-items: center;
-=======
-    align-items: auto;
-    
->>>>>>> 460c96c28227117731ca8b97f4fa87eeeccf3656
 }
 
 .group-inp .text{

@@ -16,4 +16,5 @@ if ($_POST['pseudo']!=null){
 afficher_en_tete();
 afficher_conversation($_SESSION['pseudo'],$_SESSION['desti']);
 afficher_pied_de_page();
+
 ?>

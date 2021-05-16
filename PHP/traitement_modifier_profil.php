@@ -19,7 +19,10 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
     if (compteExiste($connexion,$pseudo,$email)){
         $pseudo=$_SESSION['pseudo'];
         $email=$_SESSION['email'];
-        afficher_modifier( "Utilisateur avec le même pseudo ou email");
+        afficher_en_tete();
+        afficher_modifier( "Pseudo ou email déjà utilisé(s)");
+        afficher_pied_de_page();
+
         exit();
     }
 

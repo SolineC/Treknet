@@ -1,24 +1,29 @@
 <?php
-/*if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
-{
-    $url = "https";
-}
-else
-{
-    $url = "http"; 
-}  
-$url .= "://"; 
-$url .= $_SERVER['HTTP_HOST']; 
-$url .= $_SERVER['REQUEST_URI']; 
-echo $url; */
+session_start();
+
 require_once("fonctions_affichage.php");
+require_once("fonctions_bd.php");
 afficher_en_tete();
-
-
-
-echo pathinfo($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])["basename"];
+$connexion=connexion('treknet');
+$num=$_SESSION["num_profil"];
 echo "<br>";
-afficher_abonnement(0,4);
+echo "<br>";
+echo "<br>";
+
+$np=$_SESSION["num_profil"];
+$ns=5;
+$req6="SELECT COUNT(*) FROM abonnement WHERE num_profil_suivant='".$np."' AND num_profil_suivi='".$ns."'";
+$res6=requete($req6,$connexion);
+
+    if($res6["COUNT(*)"]!=0) {
+        
+        $abo=0;
+        echo $abo;
+
+
+    }
+echo "<br>";
+echo $res6["COUNT(*)"];
 
 
 ?>

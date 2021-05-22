@@ -171,25 +171,13 @@ function afficher_conver($pseudo, $chemin,$num,$couleur){
 
 function afficher_page_profil($num,$tab_user){
     if($tab_user["pseudo"]==$_SESSION["pseudo"]) {
-        $siprofil=1;
-    }else{$siprofil=0;}
-    afficher_en_tete();
-    if($tab_user["pseudo"]!=$_SESSION["pseudo"]){
-    echo '<div class="test">';
-    ?>
-     <form action="traitement_abonnement.php" method="post">
-        <?php echo '<input type="hidden" name="num_suivi" value="'.$num.'">';?>
-        <?php echo '<input type="hidden" name="page" value="'.getAdresse().'">';?>
-        <input type="submit" value="S'abonner" >
-  </form>
-  <form action="traitement_abonnement.php" method="post">
-        <?php echo '<input type="hidden" name="num_suivi" value="'.$num.'">';?>
-        <?php echo '<input type="hidden" name="page" value="'.getAdresse().'">';?>
-        <input type="submit" value="Se desabonner" >
-  </form>
-  <?php
-    echo '</div>';
+        $abo=1;
+    }else{
+        $abo=0;
     }
+    
+    afficher_en_tete();
+   
     afficher_utilisateur($tab_user);
 
     
@@ -214,6 +202,8 @@ function afficher_page_profil($num,$tab_user){
     $req5="SELECT * FROM profil WHERE num_profil IN 
     (SELECT num_profil_suivant FROM abonnement WHERE num_profil_suivi='".$num."') AND num_profil != '".$num."'";
     $res5=requete1($req5,$connexion);
+
+
     echo '<div class="blank"></div>';
 
 
@@ -226,7 +216,7 @@ function afficher_page_profil($num,$tab_user){
         $date=$ligne['date_publication'];
         $num_pub=$ligne['num_publication'];
 
-        afficher_publication($image,$texte,$pp,$pseudo,$couleur,$date,$siprofil,$num_pub);
+        afficher_publication($image,$texte,$pp,$pseudo,$couleur,$date,$abo,$num_pub);
         
     
     }
@@ -235,13 +225,14 @@ function afficher_page_profil($num,$tab_user){
     
     echo '<div class="cote suivi">';
     echo "<p>Il y a ".$res2["COUNT(*)"]." membres dans l'équipage de ".$tab_user["pseudo"]." </p>";
-
+    
     while($ligne=mysqli_fetch_array($res4)){
+        
         
         $pp=$ligne['photo_de_profil'];
         $pseudo=$ligne['pseudo'];
         $couleur=$ligne['num_section'];
-
+        
       
         afficher_profil($pseudo,$pp,1,$ligne['num_profil'],$couleur);
         
@@ -255,6 +246,7 @@ function afficher_page_profil($num,$tab_user){
         $pp=$ligne['photo_de_profil'];
         $pseudo=$ligne['pseudo'];
         $couleur=$ligne['num_section'];
+        
 
       
         afficher_profil($pseudo,$pp,1,$ligne["num_profil"],$couleur);
@@ -262,10 +254,58 @@ function afficher_page_profil($num,$tab_user){
     
     }
 
+
     echo "</div>";
+    /**ICI PBM POTENTIEL */
+$np=$_SESSION["num_profil"];$ns=$tab_user["num_profil"];
+$req6="SELECT COUNT(*) FROM abonnement WHERE num_profil_suivant='".$np."' AND num_profil_suivi='".$ns."'";
+$res6=requete($req6,$connexion);
+
+    if($res6["COUNT(*)"]!=0) {$abo=0;}else{$abo=1;}
+
+/**ICI PBM POTENTIEL */
+    
+    
+    if($tab_user["pseudo"]!=$_SESSION["pseudo"] ){
+        
+        bloc_abonnement($abo,$num);
+        }
     
     
     afficher_pied_de_page();
+}
+
+function bloc_abonnement($abo,$num){
+    echo '<div class="test">';
+        
+    if($abo==1){
+        
+        ?>
+        <form action="traitement_abonnement.php" method="post">
+            <?php echo '<input type="hidden" name="num_suivi" value="'.$num.'">';?>
+            <?php echo '<input type="hidden" name="page" value="'.getAdresse().'">';?>
+            <input type="submit" value="S'abonner" class="bouton">
+      </form>
+      <?php
+    }
+    else{
+        
+       ?>
+       <form action="traitement_desabonnement.php" method="post">
+           <?php echo '<input type="hidden" name="num_suivi" value="'.$num.'">';?>
+           <?php echo '<input type="hidden" name="page" value="'.getAdresse().'">';?>
+           <input type="submit" value="Se desabonner" class="bouton" >
+     </form>
+
+       <?php
+       
+    }
+
+
+      
+        echo '</div>';
+    
+
 }
 
 
@@ -447,16 +487,28 @@ function afficher_inscription($message){
 function afficher_cote_gauche(){
     ?>
     <aside class="gauche">
+ <div class="generique">   
 
         <h1>TABLEAU DE BORD </h1>
 
-<h3> Voila les souvenirs... </h3>
-<div class=alinea><h3>   ...des membres de ton equipage</h3>
-</div>
- <p>Après avoir explorer des nouveaux mondes...<br>
- De decouvrir des nouvelles vies; <br>
- Des nouvelles civilisations;<br>
- Tu peux voir ce que personne n'a vu auparavant...</p>
+<h3> Voila les souvenirs des membres de ton équipage...</h3>
+
+ <p>...après avoir exploré d'étranges nouveaux mondes,
+découvert de nouvelles vies
+ et civilisations et avoir été là ou personne n'est jamais allé !
+ </p>
+ </div>
+ <div class="boite-bitoniaux">
+ <div class="bitoniaux"></div>
+ <div class="bitoniaux"></div>
+ <div class="bitoniaux"></div>
+ <div class="bitoniaux"></div>
+ <div class="bitoniaux"></div>
+ <div class="bitoniaux"></div>
+ <div class="bitoniaux"></div>
+ <div class="bitoniaux"></div>
+ <div class="bitoniaux"></div>
+ </div>
         
     </aside>
 
@@ -484,7 +536,7 @@ function afficher_accueil(){
     afficher_cote_gauche();
 
     #afficher_utilisateur();
-    echo "<br>";
+   /* echo "<br>";
 
     echo "<br>";
                                             #pour le debuggage
@@ -493,7 +545,7 @@ function afficher_accueil(){
     echo "<br>";
 
     
-    echo '<a href="essai.php">Test</a>';
+    echo '<a href="essai.php">Test</a>';*/
     afficher_publications(0);
     //afficher_cote_droit();
     afficher_pied_de_page();

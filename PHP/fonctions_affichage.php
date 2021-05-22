@@ -289,7 +289,7 @@ function afficher_utilisateur($tab_user){
         </div>
         <div class="face back">
             <div>
-            <p>  <?php echo $tab_user['description'] ?> </p>
+            <p>  <?php echo $_SESSION['description'] ?> </p>
             </div>
         </div>
         
@@ -613,7 +613,7 @@ function afficher_test($message){
     </div>
         <form action="traitement_test.php" method="post" class="formulaire">
             
-    <p>Si l'un des moteur du vaisseau tombe en panne, mais vous ne savez pas comment le réparer. Que faites vous ?</p>
+    <p>L'un des moteur du vaisseau tombe en panne, mais vous ne savez pas comment le réparer. Que faites vous ?</p>
     <div class="test_question">
             <input type="radio" name="q1" value="5"> 
             <label for="q1">Vous demandez de l'aide à quelqu'un d'autre</label> <br>
@@ -665,7 +665,7 @@ function afficher_test($message){
     </div> 
 
    <p>Vous atterrissez sur une planète où les habitants ne peuvent dire que la verité ou bien que des mensonges. <br>
-   Vous arriviez à un refuge où habitent deux hommes. Le premier dit qu'aucun des deux ne dit la verité. <br>
+   Vous arriviez à un refuge où habitent deux hommes. Le premier dit que les deux ne dissent la verité. <br>
     Puis le deuxieme dit qu'ils ne veulent pas vous faire du mal.
 
    </p>

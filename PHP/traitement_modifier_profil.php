@@ -7,6 +7,37 @@ require_once("fonctions_affichage.php");
 $connexion = connexion("treknet");
 
 
+
+if(isset($_FILES['photo']) ){
+
+    $dossier = "../Images/Profil/";
+    $fichier = $dossier . basename($_FILES['photo']['name']);   
+    $ext=pathinfo($fichier)['extension'];
+
+    if($ext=="png" || $ext == "jpg" || $ext="jpeg"){
+        if($_FILES['photo']['size']>500000){
+
+            afficher_modifier("Image trop grosse. Taille maximale : 500ko");
+        }else {
+            
+            $fichier=$fichier.".".$ext;
+        
+            if(move_uploaded_file($_FILES['photo']['tmp_name'], $fichier)) {
+    
+                $req= "UPDATE profil SET photo_de_profil ='$fichier' WHERE pseudo='$_SESSION[pseudo]';";
+                 requete1($req,$connexion);
+                 $_SESSION['photo_de_profil']=$fichier;
+        
+                header("Location: accueil.php");
+       
+            }else{
+                afficher_modifier("Erreur, veuillez réessayer. Erreur probable : Image trop grosse. Taille maximale : 200ko");
+            }
+        }
+    }else{
+        afficher_modifier("Format de l'image non accepté. Formats acceptés : png, jpg, jpeg.");
+    }
+
 if ($_SERVER['REQUEST_METHOD']== "POST"){
     $pseudo= preTraiterChampSQL($_POST['pseudo'],$connexion);
     $email= preTraiterChampSQL($_POST['email'],$connexion);
@@ -63,40 +94,12 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
         modifierProfilpwd($pseudo,$email,$mot_de_passe,$description,$espece,$langue);    
         exit();
     }
-
     header("Location: modifier_profil.php");
 
-    }
-    
-    if(isset($_FILES['photo']) ){
+}
 
-        $dossier = "../Images/Profil/";
-        $fichier = $dossier . basename($_FILES['photo']['name']);   
-        $ext=pathinfo($fichier)['extension'];
     
-        if($ext=="png" || $ext == "jpg" || $ext="jpeg"){
-            if($_FILES['photo']['size']>500000){
     
-                afficher_modifier("Image trop grosse. Taille maximale : 500ko");
-            }else {
-                
-                $fichier=$fichier.".".$ext;
-            
-                if(move_uploaded_file($_FILES['photo']['tmp_name'], $fichier)) {
-        
-                    $req= "UPDATE profil SET photo_de_profil ='".$fichier."' WHERE num_profil='".$num_profil."';";
-                     requete1($req,$connexion);
-                     $_SESSION['photo_de_profil']=$fichier;
-            
-                    header("Location: accueil.php");
-           
-                }else{
-                    afficher_modifier("Erreur, veuillez réessayer. Erreur probable : Image trop grosse. Taille maximale : 200ko");
-                }
-            }
-        }else{
-            afficher_modifier("Format de l'image non accepté. Formats acceptés : png, jpg, jpeg.");
-        }
     }
     
     
@@ -112,4 +115,4 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
     ?>
 
 
-?>
+

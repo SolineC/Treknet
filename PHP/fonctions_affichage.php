@@ -421,7 +421,7 @@ function afficher_inscription($message){
                         <option value=Humain>Humain</option>
                         <option value=Vulcan >Vulcain</option>
                         <option value=Andorian >Andorian</option>
-                        <option value=Tellarite >Tellarite</option>
+                        <option value=Romulien >Romulien</option>
                     
                     </select> 
 
@@ -802,8 +802,8 @@ function afficher_modifier($message){
  
  ?>
         </div>
-
-        <form enctype="multipart/form-data" action="traitement_modifier_profil.php" method="post" class="formulaire">
+        <img class="pp big" src="<?php echo $_SESSION['photo'] ?>" alt="photo de profil">     
+           <form enctype="multipart/form-data" action="traitement_modifier_profil.php" method="post" class="formulaire">
              <input name="photo" type="file" />
                     
                     <input type="text" name="pseudo" class="input"  placeholder="<?php echo $_SESSION['pseudo'] ?>"> 
@@ -817,7 +817,7 @@ function afficher_modifier($message){
                         <option value=Humain>Humain</option>
                         <option value=Vulcan >Vulcain</option>
                         <option value=Andorian >Andorian</option>
-                        <option value=Tellarite >Tellarite</option>
+                        <option value=Romulien >Romulien</option>
                     
                     </select> 
 

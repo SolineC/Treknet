@@ -168,7 +168,7 @@ function creer_message($pseudo, $destinataire,$mess){
 }
 
 function montrer_message($pseudo, $destinataire){
-    $req1=" SELECT * FROM message WHERE (expediteur='$pseudo' AND  destinataire='$destinataire') OR (expediteur='$destinataire' AND  destinataire='$pseudo') ORDER BY date_mess DESC;";
+    $req1=" SELECT * FROM message WHERE (expediteur='$pseudo' AND  destinataire='$destinataire') OR (expediteur='$destinataire' AND  destinataire='$pseudo') ORDER BY date_message DESC;";
 
     $res = requete1($req1, connexion('treknet'));
 

@@ -170,16 +170,26 @@ function afficher_conver($pseudo, $chemin,$num,$couleur){
 }
 
 function afficher_page_profil($num,$tab_user){
+    if($tab_user["pseudo"]==$_SESSION["pseudo"]) {
+        $siprofil=1;
+    }else{$siprofil=0;}
     afficher_en_tete();
+    if($tab_user["pseudo"]!=$_SESSION["pseudo"]){
     echo '<div class="test">';
     ?>
      <form action="traitement_abonnement.php" method="post">
         <?php echo '<input type="hidden" name="num_suivi" value="'.$num.'">';?>
         <?php echo '<input type="hidden" name="page" value="'.getAdresse().'">';?>
-        <input type="submit" value="+" class="abo2">
+        <input type="submit" value="S'abonner" >
+  </form>
+  <form action="traitement_abonnement.php" method="post">
+        <?php echo '<input type="hidden" name="num_suivi" value="'.$num.'">';?>
+        <?php echo '<input type="hidden" name="page" value="'.getAdresse().'">';?>
+        <input type="submit" value="Se desabonner" >
   </form>
   <?php
     echo '</div>';
+    }
     afficher_utilisateur($tab_user);
 
     
@@ -216,7 +226,7 @@ function afficher_page_profil($num,$tab_user){
         $date=$ligne['date_publication'];
         $num_pub=$ligne['num_publication'];
 
-        afficher_publication($image,$texte,$pp,$pseudo,$couleur,$date,0,1,$num_pub);
+        afficher_publication($image,$texte,$pp,$pseudo,$couleur,$date,$siprofil,$num_pub);
         
     
     }
@@ -720,28 +730,6 @@ function afficher_list_conver($pseudo, $chemin,$num,$couleur){
 
 
 
-/*function afficher_message(){
-    ?>
-    
-        <div class="logo">
-            <h1>treknet</h1> 
-            <p>le réseau des trekkies par exellence</p>
-        </div>
-        <?php
-            afficher_erreurs($message);
-        ?>
-        <div class="connexion">
-            <form action="../PHP/traitement_connexion.php" method="POST">
-                <input type="text" class="input"  name="pseudo" required="required" placeholder="Pseudo">
-                <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
-                <input type="submit" class="bouton" value="CONNEXION" >
-                <a class="mdp" href="#">Mot de passe oublié ?</a>
-                <a href="../PHP/inscription.php" class="bouton">Inscription</a>
-            </form>
-        </div>    
-   
-<?php
-}*/
 
 function afficher_conversation($pseudo,$des){
     ?>

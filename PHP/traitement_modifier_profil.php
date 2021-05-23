@@ -26,12 +26,12 @@ if(isset($_FILES['photo']) ){
     
                 $req= "UPDATE profil SET photo_de_profil ='$fichier' WHERE pseudo='$_SESSION[pseudo]';";
                  requete1($req,$connexion);
-                 $_SESSION['photo_de_profil']=$fichier;
+                 $_SESSION['photo']=$fichier;
         
-                header("Location: accueil.php");
+                /*header("Location: accueil.php");*/
        
             }else{
-                afficher_modifier("Erreur, veuillez réessayer. Erreur probable : Image trop grosse. Taille maximale : 200ko");
+                afficher_modifier("Erreur, veuillez réessayer. Erreur probable : Image trop grosse. Taille maximale : 2Mo");
             }
         }
     }else{
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
         modifierProfilpwd($pseudo,$email,$mot_de_passe,$description,$espece,$langue);    
         exit();
     }
-    header("Location: modifier_profil.php");
+    header("Location: profil.php");
 
 }
 

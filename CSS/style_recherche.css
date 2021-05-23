@@ -114,8 +114,9 @@
 
 .boite-utilisateur .face.back{
     transform: rotateY(180deg);
-    display: grid;
+    display: grid;                                                  /*tuto yt*/
     place-items: center;
+    
 
 }
 

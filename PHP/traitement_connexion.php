@@ -29,7 +29,6 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
                     $rep = requete($req,$connexion);
                     
                     $couleur = $rep['num_section'];
-                    $langue = $rep['langue'];
                     $photo = $rep['photo_de_profil'];
                     $grade = $rep['nom_grade'];
                     
@@ -38,8 +37,8 @@ if(isset($_POST['pseudo']) && isset($_POST['mot_de_passe'])){
                     } else {
                         $_SESSION['description']= $rep['description'];
                     }
+                    $_SESSION['admi']=$rep['admi'];
                     $_SESSION['couleur'] = $couleur;
-                    $_SESSION['langue'] = $langue;
                     $_SESSION['photo'] = $photo;
                     $_SESSION['grade'] = $grade;
                     $_SESSION['num_profil'] = $rep['num_profil'];

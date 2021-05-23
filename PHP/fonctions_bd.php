@@ -48,13 +48,13 @@ function compteExiste($connexion,$pseudo,$email){
 
 
 
-function creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece,$langue){
+function creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece){
     $connexion=connexion('treknet');
     $requete2="SELECT MAX(num_profil) FROM profil";
     $resultat2=requete($requete2,$connexion);
     $num = $resultat2['MAX(num_profil)']+1;
-    $req= "INSERT INTO profil (pseudo,email,mot_de_passe,num_section,num_grade,photo_de_profil,langue,espece,num_profil)    
-    VALUES ('$pseudo','$email','$mot_de_passe','$num_section','0','../Images/Profil/pp_default.png','$langue','$espece','$num');";
+    $req= "INSERT INTO profil (pseudo,email,mot_de_passe,num_section,num_grade,photo_de_profil,espece,num_profil,admi)    
+    VALUES ('$pseudo','$email','$mot_de_passe','$num_section','0','../Images/Profil/pp_default.png','$espece','$num','0');";
     requete1($req,$connexion);
 
     $req3 = "INSERT INTO abonnement (num_profil_suivi, num_profil_suivant) VALUES ($num,$num)";
@@ -66,30 +66,28 @@ function creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece,$langue){
 
 
 
-function modifierProfilpwd($pseudo,$email,$mot_de_passe,$description,$espece,$langue){   
+function modifierProfilpwd($pseudo,$email,$mot_de_passe,$description,$espece){   
 
     $connexion=connexion('treknet');
     $num_profil=$_SESSION['num_profil'];
-    $req= "UPDATE profil SET pseudo='$pseudo', email='$email', mot_de_passe= '$mot_de_passe', description= '$description' , langue='$langue', espece ='$espece' WHERE num_profil='$num_profil';";
+    $req= "UPDATE profil SET pseudo='$pseudo', email='$email', mot_de_passe= '$mot_de_passe', description= '$description' ,  espece ='$espece' WHERE num_profil='$num_profil';";
     requete1($req,$connexion);
     $_SESSION['pseudo']=$pseudo;
     $_SESSION['email']= $email;
-    $_SESSION['langue'] = $langue;
     $_SESSION['espece']=$espece;
     
     header("Location: modifier_profil.php");
 }
 
 
-function modifierProfil($pseudo,$email,$description,$espece,$langue){
+function modifierProfil($pseudo,$email,$description,$espece){
 $connexion=connexion('treknet');
     $num_profil=$_SESSION['num_profil'];
-    $req= "UPDATE profil SET pseudo='$pseudo', email ='$email', description= '$description' , langue ='$langue', espece='$espece' WHERE num_profil='$num_profil';";
+    $req= "UPDATE profil SET pseudo='$pseudo', email ='$email', description= '$description', espece='$espece' WHERE num_profil='$num_profil';";
     requete1($req,$connexion);
     $_SESSION['pseudo']=$pseudo;
     $_SESSION['email']= $email;
     $_SESSION['description']=$description;
-    $_SESSION['langue'] = $langue;
     $_SESSION['espece']=$espece;
     header("Location: modifier_profil.php");
 }
@@ -116,7 +114,7 @@ function grade(){
     $grade=0;
     $fecha= date("Y-m-d");
     $condi= array(1,7,15,30,60,80,120,240,300,365);
-    $req = "SELECT date_inscription FROM profil where pseudo = '$pseudo' ";
+    $req = "SELECT * FROM profil where pseudo = '$pseudo' ";
     $resultat=requete( $req,connexion('treknet'));
     $diff=date_diff(date_create($resultat['date_inscription']),date_create($fecha));
     $days = $diff->format("%a");
@@ -126,6 +124,10 @@ function grade(){
         }
             $i=$i+1;
      }
+
+    if ($resultat['admi']==1){
+        $grade=11;
+    }
      $req= "UPDATE profil SET num_grade='$grade' WHERE pseudo='$pseudo';";
     requete1($req,connexion('Treknet'));         
 }

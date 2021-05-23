@@ -111,7 +111,7 @@
     transition: 1s;
     backface-visibility: hidden;
 }
-
+ 
 .boite-utilisateur .face.back{
     transform: rotateY(180deg);
     display: grid;
@@ -262,19 +262,22 @@
 
 /*Affichage de la boite sur le coté dans la page d'accueil*/
 
-aside{
+.tdb{
     z-index: -10;
     position: fixed;
     top: 90px;
+    left: 40px;
     width: 900px;
     height: 500px;
     background-color: #000000;
     border-radius: 20px;
     display: flex;
 
+    
+
 }
 
-aside .generique{
+.tdb .generique{
     width: 390px;
 }
 
@@ -288,7 +291,7 @@ aside .generique{
 }
 
 .bitoniaux{
-    background-color: red;
+    
     margin-top: 1.25px;
     margin-bottom: 1.25px;
 
@@ -367,6 +370,7 @@ aside h3{
     width: 400px;
     height: auto;
     margin-left: 13px;
+    
 
 }
 

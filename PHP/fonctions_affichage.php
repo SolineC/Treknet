@@ -500,7 +500,7 @@ function afficher_inscription($message){
 
 function afficher_cote_gauche(){
     ?>
-    <aside class="gauche">
+    <aside class="tdb">
  <div class="generique">   
 
         <h1>TABLEAU DE BORD </h1>
@@ -509,6 +509,7 @@ function afficher_cote_gauche(){
             <div class="diode"></div>
            
         </div>
+
 
 <h3> Voila les souvenirs des membres de ton équipage...</h3>
 <div class="boite-diode">
@@ -522,17 +523,19 @@ découvert de nouvelles vies
  et civilisations et avoir été là où personne n'est jamais allé !
  </p>
  </div>
- <div class="boite-bitoniaux">
- <div class="bitoniaux"></div>
- <div class="bitoniaux"></div>
- <div class="bitoniaux"></div>
- <div class="bitoniaux"></div>
- <div class="bitoniaux"></div>
- <div class="bitoniaux"></div>
- <div class="bitoniaux"></div>
- <div class="bitoniaux"></div>
- <div class="bitoniaux"></div>
- </div>
+ 
+
+            <div class="boite-bitoniaux">
+                <div class="bitoniaux"></div>
+                <div class="bitoniaux"></div>
+                <div class="bitoniaux"></div>
+                <div class="bitoniaux"></div>
+                <div class="bitoniaux"></div>
+                <div class="bitoniaux"></div>
+                <div class="bitoniaux"></div>
+                <div class="bitoniaux"></div>
+                <div class="bitoniaux"></div>
+            </div>
         
     </aside>
     <a href="liste_conver.php"><img src="../Images/communicator.jpg" alt="communicateur" class="communicator" title="Envoyer un message"></a>

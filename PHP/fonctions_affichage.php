@@ -83,8 +83,8 @@ function afficher_pied_de_page(){
                         <h3>MENTIONS LEGALES</h3>
                         <ul>
                             <li><a href="../HTML/conditions.html">Conditions d'utilisation </a></li>
-                            <li><a href="#">Politiques de données</a></li>
-                            <li><a href="#">Mentions Légales</a></li>
+                            <li><a href="../HTML/politiques.html">Politiques de données</a></li>
+                            <li><a href="../HTML/mentions.html">Mentions Légales</a></li>
                         </ul>
                     </div>
                     <div class= "footer-col">
@@ -98,8 +98,8 @@ function afficher_pied_de_page(){
                     <div class= "footer-col">
                         <h3>QUI SOMMES-NOUS ?</h3>
                         <ul>
-                            <li><a href="#">À propos</a></li>
-                            <li><a href="#">Le projet</a></li>
+                            <li><a href="../HTML/apropos.html">À propos</a></li>
+                            <li><a href="../HTML/projet.html">Le projet</a></li>
                             <li><a href="../HTML/contact.html">Contact</a></li>
                         </ul>
                     </div>

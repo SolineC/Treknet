@@ -32,5 +32,6 @@ echo '<br>';
 
 }
 afficher_conver_instruction();
+afficher_pied_de_page();
 
 ?>

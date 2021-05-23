@@ -11,7 +11,7 @@ body{
 
 }
 
-h1,p{
+h1,p,h2,address,li{
     color: #f1f1f1;
     text-align: center;
 }

@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
     $image="../Images/Profil/pp_default.png";
 
 
-    if (vide($pseudo,$email,$mot_de_passe) || ($espece ==0) || ($num_section==0) || ($langue==0)){
+    if (vide($pseudo,$email,$mot_de_passe) || ($espece ==0) || ($num_section==0) ){
         afficher_inscription("Champ(s) Manquant(s)");
         exit();
     }

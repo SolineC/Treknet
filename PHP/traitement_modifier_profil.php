@@ -26,24 +26,24 @@ if(isset($_FILES['photo']) ){
     
                 $req= "UPDATE profil SET photo_de_profil ='$fichier' WHERE pseudo='$_SESSION[pseudo]';";
                  requete1($req,$connexion);
-                 $_SESSION['photo_de_profil']=$fichier;
+                 $_SESSION['photo']=$fichier;
         
-                header("Location: accueil.php");
+                header("Location: modifier_profil.php");
        
-            }else{
-                afficher_modifier("Erreur, veuillez réessayer. Erreur probable : Image trop grosse. Taille maximale : 200ko");
             }
         }
     }else{
         afficher_modifier("Format de l'image non accepté. Formats acceptés : png, jpg, jpeg.");
     }
+    
+}
 
 if ($_SERVER['REQUEST_METHOD']== "POST"){
     $pseudo= preTraiterChampSQL($_POST['pseudo'],$connexion);
     $email= preTraiterChampSQL($_POST['email'],$connexion);
     $description=preTraiterChampSQL($_POST['description'],$connexion);
     $espece= $_POST['espece']; //pas besoin de preTraiter
-    $langue= $_POST['langue'];
+    
     
     
 
@@ -71,9 +71,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
     if (($espece ==0)){
         $espece=$_SESSION['espece'];
     }
-    if (($langue==0)){
-        $langue=$_SESSION['langue'];
-    }
+    
 
 
     if (invalidePseudo($pseudo)){
@@ -96,19 +94,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
     }
     header("Location: modifier_profil.php");
 
-}
-
-    
-    
-    }
-    
-    
-    
-    
-    
-    
-    
-    
+} 
     
     
     

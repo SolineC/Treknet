@@ -9,12 +9,11 @@ bloquer_sans_session();
 
 $connexion = connexion("treknet");
 
-if ($_POST['pseudo']!=null){
+if (isset($_POST['pseudo'])){
     $_SESSION['desti']=$_POST['pseudo'];
 }
 
 afficher_en_tete();
 afficher_conversation($_SESSION['pseudo'],$_SESSION['desti']);
 afficher_pied_de_page();
-
 ?>

@@ -265,12 +265,15 @@ transition: all 0.3s ease;
     margin-top: -200px;
 }
 
-.modifier{
-    margin-top: 80px;
-    margin-left: 500px;
-    width: 200px;
 
+.modifier{
+    margin-left: 100px;
+    width: 500px;
+    position: fixed;
+    
 }
+
+
 .modifier select{
     background-color: rgb(221, 221, 221);
     border: 0;
@@ -280,7 +283,7 @@ transition: all 0.3s ease;
     outline: none;
     border-radius: 24px;
     text-align: center;
-    width: 70%;
+    width: 200px;
     transition: 0.25s;
     position: relative;
     left: 50%;
@@ -297,7 +300,7 @@ transition: all 0.3s ease;
     outline: none;
     border-radius: 24px;
     text-align: center;
-    width: 70%;
+    width: 200px;
     transition: 0.25s;
     position: relative;
     left: 50%;
@@ -305,11 +308,70 @@ transition: all 0.3s ease;
     
 }
 
-.modifier .test_erreur p{
+
+.modifier p{
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+
+}
+
+ .identifiant{
+     
+    width: 200px;
+   margin-top: -120px;
+   margin-left: 350px;
+}
+
+.haut{
+    margin-top: 80px;
+    margin-left: 100px;
+}
+
+.modifier .bas{
+ margin-top: -70px;
+ margin-bottom: 30px;
+ margin-left: 200px;
+ 
+}
+
+.bas select{
+    margin-left: -200px;
+    
+}
+.bas a{
+    margin-top: -55px;
+}
+
+ .test_erreur p{
     color: white;
     border-radius: 10px;
-    margin-left: 750px;
+    left: 100px;
+    height: min-content;
     background-color:transparent;
-    border: white;
-    margin-top: -200px;
+      
 }
+
+.modifier aside{
+    width: 700px;
+    height: 570px;
+    background: white;
+}
+
+
+.des p{
+    margin-left: 150px;
+}
+ .instructions{
+    top: 65px;
+    width: 350px;
+    left: 850px;
+    position: fixed;
+    background-color: black;
+    color: white;
+    border-radius: 9999px;
+    text-align: center;
+    color: rgb(11, 192, 11);
+
+}
+
+

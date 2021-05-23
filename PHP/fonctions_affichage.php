@@ -169,6 +169,23 @@ function afficher_conver($pseudo, $chemin,$num,$couleur){
     <?php
 }
 
+
+function afficher_conver_instruction(){
+    ?>
+   
+    <div class= "instruction">
+    
+        <h1>Messagerie du vaissea</h1>
+
+        <h4>Communiquez vous avec les membres de votre equipage 
+            et partagez des anecdotes sur les mondes que vous aviez decouverts ensembles
+    </h4> <br> 
+        <p>Les insultes ou les manques de respect ne seront pas tolerées entre camarades</p>
+    </div>
+    
+    <?php
+}
+
 function afficher_page_profil($num,$tab_user){
     if($tab_user["pseudo"]==$_SESSION["pseudo"]) {
         $abo=1;
@@ -465,13 +482,7 @@ function afficher_inscription($message){
                     
                     </select> 
 
-                    <select name="langue" class="deroul" >
-                        <option value=0 >Langue</option>
-                        <option value=English >English</option>
-                        <option value=Español >Español</option>
-                        <option value=Français >Français</option>
                     
-                    </select> 
                 
                     <input type="submit" class="bouton" value="Inscription">  
                     <a href="../index.php" class="bouton">Connexion</a> 
@@ -677,53 +688,53 @@ function afficher_test($message){
             
     <p>L'un des moteur du vaisseau tombe en panne, mais vous ne savez pas comment le réparer. Que faites vous ?</p>
     <div class="test_question">
-            <input type="radio" name="q1" value="5"> 
-            <label for="q1">Vous demandez de l'aide à quelqu'un d'autre</label> <br>
-             <input type="radio" name="q1" value="1"> 
-             <label for="q1">Vous lisez le manuel d'instructions de l'appareil</label> <br>
-             <input type="radio" name="q1" value="10">
-             <label for="q1">Vous essayez de le réparer avec vos connaissances, pas de chance si ça explose</label> <br>
+            <input type="radio" name="q1" id="q11" value="5"> 
+            <label for="q11">Vous demandez de l'aide à quelqu'un d'autre</label> <br>
+             <input type="radio" name="q1" id="q12" value="1"> 
+             <label for="q12">Vous lisez le manuel d'instructions de l'appareil</label> <br>
+             <input type="radio" name="q1" id="q13" value="10">
+             <label for="q13">Vous essayez de le réparer avec vos connaissances, pas de chance si ça explose</label> <br>
  </div> 
 
     <p>Qu'offrez-vous à l'équipage ?</p>
     <div class="test_question">
-             <input type="radio" name="q2" value="10">
-             <label for="q2">Vos habilités techniques</label><br>   
-             <input type="radio" name="q2" value="5"> 
-             <label for="q2">Votre stratégie </label><br>   
-             <input type="radio" name="q2" value="1">  
-             <label for="q2">Votre intelligence</label><br>   
+             <input type="radio" name="q2" id="q21" value="10">
+             <label for="q21">Vos habilités techniques</label><br>   
+             <input type="radio" name="q2" id="q22" value="5"> 
+             <label for="q22">Votre stratégie </label><br>   
+             <input type="radio" name="q2" id="q23" value="1">  
+             <label for="q23">Votre intelligence</label><br>   
      </div> 
 
 
      <p>Quel est votre plus grand défaut ?</p>
      <div class="test_question">
-             <input type="radio" name="q3" value="1">
-             <label for="q3"> Vous oubliez souvent de tenir compte des sentiments des autres </label> <br>
-             <input type="radio" name="q3" value="10">  
-             <label for="q3">Vous avez tendance à avoir des accidents</label> <br>
-             <input type="radio" name="q3" value="5">  
-             <label for="">Vous êtes litteralment parfait</label> <br>
+             <input type="radio" name="q3" id="q31" value="1">
+             <label for="q31"> Vous oubliez souvent de tenir compte des sentiments des autres </label> <br>
+             <input type="radio" name="q3" id="q32" value="10">  
+             <label for="q32">Vous avez tendance à avoir des accidents</label> <br>
+             <input type="radio" name="q3" id="q33" value="5">  
+             <label for="q33">Vous êtes litteralment parfait</label> <br>
      </div> 
     <p>À l'Academie Spacial vous aviez une certaine reputation... Vous étiez : </p>
     <div class="test_question">
 
-             <input type="radio" name="q4" value="1"> 
-             <label for="q4"> L'élève le plus intelligent</label> <br>
-             <input type="radio" name="q4" value="5">
-             <label for="q4"> Le délégué</label> <br>
-             <input type="radio" name="q4" value="10">
-             <label for="q4"> Le bricoleur</label> <br>
+             <input type="radio" name="q4" id="q41" value="1"> 
+             <label for="q41"> L'élève le plus intelligent</label> <br>
+             <input type="radio" name="q4" id="q42" value="5">
+             <label for="q42"> Le délégué</label> <br>
+             <input type="radio" name="q4" id="q43" value="10">
+             <label for="q43"> Le bricoleur</label> <br>
      </div> 
 
     <p>Que faissiez lorsque vous aviez des mauvaises notes ?</p>
     <div class="test_question">
-             <input type="radio" name="q5" value="10">
-             <label for="q5">Vous étudiez plus</label> <br>
-             <input type="radio" name="q5" value="5"> 
-             <label for="q5">Vous parliez avec le prof </label> <br>
-             <input type="radio" name="q5" value="1">  
-             <label for="q5">Vous n'aviez pas des mauvaises notes</label> <br>
+             <input type="radio" name="q5" id="q51" value="10">
+             <label for="q51">Vous étudiez plus</label> <br>
+             <input type="radio" name="q5" id="q52"value="5"> 
+             <label for="q52">Vous parliez avec le prof </label> <br>
+             <input type="radio" name="q5" id="q53" value="1">  
+             <label for="q53">Vous n'aviez pas des mauvaises notes</label> <br>
     </div> 
 
    <p>Vous atterrissez sur une planète où les habitants ne peuvent dire que la verité ou bien que des mensonges. <br>
@@ -732,12 +743,12 @@ function afficher_test($message){
 
    </p>
    <div class="test_question">
-             <input type="radio" name="q6" value="5"> 
-             <label for="q6">Le premier dit vrai, alors le deuxième dit faux donc ils veulent vous faire du mal </label> <br>
-             <input type="radio" name="q6" value="1"> 
-             <label for="q6">Le premier dit faux, alors le deuxième dit vrai donc ils ne veulent pas vous faire du mal </label> <br>
-             <input type="radio" name="q6" value="10"> 
-             <label for="q6"> Vous tirez sur les deux, au le cas où</label> <br>
+             <input type="radio" name="q6" id="q61"value="5"> 
+             <label for="q61">Le premier dit vrai, alors le deuxième dit faux donc ils veulent vous faire du mal </label> <br>
+             <input type="radio" name="q6" id="q62" value="1"> 
+             <label for="q62">Le premier dit faux, alors le deuxième dit vrai donc ils ne veulent pas vous faire du mal </label> <br>
+             <input type="radio" name="q6" id="q62" value="10"> 
+             <label for="q63"> Vous tirez sur les deux, au le cas où</label> <br>
     </div> 
 
 <br>
@@ -843,7 +854,7 @@ function afficher_mess_gauche($message){
 function afficher_modifier($message){ 
 ?>    
 
-        <div class="modifier">
+        
             
         
         <div class="test_erreur">
@@ -854,16 +865,29 @@ function afficher_modifier($message){
  
  ?>
         </div>
-        <img class="pp big" src="<?php echo $_SESSION['photo'] ?>" alt="photo de profil">     
-           <form enctype="multipart/form-data" action="traitement_modifier_profil.php" method="post" class="formulaire">
+       
+        <div class="modifier">
+            
+        <aside></aside>
+            <div class="haut">
+               
+           
+              <img class="pp big" src="<?php echo $_SESSION['photo'] ?>" alt="photo de profil">     
+              <form enctype="multipart/form-data" action="traitement_modifier_profil.php" method="post" class="formulaire">
              <input name="photo" type="file" />
-                    
-                    <input type="text" name="pseudo" class="input"  placeholder="<?php echo $_SESSION['pseudo'] ?>"> 
+             <p>Modifier photo de profil</p>
+            
+                    <div class=identifiant>
+                        <p>Pseudo</p>
+                    <input type="text" name="pseudo" class="input"  placeholder="<?php echo $_SESSION['pseudo'] ?>">
+                    <p>Email</p> 
                     <input type="email" name="email" class="input" placeholder="<?php echo $_SESSION['email'] ?>">
+                    <p>Changer mot de passe</p>
                     <input type="password" name="mot_de_passe" class="input" placeholder="Nouveau mot de passe">
-                    <input type="text" name="description" class="input" placeholder="<?php echo $_SESSION['description'] ?>"> 
+                    </div>
+            </div>        
                 
-
+                <div class="bas">
                     <select name="espece" class="deroul" >
                         <option value=0 >Espèce</option>
                         <option value=Humain>Humain</option>
@@ -872,24 +896,35 @@ function afficher_modifier($message){
                         <option value=Romulien >Romulien</option>
                     
                     </select> 
-
-                    <select name="langue" class="deroul" >
-                        <option value=0 >Langue</option>
-                        <option value=English >English</option>
-                        <option value=Español >Español</option>
-                        <option value=Français >Français</option>
-                    
-                    </select> 
-                
-                    <input type="submit" class="bouton" value="Modifier"> <br>
                     <a href="../PHP/test.php" class="bouton">Test Section</a> 
+                    </div>   
+                <div class="des">
+                    <p>Description</p>
+                    <textarea name="description" class="input" id="" cols="60" rows="10"></textarea>
+                    <input type="submit" class="bouton" value="Modifier"> <br>
+                </div>   
             </form>
-
+            
             
         </div>   
         
  
 <?php
+afficher_modifier_instruction();
+}
+
+
+function afficher_modifier_instruction(){
+    ?>
+   
+    <div class= "instructions">
+    
+        <h1>Modifier votre profil</h1>
+
+        
+    </div>
+    
+    <?php
 }
 ?>
 

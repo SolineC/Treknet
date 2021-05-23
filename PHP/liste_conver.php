@@ -27,6 +27,6 @@ afficher_conver($ligne['pseudo'], $ligne['photo_de_profil'],$ligne['num_profil']
 echo '<br>';
 
 }
-
+afficher_conver_instruction();
 
 ?>

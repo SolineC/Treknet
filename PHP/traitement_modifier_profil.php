@@ -88,11 +88,11 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
 
     
     if (empty($_POST['mot_de_passe'])){
-        modifierProfil($pseudo,$email,$description,$espece,$langue);    
+        modifierProfil($pseudo,$email,$description,$espece);    
         exit();
     } else {
         $mot_de_passe= preTraiterChampSQL(password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT),$connexion);
-        modifierProfilpwd($pseudo,$email,$mot_de_passe,$description,$espece,$langue);    
+        modifierProfilpwd($pseudo,$email,$mot_de_passe,$description,$espece);    
         exit();
     }
     header("Location: profil.php");

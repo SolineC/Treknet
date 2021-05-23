@@ -147,7 +147,9 @@ function grade(){
     $grade=0;
     $fecha= date("Y-m-d");
     $condi= array(1,7,15,30,60,80,120,240,300,365);
-    $diff=date_diff(date_create($_SESSION['date']),date_create($fecha));
+    $req = "SELECT date_inscription FROM profil where pseudo = '$pseudo' ";
+    $resultat=requete( $req,connexion('treknet'));
+    $diff=date_diff(date_create($resultat['date_inscription']),date_create($fecha));
     $days = $diff->format("%a");
     while($i<count($condi)){
         if ($days>$condi[$i]){
@@ -156,9 +158,7 @@ function grade(){
             $i=$i+1;
      }
      $req= "UPDATE profil SET num_grade='$grade' WHERE pseudo='$pseudo';";
-    requete1($req,connexion('Treknet'));    
-     header("Location: accueil.php");
-     
+    requete1($req,connexion('Treknet'));         
 }
 
 function creer_message($pseudo, $destinataire,$mess){

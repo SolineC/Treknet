@@ -63,7 +63,7 @@ img{
     margin: auto;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: scroll ;
 }
 
 .talk {

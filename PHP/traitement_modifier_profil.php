@@ -25,8 +25,9 @@ if(isset($_FILES['photo']) ){
             
         
             if(move_uploaded_file($_FILES['photo']['tmp_name'], $fichier)) {
-    
-                mod_pp($fichier,$_SESSION['pseudo']);
+               
+                $req= "UPDATE profil SET photo_de_profil ='$fichier' WHERE pseudo='$pseudo';";
+                requete1($req,connexion('Treknet'));
                 $_SESSION['photo']=$fichier;
        
             }else{

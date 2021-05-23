@@ -153,8 +153,4 @@ function montrer_message($pseudo, $destinataire){
 }
 
 
-function mod_pp($fichier,$pseudo){
-    $req= "UPDATE profil SET photo_de_profil ='$fichier' WHERE pseudo='$pseudo';";
-    requete1($req,connexion('Treknet'));
-}      
 ?>

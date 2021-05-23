@@ -13,9 +13,9 @@ if(isset($_FILES['img_publication']) && isset($_POST['texte'])){
     $ext=pathinfo($fichier)['extension'];
 
     if($ext=="png" || $ext == "jpg" || $ext="jpeg"){
-        if($_FILES['img_publication']['size']>2000000){
+        if($_FILES['img_publication']['size']>500000){
 
-            afficher_nouvelle_publication("Image trop grosse. Taille maximale : 2Mo");
+            afficher_nouvelle_publication("Image trop grosse. Taille maximale : 500ko");
         }else {
             $connexion = connexion('treknet');
             $texte=preTraiterChampSQL($_POST['texte'],$connexion);

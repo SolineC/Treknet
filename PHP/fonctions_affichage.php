@@ -585,13 +585,13 @@ function afficher_publication($image, $texte, $pp, $pseudo,$couleur,$date,$sipro
         case 2 : $color = "#4399D4"; break;
         case 3 : $color = "#E63627"; break;
     }
-    if($_SESSION["num_grade"]>10){
+    if($_SESSION["num_grade"]>7){
         $siprofil=1;
     }
     
     if($siprofil==0){
     ?>
-        
+        <div class="blank"></div>
         <div class="boite-publication">
             <?php echo '<div class="publicateur" style="background-color:'.$color.';">'; ?>  
             
@@ -607,6 +607,7 @@ function afficher_publication($image, $texte, $pp, $pseudo,$couleur,$date,$sipro
     <?php
     }else{
         ?>
+        <div class="blank"></div>
         <div class="boite-publication prof">
             <form action="traitement_suppression.php" method="post">
                 <input title="Supprimer la publication" class="suppr" type="submit" value="×">
@@ -634,8 +635,6 @@ function afficher_publications($siprofil){
     ON publication.num_profil = profil.num_profil WHERE abonnement.num_profil_suivant='".$num."'
     ORDER BY publication.num_publication DESC";
     $res = requete1($req,$connexion);
-    echo '<div class="blank"></div>';
-
 
     while($ligne=mysqli_fetch_array($res)){
         $image=$ligne['image'];
@@ -652,7 +651,7 @@ function afficher_publications($siprofil){
 
 
 function afficher_nouvelle_publication($message){
-
+    session_start();
 
     afficher_en_tete();
     
@@ -685,6 +684,7 @@ function afficher_nouvelle_publication($message){
   </form>
  
 </div>
+
 
 <?php
 afficher_pied_de_page();

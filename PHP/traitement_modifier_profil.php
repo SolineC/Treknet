@@ -29,15 +29,10 @@ if(isset($_FILES['photo']) ){
                  requete1($req,$connexion);
                  $_SESSION['photo']=$fichier;
         
-<<<<<<< HEAD
-                header("Location: modifier_profil.php");
-       
-=======
                 /*header("Location: accueil.php");*/
        
             }else{
                 afficher_modifier("Erreur, veuillez réessayer. Erreur probable : Image trop grosse. Taille maximale : 2Mo");
->>>>>>> 24e39744cda935ad542196615d2deee9b48b5f95
             }
         }
     }else{

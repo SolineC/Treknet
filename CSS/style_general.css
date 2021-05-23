@@ -267,15 +267,22 @@ transition: all 0.3s ease;
 
 
 .modifier{
-    margin-left: 100px;
-    width: 500px;
+    left: 80px;
+    top:70px;
+    width: fit-content;
+    height: 460px;
     position: fixed;
+    background-color: #f0f0f0;
+    padding: 20px 50px 20px 50px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
     
 }
 
 
 .modifier select{
-    background-color: rgb(221, 221, 221);
+    background-color: #f0f0f0;
     border: 0;
     border: 2px solid rgb(33,33,33);
     margin: 10px auto;
@@ -285,9 +292,6 @@ transition: all 0.3s ease;
     text-align: center;
     width: 200px;
     transition: 0.25s;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
     cursor: pointer;
 }
 
@@ -302,47 +306,48 @@ transition: all 0.3s ease;
     text-align: center;
     width: 200px;
     transition: 0.25s;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
+   
     
 }
 
-
-.modifier p{
-    font-size: 12px;
-    color: rgb(0, 0, 0);
-
+.gauche{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
 }
 
- .identifiant{
-     
-    width: 200px;
-   margin-top: -120px;
-   margin-left: 350px;
+.modifier label{
+    cursor: pointer;
 }
 
-.haut{
-    margin-top: 80px;
-    margin-left: 100px;
+.identifiant{
+    display: flex;
+    flex-direction: column;
 }
 
-.modifier .bas{
- margin-top: -70px;
- margin-bottom: 30px;
- margin-left: 200px;
+.des{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+
+.modifier .droite{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 20px;
  
 }
 
-.bas select{
-    margin-left: -200px;
-    
-}
-.bas a{
-    margin-top: -55px;
+.modifier .droite a{
+    margin-bottom: 20px;
 }
 
- .test_erreur p{
+
+
+
+.test_erreur p{
     color: white;
     border-radius: 10px;
     left: 100px;
@@ -351,20 +356,14 @@ transition: all 0.3s ease;
       
 }
 
-.modifier aside{
-    width: 700px;
-    height: 570px;
-    background: white;
-}
 
-
-.des p{
-    margin-left: 150px;
-}
+  
  .instructions{
-    top: 65px;
-    width: 350px;
-    left: 850px;
+    top: 50%;
+    width: 500px;
+    right: 1%;
+    padding: 20px;
+    transform: translate(-1%,-50%);
     position: fixed;
     background-color: black;
     color: white;
@@ -373,5 +372,7 @@ transition: all 0.3s ease;
     color: rgb(11, 192, 11);
 
 }
+
+
 
 

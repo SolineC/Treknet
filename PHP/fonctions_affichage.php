@@ -173,14 +173,12 @@ function afficher_conver($pseudo, $chemin,$num,$couleur){
 function afficher_conver_instruction(){
     ?>
    
-    <div class= "instruction">
+    <div class= "instructions">
     
-        <h1>Messagerie du vaissea</h1>
+        <h1>Canal de communication du vaisseau</h1>
 
-        <h4>Communiquez vous avec les membres de votre equipage 
-            et partagez des anecdotes sur les mondes que vous aviez decouverts ensembles
-    </h4> <br> 
-        <p>Les insultes ou les manques de respect ne seront pas tolerées entre camarades</p>
+        <h4>Transmettez vos messages à votre équipage</h4> <br> 
+        <p>Les insultes ou le manque de respect ne seront pas tolerés au sein de l'équipage.</p>
     </div>
     
     <?php
@@ -865,9 +863,6 @@ function afficher_mess_gauche($message){
 function afficher_modifier($message){ 
 ?>    
 
-        
-            
-        
         <div class="test_erreur">
 
 <?php 
@@ -876,45 +871,51 @@ function afficher_modifier($message){
  
  ?>
         </div>
-       
         <div class="modifier">
             
-        <aside></aside>
-            <div class="haut">
-               
-           
-              <img class="pp big" src="<?php echo $_SESSION['photo'] ?>" alt="photo de profil">     
-              <form enctype="multipart/form-data" action="traitement_modifier_profil.php" method="post" class="formulaire">
-             <input name="photo" type="file" />
-             <p>Modifier photo de profil</p>
+            <div class="gauche">
             
-                    <div class=identifiant>
-                        <p>Pseudo</p>
-                    <input type="text" name="pseudo" class="input"  placeholder="<?php echo $_SESSION['pseudo'] ?>">
-                    <p>Email</p> 
-                    <input type="email" name="email" class="input" placeholder="<?php echo $_SESSION['email'] ?>">
-                    <p>Changer mot de passe</p>
-                    <input type="password" name="mot_de_passe" class="input" placeholder="Nouveau mot de passe">
-                    </div>
+            <label for="photo">Modifier la photo de profil</label>
+                <img class="pp big" src="<?php echo $_SESSION['photo'] ?>" alt="photo de profil">     
+                <form enctype="multipart/form-data" action="traitement_modifier_profil.php" method="post" class="formulaire">
+                
+                    <input name="photo" type="file" id="photo" />
+                
+            
+                <div class="des">
+                        <label for="description">Changer la description</label>
+                        <textarea name="description" class="input" id="description" cols="60" rows="10"></textarea>
+                       
+                </div>      
             </div>        
                 
-                <div class="bas">
-                    <select name="espece" class="deroul" >
-                        <option value=0 >Espèce</option>
-                        <option value=Humain>Humain</option>
-                        <option value=Vulcan >Vulcain</option>
-                        <option value=Andorian >Andorian</option>
-                        <option value=Romulien >Romulien</option>
-                    
-                    </select> 
-                    <a href="../PHP/test.php" class="bouton">Test Section</a> 
-                    </div>   
-                <div class="des">
-                    <p>Description</p>
-                    <textarea name="description" class="input" id="" cols="60" rows="10"></textarea>
-                    <input type="submit" class="bouton" value="Modifier"> <br>
-                </div>   
-            </form>
+            <div class="droite">
+                
+                <div class=identifiant>
+                    <label for="pseudo">Changer le pseudo</label>
+                    <input type="text" name="pseudo" id="pseudo" class="input"  placeholder="<?php echo $_SESSION['pseudo'] ?>">
+                    <label for="email">Changer l'email</label>
+                    <input type="email" name="email" class="input" id="email" placeholder="<?php echo $_SESSION['email'] ?>">
+                    <label for="mot_de_passe">Changer le mot de passe</label>
+                    <input type="password" name="mot_de_passe" id="mot_de_passe" class="input" placeholder="Nouveau mot de passe">
+                </div>
+
+                <select name="espece" class="deroul" >
+                    <option value=0 >Espèce</option>
+                    <option value=Humain>Humain</option>
+                    <option value=Vulcan >Vulcain</option>
+                    <option value=Andorian >Andorian</option>
+                    <option value=Romulien >Romulien</option>
+                </select> 
+                <a href="../PHP/test.php" class="bouton">Test Section</a> 
+
+                <input type="submit" class="bouton" value="Modifier"> 
+                </form>
+
+                
+            </div>   
+                  
+            
             
             
         </div>   

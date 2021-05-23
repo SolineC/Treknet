@@ -77,10 +77,10 @@
 
 /*Affichage des messages d'erreur*/
 .erreur{
-    color: red;
+    color: white;
     position: absolute;
     top: 30%;
-    left: 10%;
+    left: 6%;
     transform: translate(-10%,-30%);
 }
 
@@ -114,9 +114,8 @@
 
 .boite-utilisateur .face.back{
     transform: rotateY(180deg);
-    display: grid;                                                  /*tuto yt*/
+    display: grid;
     place-items: center;
-    
 
 }
 
@@ -323,8 +322,6 @@ aside .generique{
     background-color: #c03736;
 }
 
-
-
 aside p{
     font-size: 20px;
    text-align: justify;
@@ -444,6 +441,7 @@ cursor: pointer;
 }
 
 
+
 /**boite des abonnements*/
 
 .cote{
@@ -502,9 +500,7 @@ cursor: pointer;
         
     }
 
-.modifier .aside{
-    background-color: blue;
-}
+
     
 
 

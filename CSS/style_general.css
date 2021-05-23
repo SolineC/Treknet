@@ -50,7 +50,7 @@ a{
     
 }
 
-.recherche{
+.recherche{ /*Reutiliser sur list conver*/
     width: 200px;
     height: 30px;
     background-color: #d1dffd;
@@ -231,6 +231,7 @@ transition: all 0.3s ease;
     color: rgb(33,33,33);
 }
 
+/*******************************************TEST SECTION************************************/
 .test_section{
     margin-top: 60px;
     margin-left: 5%;
@@ -372,7 +373,6 @@ transition: all 0.3s ease;
     color: rgb(11, 192, 11);
 
 }
-
 
 
 

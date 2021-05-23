@@ -28,12 +28,11 @@ if(isset($_FILES['photo']) ){
     
                 mod_pp($fichier,$_SESSION['pseudo']);
                 $_SESSION['photo']=$fichier;
-                
-                /*header("Location: accueil.php");*/
        
             }else{
-                afficher_modifier("Erreur, veuillez réessayer. Erreur probable : Image trop grosse. Taille maximale : 2Mo");
+                afficher_modifier("Erreur, veuillez réessayer. Erreur probable : Image trop grosse.");
             }
+            
         }
     }else{
         afficher_modifier("Format de l'image non accepté. Formats acceptés : png, jpg, jpeg.");

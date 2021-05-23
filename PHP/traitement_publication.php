@@ -35,7 +35,7 @@ if(isset($_FILES['img_publication']) && isset($_POST['texte'])){
                 header("Location: accueil.php");
        
             }else{
-                afficher_nouvelle_publication("Erreur, veuillez réessayer. Erreur probable : Image trop grosse. Taille maximale : 200ko");
+                afficher_nouvelle_publication("Erreur, veuillez réessayer. Erreur probable : Image trop grosse.");
             }
         }
     }else{

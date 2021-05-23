@@ -87,11 +87,9 @@ INSERT INTO  Section (num_section, nom_section, couleur)
 
 INSERT INTO  Abonnement(num_profil_suivi, num_profil_suivant)
      VALUES  (1,2),
-	         (1,3),
-	         (2,3),
 	         (2,1),
-             (3,2),
-	         (3,1);
+             (1,1),
+             (2,2);
 
 
 INSERT INTO  Profil (num_profil, pseudo, photo_de_profil, email, mot_de_passe, num_section, num_grade, date_inscription, espece, description, admi)

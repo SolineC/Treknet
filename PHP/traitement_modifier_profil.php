@@ -19,7 +19,7 @@ if(isset($_FILES['photo']) ){
 
             afficher_modifier("Image trop grosse. Taille maximale : 2Mo");
         }else {
-            $numid=rand(1000000000,1111111111111111); /*pour être sûr que deux pp ont un nom different*/
+            $numid=rand(100,1111111111111111); /*pour être sûr que deux pp ont un nom different*/
             $fichier=$dossier.$numid.".".$ext;
             
         

@@ -490,12 +490,22 @@ function afficher_cote_gauche(){
  <div class="generique">   
 
         <h1>TABLEAU DE BORD </h1>
+        <div class="boite-diode">
+            <div class="diode"></div>
+            <div class="diode"></div>
+           
+        </div>
 
 <h3> Voila les souvenirs des membres de ton équipage...</h3>
+<div class="boite-diode">
+    <div class="diode"></div>
+    <div class="diode"></div>
+    <div class="diode"></div>
+</div>
 
  <p>...après avoir exploré d'étranges nouveaux mondes,
 découvert de nouvelles vies
- et civilisations et avoir été là ou personne n'est jamais allé !
+ et civilisations et avoir été là où personne n'est jamais allé !
  </p>
  </div>
  <div class="boite-bitoniaux">
@@ -511,6 +521,7 @@ découvert de nouvelles vies
  </div>
         
     </aside>
+    <a href="liste_conver.php"><img src="../Images/communicator.jpg" alt="communicateur" class="communicator" title="Envoyer un message"></a>
 
 <?php
 }

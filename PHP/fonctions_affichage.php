@@ -386,12 +386,16 @@ function afficher_connexion($message){
     <meta charset="utf-8">
     <?php
     if(getAdresse()=="Treknet" || getAdresse()=="index.php"){
+        $inscription="PHP/inscription.php";
+        $connexion="PHP/traitement_connexion.php";
         ?>
     
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/style.css">
     <?php
     }else{
+        $inscription="inscription.php";
+        $connexion="traitement_connexion.php";
     ?>
 
     <link rel="stylesheet" href="../CSS/index.css">
@@ -415,12 +419,12 @@ function afficher_connexion($message){
             afficher_erreurs($message);
         ?>
         <div class="connexion">
-            <form action="PHP/traitement_connexion.php" method="POST">
+            <form action=<?php echo $connexion; ?> method="POST">
                 <input type="text" class="input"  name="pseudo" required="required" placeholder="Pseudo">
                 <input type="password" class="input" name="mot_de_passe" required="required" placeholder="Mot de Passe">
                 <input type="submit" class="bouton" value="CONNEXION" >
                 <!-- <a class="mdp" href="PHP/forgot_password.php">Mot de passe oublié ?</a> -->
-                <a href="PHP/inscription.php" class="bouton">Inscription</a>
+                <a href=<?php echo $inscription; ?> class="bouton">Inscription</a>
                 <audio autoplay>
                 <source src="Musique\Classic voice over.mp3" type="audio/mpeg" >
                 </audio>
@@ -433,6 +437,7 @@ function afficher_connexion($message){
 }
 
 function afficher_inscription($message){
+    
     ?>
     <!DOCTYPE html>
 

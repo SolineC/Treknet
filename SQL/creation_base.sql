@@ -87,8 +87,14 @@ INSERT INTO  Section (num_section, nom_section, couleur)
 
 INSERT INTO  Abonnement(num_profil_suivi, num_profil_suivant)
      VALUES  (1,2),
-	     (2,1),
-	     (2,3),
-	     (1,3);
+	         (1,3),
+	         (2,3),
+	         (2,1),
+             (3,2),
+	         (3,1);
 
+
+INSERT INTO  Profil (num_profil, pseudo, photo_de_profil, email, mot_de_passe, num_section, num_grade, date_inscription, espece, description, admi)
+     VALUES  (1,'Soline','../Images/Profil/spock1.jpg','soline@corm.eu', '$2y$10$IOSZMO2BH0og4x.cu5BN0OhsOYLIIBLeRxep6sC0qVg8nSjx7kQlK', 2, 0,2020-07-06,'Humain','Fondatrice',1),
+             (2,'Ana','../Images/Profil/chapel.jpg','ana.parres27@gmail.com','$2y$10$Klmyr.4cFkA//f2p1bSJeO85ESgppkOG5rNNY95YnmjzK0./JBieu', 3, 0,2020-08-27,'Humain','Fondatrice',1);
 

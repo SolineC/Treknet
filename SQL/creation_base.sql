@@ -55,7 +55,7 @@ CREATE TABLE Message(
     expediteur VARCHAR(30),
     destinataire VARCHAR(30),
     mess VARCHAR(25),
-    date_mess TIMESTAMP
+    date_message TIMESTAMP
 );
 
 

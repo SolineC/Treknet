@@ -54,7 +54,7 @@ CREATE TABLE Grade(
 CREATE TABLE Message(
     expediteur VARCHAR(30),
     destinataire VARCHAR(30),
-    mess VARCHAR(25),
+    mess VARCHAR(1000),
     date_message TIMESTAMP
 );
 

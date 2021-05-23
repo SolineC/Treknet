@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../CSS/apropos.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+
+    <title>Where no man has gone before</title>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../PHP/accueil.php">Accueil</a></li>
+                <li><a href="../PHP/inscription.php">Inscription</a></li>
+                
+            </ul>
+        </nav>
+        </header>
+
+    <main>
+
+        <h1>Treknet: Un projet de geeks pour geeks</h1>
+        <p>Apres avoir lu le sujet, nous avons voulu choisir un thème directeur pour notre réseau social, <br>
+             et l’univers de Star Trek  semblait intéressant au vu des possibilités qu’offraient les différentes sections de l’équipage de l’USS Enterprise <br> 
+             (section NAVIGATION portant un uniforme ROUGE, section OPÉRATIONS portant un uniforme JAUNE et la section SCIENTIFIQUE portant un uniforme BLEU), <br>
+              c’est donc ce thème qui a été retenu. Le site se présente donc comme une interface de l’USS Enterprise et les utilisateurs comme des membres de l’équipage. <br> <br>
+              Tous les choix esthétiques ont été effectués dans le but de rendre cohérente cette interface.
+        </p>
+        <h2>Architecture du site       </h2>
+
+        <p>Les fonctionnalités de Treknet sont les suivantes : <br> <br>
+            L’utilisateur arrive sur la page de connexion où il peut se connecter en rentrant sont pseudo et son mot de passe, s’il n’est pas inscrit, il peut cliquer sur le bouton inscription. <br> 
+            Lors de l’inscription, l’utilisateur peut choisir leurs pseudo, email de contact, mot de passe, ainsi que l'espèce et la section à laquelle il désire appartenir pendant ses voyages.<br> <br>
+            Ces choix initiaux peuvent être modifiés grâce à la page de modification du profil à laquelle on peut accéder par le biais de la barre de navigation. <br>
+            Dans cette même page, il peut également modifier sa photo de profil (qui est initialisée avec une photo par défaut lors de l’inscription) et ajouter une petite description. <br>
+            En plus, un test est mis à sa disposition pour déterminer à quelle section il correspond le mieux, selon sa personnalité.<br> <br>
+            L’utilisateur peut consulter toutes ses informations depuis sa page profil, et en plus voir quels utilisateurs sont dans son équipage (à quels membres il est abonné) <br>
+             et à quels équipages il appartient (qui s’est abonné à lui). En accédant à la page profil des autres membres, l'utilisateur peut s’abonner à leur compte (ou bien, se désabonner). <br>
+             On peut aussi s'abonner en utilisant la fonction recherche qui se trouve dans la barre de navigation. <br>
+            Une fois abonné, l'utilisateur aura accès aux publications des autres membres dans le fil d’actualité présent sur la page d’accueil. <br><br>
+            
+            Au bout d’un certain temps, les internautes verront leur grade augmenter et peuvent devenir même Amiral de leur équipage! <br>
+            Cependant seuls les administrateurs ont le rang d’ Amirales de Flottes, qui permet d’éliminer du contenu des autres voyageurs.<br>
+            Pour se communiquer entre eux, les membres de l'équipages on accès à une messagerie individuel<br>
+              </p>
+
+              <h2>Esthétique du site       </h2>
+
+              <p>
+                Comme expliqué plus haut, le concept de sections à été déterminant dans le choix du thème, en particulier grâce aux trois couleurs rouge, jaune et bleu. <br>
+                Comme l’utilisateur peut choisir sa section à l’inscription. Nous avons décidé de personnaliser l'expérience de chaque utilisateur en fonction de celle-ci. <br>
+                 La couleur est enregistrée à la connexion dans le tableau $_SESSION et est utilisée pour la couleur du background. <br>
+                  Lors d’affichages d’utilisateurs en liste (recherche de membres, liste d’abonnement, publications...) chaque utilisateur est dans une boite profil qui a pour background sa couleur de section. 
+                <br> <br>
+                Afin de rappeler la série, nous avons construit la page d’accueil comme un tableau de bord, reprenant le générique mythique et des éléments décoratifs (diodes et boutons) qu’on peut trouver à bord de l’Enterprise. <br>
+                Sur la page d’accueil il y a aussi le communicateur (“Beam up Scotty !”) qui est un lien vers la messagerie. Finalement des sons et extraits sonores accompagnent l’utilisateur tout au long de son usage du site, et ceux dès la connexion où le Captain Kirk énonce le générique de la série. 
+                
+              </p>
+
+
+              <h2>
+                Les choix
+
+              </h2>
+
+              <p>
+                Nous avons décidé de séparer les affichages et des traitements de donnés par commodité ainsi que pour une meilleure lisibilité du code. <br>
+                Ainsi les fichiers de traitement ont été créés pour recevoir les données et les stockés sous certaines conditions<br>
+                Ainsi on a créé des fonctions auxiliaires pour traiter les fonctions mysqli d’une seule fois pour toutes afin de factoriser le code.<br>
+                A l'intérieur de la fonctionnalité messagerie, nous avons décidé que seuls les membres se suivant mutuellement pouvaient s’envoyer des messages. 
+                
+              </p>
+
+              <h2>Difficultés</h2>
+
+              <p>Nous avons un moment considéré de laisser à l’utilisateur le choix de la langue (français, espagnol ou anglais), notre groupe étant binational, franco-espagnol.  <br>
+                 Nous avons été assez loin dans cette idée, construisant la base de donnée avec une table langue, <br>
+                 en intégrant ce choix dans le formulaire d’inscription et   en traduisant tous les mots ou phrases apparaissant sur le site.  <br>
+                  Cependant, nous n’avons pas mené le développement de cette fonctionnalité à son terme, principalement par manque de temps.</p>
+
+            <h2>Organisation du travail</h2>
+
+            <p>
+                Étant donné le confinement, nous avons dû travailler à distance. Pour maximiser le partage des avancées de chacune et avoir une bonne coordination, <br>
+                 nous avons utilisé la plateforme github. Aucune de nous n’avait jamais utilisé Github et nous avons dû apprendre à nous en servir. <br>
+                  Pour la répartition du travail, nous avons globalement procédé comme suit :
+
+            </p>
+            <li>
+                connexion, page d’accueil, publications : Soline
+
+            </li>
+
+            <li>inscription, messagerie, modification du profil : Ana
+            </li>
+
+            <p>Mais chacune a apporté des retouches au travail de l’autre.
+            </p>
+
+            <br>
+            <br><br><br>
+    </main>
+
+
+
+
+       
+
+   
+</body>
+
+</html>

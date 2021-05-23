@@ -14,7 +14,8 @@ CREATE TABLE Profil(
     num_grade TINYINT,
     date_inscription DATE,
     espece VARCHAR(20),
-    description VARCHAR(1000)
+    description VARCHAR(1000),
+    admi BOOLEAN
 );
 
 ALTER TABLE `profil` CHANGE `date_inscription` `date_inscription` DATE NULL DEFAULT CURRENT_TIMESTAMP; 

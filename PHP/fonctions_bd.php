@@ -53,8 +53,8 @@ function creerProfil($pseudo,$email,$mot_de_passe,$num_section,$espece){
     $requete2="SELECT MAX(num_profil) FROM profil";
     $resultat2=requete($requete2,$connexion);
     $num = $resultat2['MAX(num_profil)']+1;
-    $req= "INSERT INTO profil (pseudo,email,mot_de_passe,num_section,num_grade,photo_de_profil,espece,num_profil)    
-    VALUES ('$pseudo','$email','$mot_de_passe','$num_section','0','../Images/Profil/pp_default.png','$espece','$num');";
+    $req= "INSERT INTO profil (pseudo,email,mot_de_passe,num_section,num_grade,photo_de_profil,espece,num_profil,admi)    
+    VALUES ('$pseudo','$email','$mot_de_passe','$num_section','0','../Images/Profil/pp_default.png','$espece','$num','0');";
     requete1($req,$connexion);
 
     $req3 = "INSERT INTO abonnement (num_profil_suivi, num_profil_suivant) VALUES ($num,$num)";
@@ -114,7 +114,7 @@ function grade(){
     $grade=0;
     $fecha= date("Y-m-d");
     $condi= array(1,7,15,30,60,80,120,240,300,365);
-    $req = "SELECT date_inscription FROM profil where pseudo = '$pseudo' ";
+    $req = "SELECT * FROM profil where pseudo = '$pseudo' ";
     $resultat=requete( $req,connexion('treknet'));
     $diff=date_diff(date_create($resultat['date_inscription']),date_create($fecha));
     $days = $diff->format("%a");
@@ -124,6 +124,10 @@ function grade(){
         }
             $i=$i+1;
      }
+
+    if ($resultat['admi']==1){
+        $grade=11;
+    }
      $req= "UPDATE profil SET num_grade='$grade' WHERE pseudo='$pseudo';";
     requete1($req,connexion('Treknet'));         
 }

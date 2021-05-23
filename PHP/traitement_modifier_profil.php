@@ -15,9 +15,9 @@ if(isset($_FILES['photo']) ){
     $ext=pathinfo($fichier)['extension'];
 
     if($ext=="png" || $ext == "jpg" || $ext="jpeg"){
-        if($_FILES['photo']['size']>500000){
+        if($_FILES['photo']['size']>2000000){
 
-            afficher_modifier("Image trop grosse. Taille maximale : 500ko");
+            afficher_modifier("Image trop grosse. Taille maximale : 2Mo");
         }else {
             
             $fichier=$fichier.".".$ext;

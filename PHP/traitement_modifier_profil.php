@@ -10,6 +10,7 @@ $connexion = connexion("treknet");
 
 if(isset($_FILES['photo']) ){
 
+
     $dossier = "../Images/Profil/";
     $fichier = $dossier . basename($_FILES['photo']['name']);   
     $ext=pathinfo($fichier)['extension'];
@@ -25,10 +26,9 @@ if(isset($_FILES['photo']) ){
         
             if(move_uploaded_file($_FILES['photo']['tmp_name'], $fichier)) {
     
-                $req= "UPDATE profil SET photo_de_profil ='$fichier' WHERE pseudo='$_SESSION[pseudo]';";
-                 requete1($req,$connexion);
+                mod_pp($fichier,$_SESSION['pseudo']);
                  $_SESSION['photo']=$fichier;
-        
+                
                 /*header("Location: accueil.php");*/
        
             }else{

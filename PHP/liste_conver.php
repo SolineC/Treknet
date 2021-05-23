@@ -11,8 +11,12 @@ $connexion = connexion('treknet');
 
 
 $req = "SELECT pseudo, photo_de_profil,num_profil,num_section FROM `Profil` WHERE num_profil in 
-(Select num_profil_suivi from abonnement where num_profil_suivant='".$_SESSION['num_profil']."') AND num_profil != '".$_SESSION['num_profil']."'";
+(Select num_profil_suivi from abonnement where num_profil_suivant='".$_SESSION['num_profil']."') AND num_profil in (Select num_profil_suivant from abonnement where num_profil_suivi='".$_SESSION['num_profil']."')
+AND num_profil != '".$_SESSION['num_profil']."'";
 $res = requete1($req, $connexion);
+
+
+
 
 afficher_en_tete();
 ?>

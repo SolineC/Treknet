@@ -82,7 +82,7 @@ function afficher_pied_de_page(){
                     <div class= "footer-col">
                         <h3>MENTIONS LEGALES</h3>
                         <ul>
-                            <li><a href="#">Conditions d'utilisation </a></li>
+                            <li><a href="../HTML/conditions.html">Conditions d'utilisation </a></li>
                             <li><a href="#">Politiques de données</a></li>
                             <li><a href="#">Mentions Légales</a></li>
                         </ul>
@@ -100,7 +100,7 @@ function afficher_pied_de_page(){
                         <ul>
                             <li><a href="#">À propos</a></li>
                             <li><a href="#">Le projet</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="../HTML/contact.html">Contact</a></li>
                         </ul>
                     </div>
                     
@@ -356,7 +356,7 @@ function afficher_utilisateur($tab_user){
         </div>
         <div class="face back">
             <div>
-            <p>  <?php echo $_SESSION['description'] ?> </p>
+            <p>  <?php echo $tab_user['description'] ?> </p>
             </div>
         </div>
         

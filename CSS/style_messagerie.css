@@ -1,6 +1,8 @@
 img{
     width: 30px;
 }
+
+/*********************CHAT****************************/
 .chat-global{
     width: 500px;
     height: 500px;
@@ -85,7 +87,7 @@ img{
 .l {
     margin-left: auto;
     color: rgb(255, 255, 255);
-    background-color: rgb(61, 152, 236); /*variable couleur section*/
+    background-color: rgb(61, 152, 236); /*Voir au futur variable couleur section*/
 
 }
 .r {
@@ -155,28 +157,7 @@ img{
 
 }
 
-
-.recherche{
-    width: 200px;
-    height: 30px;
-    background-color: #d1dffd;
-    display: inline-block;
-    border-radius: 15px;
-    line-height: 30px;
-    text-align: left;
-    padding-right: 1px;
-    margin-left: 60px;
-    
-    
-}
-
-.input-recherche{
-    background-color: #d1dffd;
-    border: 0;
-    outline: none;
-    margin-left: 12px;
-    margin-right: 35px;
-}
+/*****************************LIST CONVER***********************************/
 
 
 

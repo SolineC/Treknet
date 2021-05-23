@@ -38,37 +38,6 @@ function requete($requete, $connex){
             }
 }
 
-function vide($pseudo,$email,$mot_de_passe){
-    $result;
-    if (empty($pseudo) || empty($email)||empty($mot_de_passe)){
-        $result=true;
-    } else{
-        $result=false;
-    }
-    return $result;
-
-}
-
-function invalidePseudo($pseudo){
-    $result;
-    if (!preg_match("/^[a-zA-Z0-9]*$/",$pseudo)){
-        $result=true;
-    } else{
-        $result=false;
-    }
-    return $result;
-
-}
-
-function invalideEmail($email){
-    $result;
-    if (!filter_var($email,FILTER_VALIDATE_EMAIL)){
-        $result=true;
-    } else{
-        $result=false;
-    }
-    return $result;
-}
 
 function compteExiste($connexion,$pseudo,$email){
     $req = "SELECT count(*) FROM profil where pseudo = '$pseudo' OR email = '$email' ";
@@ -180,4 +149,10 @@ function montrer_message($pseudo, $destinataire){
         }
     }
 }
+
+
+function mod_pp($fichier,$pseudo){
+    $req= "UPDATE profil SET photo_de_profil ='$fichier' WHERE pseudo='$pseudo';";
+    requete1($req,connexion('Treknet'));
+}      
 ?>

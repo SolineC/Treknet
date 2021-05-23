@@ -28,5 +28,36 @@ function getAdresse(){
     return $url;
 }
 
+function vide($pseudo,$email,$mot_de_passe){
+    $result;
+    if (empty($pseudo) || empty($email)||empty($mot_de_passe)){
+        $result=true;
+    } else{
+        $result=false;
+    }
+    return $result;
+
+}
+
+function invalidePseudo($pseudo){
+    $result;
+    if (!preg_match("/^[a-zA-Z0-9]*$/",$pseudo)){
+        $result=true;
+    } else{
+        $result=false;
+    }
+    return $result;
+
+}
+
+function invalideEmail($email){
+    $result;
+    if (!filter_var($email,FILTER_VALIDATE_EMAIL)){
+        $result=true;
+    } else{
+        $result=false;
+    }
+    return $result;
+}
 
 ?>

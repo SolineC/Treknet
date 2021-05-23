@@ -13,7 +13,6 @@ CREATE TABLE Profil(
     num_section TINYINT,
     num_grade TINYINT,
     date_inscription DATE,
-    langue VARCHAR(15),
     espece VARCHAR(20),
     description VARCHAR(1000)
 );
@@ -49,9 +48,7 @@ CREATE TABLE Grade(
     administrateur_comptes BOOLEAN
 );
 
-CREATE TABLE Langue(
-    langues VARCHAR(10)
-);
+
 
 CREATE TABLE Message(
     expediteur VARCHAR(30),
@@ -64,26 +61,22 @@ CREATE TABLE Message(
 
 
 
-INSERT INTO  Langue (langues)
-     VALUES  ('Français'),
-             ('Espagnol'),
-             ('Anglais'),
-	     ('Klingon');
+
 
 
 INSERT INTO  Grade (num_grade, nom_grade, administrateur_publications, administrateur_comptes)
      VALUES  (0,"Membre d'équipage",0,0),
              (1,'Enseigne',0,0),
              (2,'Sous-Lieutenant',0,0),
-	     (3,'Lieutenant',0,0),
- 	     (4,'Lieutenant-Commander',0,0),
-   	     (5,'Commander',0,0),
-	     (6,'Capitaine',0,0),
-   	     (7,'Capitaine de flotte',0,0),
-	     (8,'Contre-Amiral',1,0),
-   	     (9,'Vice-Amiral',1,0),
-	     (10,'Amiral',1,1),
-   	     (11,'Amiral de flotte',1,1);
+	        (3,'Lieutenant',0,0),
+ 	         (4,'Lieutenant-Commander',0,0),
+   	        (5,'Commander',0,0),
+	        (6,'Capitaine',0,0),
+   	        (7,'Capitaine de flotte',0,0),
+	        (8,'Contre-Amiral',1,0),
+   	        (9,'Vice-Amiral',1,0),
+	        (10,'Amiral',1,1),
+   	        (11,'Amiral de flotte',1,1);
 
 
 INSERT INTO  Section (num_section, nom_section, couleur)

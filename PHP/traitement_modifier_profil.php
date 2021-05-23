@@ -15,12 +15,13 @@ if(isset($_FILES['photo']) ){
     $ext=pathinfo($fichier)['extension'];
 
     if($ext=="png" || $ext == "jpg" || $ext="jpeg"){
-        if($_FILES['photo']['size']>500000){
+        if($_FILES['photo']['size']>2000000){
 
-            afficher_modifier("Image trop grosse. Taille maximale : 500ko");
+            afficher_modifier("Image trop grosse. Taille maximale : 2Mo");
         }else {
+            $numid=rand(100,1111111111111111); /*pour être sûr que deux pp ont un nom different*/
+            $fichier=$dossier.$numid.".".$ext;
             
-            $fichier=$fichier.".".$ext;
         
             if(move_uploaded_file($_FILES['photo']['tmp_name'], $fichier)) {
     
@@ -28,8 +29,15 @@ if(isset($_FILES['photo']) ){
                  requete1($req,$connexion);
                  $_SESSION['photo']=$fichier;
         
+<<<<<<< HEAD
                 header("Location: modifier_profil.php");
        
+=======
+                /*header("Location: accueil.php");*/
+       
+            }else{
+                afficher_modifier("Erreur, veuillez réessayer. Erreur probable : Image trop grosse. Taille maximale : 2Mo");
+>>>>>>> 24e39744cda935ad542196615d2deee9b48b5f95
             }
         }
     }else{
@@ -92,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST"){
         modifierProfilpwd($pseudo,$email,$mot_de_passe,$description,$espece,$langue);    
         exit();
     }
-    header("Location: modifier_profil.php");
+    header("Location: profil.php");
 
 } 
     
